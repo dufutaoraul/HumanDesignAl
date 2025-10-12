@@ -2,6 +2,9 @@
  * 人类图完整计算 - 使用 swisseph-wasm 进行精确天文计算
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-require-imports */
+
 let swisseph: any = null;
 
 // 动态加载 swisseph（只在服务器端）

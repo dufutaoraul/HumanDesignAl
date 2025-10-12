@@ -3,6 +3,7 @@
  * 处理异步初始化，提供同步接口
  */
 
+/* eslint-disable @typescript-eslint/no-require-imports */
 const { default: SwissEph } = require('swisseph-wasm');
 
 let sweInstance = null;

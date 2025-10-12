@@ -114,6 +114,7 @@ export function getChannelName(channel: string): string | null {
  * @param planetaryGates - 行星闸门对象
  * @returns 有效通道数组
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function extractChannelsFromPlanetary(planetaryGates: any): string[] {
   const allGates: string[] = []
 

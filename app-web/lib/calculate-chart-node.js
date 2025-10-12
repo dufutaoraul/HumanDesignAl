@@ -3,6 +3,7 @@
  * 使用真实的天文计算
  */
 
+/* eslint-disable @typescript-eslint/no-require-imports */
 const swisseph = require('swisseph-wasm');
 
 // 人类图核心常量
@@ -169,6 +170,7 @@ function calculateHumanDesignChart(birthDate, birthLat, birthLon) {
 // 测试案例1: 1990年1月1日 12:00 UTC，北京
 console.log('\n🧪 测试案例 1: 1990-01-01 12:00 UTC, 北京\n');
 const test1 = new Date('1990-01-01T12:00:00Z');
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const chart1 = calculateHumanDesignChart(test1, 39.9, 116.4);
 
 // 导出函数供外部使用
