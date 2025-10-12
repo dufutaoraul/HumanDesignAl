@@ -38,8 +38,9 @@ export default function LoginPage() {
           setError('注册成功！请检查您的邮箱以验证账户。')
         }
       }
-    } catch (err: any) {
-      setError(err.message || '操作失败')
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : '操作失败'
+      setError(errorMessage)
     } finally {
       setLoading(false)
     }

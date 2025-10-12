@@ -16,12 +16,20 @@ interface Message {
   timestamp: Date
 }
 
+interface ChartAnalysis {
+  type?: string
+  strategy?: string
+  authority?: string
+  profile?: string
+  [key: string]: unknown
+}
+
 interface UserChart {
   id: string
   name: string
   birth_datetime: string
   birth_location: string
-  analysis: any
+  analysis: ChartAnalysis | null
 }
 
 export default function ChatPage() {

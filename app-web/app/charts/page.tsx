@@ -6,6 +6,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function ChartsListPage() {
   // 临时模拟数据
@@ -72,12 +73,13 @@ export default function ChartsListPage() {
                 className="bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow overflow-hidden"
               >
                 {/* 图片预览 */}
-                <div className="h-48 bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center">
+                <div className="h-48 bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center relative">
                   {chart.chart_image_url ? (
-                    <img
+                    <Image
                       src={chart.chart_image_url}
                       alt={chart.chart_name}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
                     />
                   ) : (
                     <div className="text-6xl">👤</div>
