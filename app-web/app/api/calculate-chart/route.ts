@@ -3,6 +3,18 @@ import { calculateHumanDesignChart } from '@/lib/astronomy-calculator.js';
 import arrowCalculator from '@/lib/arrow-calculator.js';
 import { analyzeBodygraph, generateDifySummary } from '@/lib/bodygraph-analyzer.js';
 
+// 类型定义
+interface PlanetPosition {
+  gate: number;
+  line: number;
+  longitude: number;
+}
+
+interface ChartResult {
+  personality: Record<string, PlanetPosition>;
+  design: Record<string, PlanetPosition>;
+}
+
 // 地点名称转经纬度（简化版，实际应该使用地理编码API）
 function getCoordinates(location: string): { lat: number; lon: number } {
   // 常用城市坐标
@@ -66,7 +78,7 @@ export async function POST(request: NextRequest) {
 
     // 计算人类图（异步）
     // 注意：astronomy-calculator 不需要经纬度参数，只需要UTC时间
-    const chartResult = await calculateHumanDesignChart(birthDateTime);
+    const chartResult = await calculateHumanDesignChart(birthDateTime) as ChartResult;
 
     // 调试输出
     console.log('=== 计算结果 ===');
