@@ -1,12 +1,20 @@
 /**
  * Dify API 集成 - 与高我对话
+ * 自动传递用户的人类图数据给Dify
  */
 
 import { NextRequest, NextResponse } from 'next/server'
+import { createClient } from '@supabase/supabase-js'
+
+// 创建Supabase客户端
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+)
 
 export async function POST(request: NextRequest) {
   try {
-    const { message, chartData } = await request.json()
+    const { message, userId } = await request.json()
 
     if (!message || typeof message !== 'string') {
       return NextResponse.json(
@@ -17,7 +25,7 @@ export async function POST(request: NextRequest) {
 
     // 从环境变量获取Dify配置
     const difyApiKey = process.env.DIFY_API_KEY
-    const difyApiUrl = process.env.DIFY_API_URL || 'https://api.dify.ai/v1'
+    const difyWorkflowUrl = process.env.DIFY_WORKFLOW_URL || 'https://api.dify.ai/v1/workflows/run'
 
     if (!difyApiKey) {
       console.error('DIFY_API_KEY 未配置')
@@ -30,37 +38,50 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // 构建发送给Dify的消息
-    let contextMessage = message
+    // 查询用户的"我的人类图"数据（is_self = true）
+    let userChartData = null
+    if (userId) {
+      const { data: charts } = await supabase
+        .from('charts')
+        .select('*')
+        .eq('user_id', userId)
+        .eq('is_self', true)
+        .limit(1)
+        .single()
 
-    // 如果用户选择了人类图资料，将其作为上下文
-    if (chartData) {
-      const context = `
-用户资料：
-- 姓名：${chartData.name}
-- 类型：${chartData.analysis?.type || '未知'}
-- 策略：${chartData.analysis?.strategy || '未知'}
-- 内在权威：${chartData.analysis?.authority || '未知'}
-- 人生角色：${chartData.analysis?.profile || '未知'}
-- 轮回交叉：${chartData.analysis?.incarnationCross || '未知'}
-
-用户问题：${message}
-`
-      contextMessage = context
+      userChartData = charts
     }
 
-    // 调用Dify API
-    const difyResponse = await fetch(`${difyApiUrl}/chat-messages`, {
+    // 准备传递给Dify的inputs（按照你的Dify设置）
+    const difyInputs = {
+      user_name: userChartData?.name || '未设置',
+      hd_type: userChartData?.hd_type || '',
+      hd_profile: userChartData?.hd_profile || '',
+      hd_authority: userChartData?.hd_authority || '',
+      hd_definition: userChartData?.hd_definition || '',
+      hd_cross: userChartData?.hd_incarnation_cross || '',
+      hd_channels: userChartData?.hd_channels?.join(', ') || '',
+      // 如果你在Dify设置了这些字段，也传递过去
+      hd_design_south_node: userChartData?.design_south_node || '',
+      hd_design_north_node: userChartData?.design_north_node || '',
+      hd_personality_south_node: userChartData?.personality_south_node || '',
+      hd_personality_north_node: userChartData?.personality_north_node || ''
+    }
+
+    console.log('发送给Dify的数据:', { inputs: difyInputs, query: message })
+
+    // 调用Dify Workflow API
+    const difyResponse = await fetch(difyWorkflowUrl, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${difyApiKey}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        inputs: {},
-        query: contextMessage,
+        inputs: difyInputs,
+        query: message,
         response_mode: 'blocking',
-        user: 'user',
+        user: userId || 'anonymous',
       })
     })
 
@@ -72,8 +93,15 @@ export async function POST(request: NextRequest) {
 
     const difyData = await difyResponse.json()
 
+    // 从workflow响应中提取答案
+    // Dify workflow的响应格式可能是: { data: { outputs: { text: "..." } } }
+    const answerText = difyData.data?.outputs?.text ||
+                      difyData.answer ||
+                      difyData.text ||
+                      '抱歉，我暂时无法回复。'
+
     return NextResponse.json({
-      message: difyData.answer || difyData.text || '抱歉，我暂时无法回复。',
+      message: answerText,
       conversationId: difyData.conversation_id,
     })
 

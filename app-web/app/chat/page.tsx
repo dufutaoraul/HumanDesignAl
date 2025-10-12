@@ -113,7 +113,7 @@ export default function ChatPage() {
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!inputMessage.trim() || isSending) return
+    if (!inputMessage.trim() || isSending || !user) return
 
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -133,7 +133,8 @@ export default function ChatPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          message: inputMessage
+          message: inputMessage,
+          userId: user.id
         })
       })
 
