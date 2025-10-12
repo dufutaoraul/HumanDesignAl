@@ -64,11 +64,9 @@ export async function POST(request: NextRequest) {
     console.log('输入时间:', birthDate, birthTime, timezone);
     console.log('UTC时间:', birthDateTime.toISOString());
 
-    // 获取经纬度
-    const { lat, lon } = getCoordinates(location);
-
     // 计算人类图（异步）
-    const chartResult = await calculateHumanDesignChart(birthDateTime, lat, lon);
+    // 注意：astronomy-calculator 不需要经纬度参数，只需要UTC时间
+    const chartResult = await calculateHumanDesignChart(birthDateTime);
 
     // 调试输出
     console.log('=== 计算结果 ===');
