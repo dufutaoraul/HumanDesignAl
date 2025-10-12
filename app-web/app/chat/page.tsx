@@ -48,6 +48,8 @@ export default function ChatPage() {
   const [currentConversation, setCurrentConversation] = useState<Conversation | null>(null)
   const [editingConversationId, setEditingConversationId] = useState<string | null>(null)
   const [editingTitle, setEditingTitle] = useState('')
+  const [hasHumanDesign, setHasHumanDesign] = useState<boolean | null>(null)
+  const [showGuidanceBanner, setShowGuidanceBanner] = useState(true)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -56,6 +58,26 @@ export default function ChatPage() {
       router.push('/')
     }
   }, [user, loading, router])
+
+  useEffect(() => {
+    // 检查用户是否有人类图数据
+    const checkHumanDesign = async () => {
+      if (!user) return
+
+      try {
+        const response = await fetch(`/api/charts?userId=${user.id}`)
+        if (response.ok) {
+          const data = await response.json()
+          const hasSelfChart = data.charts?.some((chart: { is_self: boolean }) => chart.is_self)
+          setHasHumanDesign(hasSelfChart)
+        }
+      } catch (error) {
+        console.error('检查人类图数据失败:', error)
+      }
+    }
+
+    checkHumanDesign()
+  }, [user])
 
   useEffect(() => {
     // 滚动到最新消息
@@ -234,10 +256,34 @@ export default function ChatPage() {
 
               {/* 用户信息 */}
               <div className="glass rounded-lg p-3 mb-4">
-                <div className="flex items-center">
+                <div className="flex items-center mb-2">
                   <UserIcon className="w-5 h-5 mr-2" style={{ color: 'var(--star-gold)' }} />
                   <span className="text-sm truncate text-white">{user.email}</span>
                 </div>
+                {hasHumanDesign !== null && (
+                  <div className="flex items-center justify-between pt-2" style={{ borderTop: '1px solid rgba(255, 215, 0, 0.1)' }}>
+                    <div className="flex items-center text-xs">
+                      <div
+                        className={`w-2 h-2 rounded-full mr-2 ${
+                          hasHumanDesign ? 'animate-pulse' : ''
+                        }`}
+                        style={{ background: hasHumanDesign ? 'var(--star-gold)' : '#6b7280' }}
+                      />
+                      <span className="text-gray-300">
+                        {hasHumanDesign ? '已录入人类图' : '未录入人类图'}
+                      </span>
+                    </div>
+                    {!hasHumanDesign && (
+                      <button
+                        onClick={() => router.push('/calculate')}
+                        className="text-xs px-2 py-1 rounded transition-colors hover:opacity-80"
+                        style={{ color: 'var(--star-gold)', background: 'rgba(255, 215, 0, 0.1)' }}
+                      >
+                        录入
+                      </button>
+                    )}
+                  </div>
+                )}
               </div>
 
               {/* 新对话按钮 */}
@@ -396,6 +442,43 @@ export default function ChatPage() {
           </div>
         </div>
 
+        {/* 引导提示横幅 */}
+        {hasHumanDesign === false && showGuidanceBanner && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="mx-4 mt-4"
+          >
+            <div className="glass rounded-lg p-4 relative" style={{ borderLeft: '4px solid var(--star-gold)' }}>
+              <button
+                onClick={() => setShowGuidanceBanner(false)}
+                className="absolute top-2 right-2 text-gray-400 hover:text-white transition-colors"
+                title="关闭提示"
+              >
+                <X className="w-4 h-4" />
+              </button>
+              <div className="flex items-start">
+                <Sparkles className="w-6 h-6 mr-3 flex-shrink-0 mt-1" style={{ color: 'var(--star-gold)' }} />
+                <div className="flex-1">
+                  <h3 className="text-white font-semibold mb-1">
+                    录入你的人类图，让AI高我更懂你
+                  </h3>
+                  <p className="text-gray-300 text-sm mb-3">
+                    输入你的出生信息，生成专属人类图，获得更精准的个性化指引和对话体验
+                  </p>
+                  <button
+                    onClick={() => router.push('/calculate')}
+                    className="btn-gold text-sm px-4 py-2"
+                  >
+                    立即录入
+                  </button>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
         {/* 聊天消息区域 */}
         <div className="flex-1 overflow-y-auto p-4">
           {messages.length === 0 ? (
@@ -411,6 +494,23 @@ export default function ChatPage() {
               <p className="text-gray-300 mb-8">
                 探索内在智慧，获得人生指引
               </p>
+              {hasHumanDesign === false && (
+                <div className="glass rounded-lg p-6 max-w-md">
+                  <div className="text-4xl mb-3">📊</div>
+                  <h3 className="text-white font-semibold mb-2">
+                    还未录入人类图
+                  </h3>
+                  <p className="text-gray-300 text-sm mb-4">
+                    虽然你可以开始对话，但录入人类图后，AI高我能根据你的独特设计提供更精准的指引
+                  </p>
+                  <button
+                    onClick={() => router.push('/calculate')}
+                    className="btn-gold text-sm px-5 py-2.5"
+                  >
+                    录入我的人类图
+                  </button>
+                </div>
+              )}
             </div>
           ) : (
             <div className="max-w-4xl mx-auto space-y-4">
