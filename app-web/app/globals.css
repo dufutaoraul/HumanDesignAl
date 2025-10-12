@@ -86,22 +86,22 @@ body::before {
 
 /* 玻璃拟态效果 - 深邃宇宙风格 */
 .glass {
-  background: rgba(22, 33, 62, 0.6);
-  backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(22, 33, 62, 0.75);
+  backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 16px;
   box-shadow:
-    0 8px 32px 0 rgba(31, 38, 135, 0.37),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 8px 32px 0 rgba(31, 38, 135, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .glass:hover {
-  background: rgba(22, 33, 62, 0.7);
+  background: rgba(22, 33, 62, 0.85);
   box-shadow:
     0 8px 32px 0 rgba(31, 38, 135, 0.5),
-    0 0 20px rgba(124, 58, 237, 0.3),
+    0 0 15px rgba(124, 58, 237, 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  transition: all 0.3s ease;
 }
 
 /* 渐变文字 - 灵性光芒 */
@@ -155,30 +155,29 @@ body::before {
 
 /* 卡片hover响应动画 */
 .floating-card {
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  transition: all 0.3s ease;
 }
 
 .floating-card:hover {
-  transform: translateY(-12px) scale(1.02);
+  transform: translateY(-6px);
   box-shadow:
-    0 20px 40px 0 rgba(31, 38, 135, 0.4),
-    0 0 30px rgba(0, 217, 255, 0.2),
+    0 12px 28px 0 rgba(31, 38, 135, 0.4),
+    0 0 20px rgba(0, 217, 255, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .floating-card:hover .breathing-glow {
-  transform: scale(1.1);
-  filter: brightness(1.3);
+  filter: brightness(1.15);
 }
 
 /* 呼吸灯效果 */
 @keyframes breathe {
-  0%, 100% { opacity: 0.7; }
+  0%, 100% { opacity: 0.85; }
   50% { opacity: 1; }
 }
 
 .breathing-glow {
-  animation: breathe 4s ease-in-out infinite;
+  animation: breathe 3s ease-in-out infinite;
 }
 
 /* 星光闪烁动画 */
@@ -200,15 +199,15 @@ body::before {
 /* 光晕效果 */
 @keyframes glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
   }
   50% {
-    box-shadow: 0 0 30px rgba(124, 58, 237, 0.5);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
   }
 }
 
 .glow {
-  animation: glow 2s ease-in-out infinite;
+  animation: glow 2.5s ease-in-out infinite;
 }
 
 /* 页面渐入动画 */

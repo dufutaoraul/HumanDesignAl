@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
     // 查询用户的"我的人类图"数据（is_self = true）
     let userChartData = null
     if (userId) {
-      const { data: charts } = await supabase
+      const { data: charts, error } = await supabase
         .from('charts')
         .select('*')
         .eq('user_id', userId)
@@ -49,26 +49,35 @@ export async function POST(request: NextRequest) {
         .limit(1)
         .single()
 
-      userChartData = charts
+      if (error) {
+        console.log('查询用户人类图数据失败或未找到:', error.message)
+      } else {
+        userChartData = charts
+        console.log('成功查询到用户人类图数据:', userChartData?.name)
+      }
     }
+
+    // 从 chart_data.analysis 中提取人类图数据
+    const chartAnalysis = userChartData?.chart_data?.analysis
+    const chartPlanets = userChartData?.chart_data?.planets
 
     // 准备传递给Dify的inputs（按照你的Dify设置）
     const difyInputs = {
       user_name: userChartData?.name || '未设置',
-      hd_type: userChartData?.hd_type || '',
-      hd_profile: userChartData?.hd_profile || '',
-      hd_authority: userChartData?.hd_authority || '',
-      hd_definition: userChartData?.hd_definition || '',
-      hd_cross: userChartData?.hd_incarnation_cross || '',
-      hd_channels: userChartData?.hd_channels?.join(', ') || '',
-      // 如果你在Dify设置了这些字段，也传递过去
-      hd_design_south_node: userChartData?.design_south_node || '',
-      hd_design_north_node: userChartData?.design_north_node || '',
-      hd_personality_south_node: userChartData?.personality_south_node || '',
-      hd_personality_north_node: userChartData?.personality_north_node || ''
+      hd_type: chartAnalysis?.type || '',
+      hd_profile: chartAnalysis?.profile || '',
+      hd_authority: chartAnalysis?.authority || '',
+      hd_definition: chartAnalysis?.definition || '',
+      hd_cross: chartAnalysis?.incarnationCross?.full || '',
+      hd_channels: chartAnalysis?.channels?.join(', ') || '',
+      // 从 planets 中提取南北交点信息
+      hd_design_south_node: chartPlanets?.design?.SouthNode ? `${chartPlanets.design.SouthNode.gate}-${chartPlanets.design.SouthNode.line}` : '',
+      hd_design_north_node: chartPlanets?.design?.NorthNode ? `${chartPlanets.design.NorthNode.gate}-${chartPlanets.design.NorthNode.line}` : '',
+      hd_personality_south_node: chartPlanets?.personality?.SouthNode ? `${chartPlanets.personality.SouthNode.gate}-${chartPlanets.personality.SouthNode.line}` : '',
+      hd_personality_north_node: chartPlanets?.personality?.NorthNode ? `${chartPlanets.personality.NorthNode.gate}-${chartPlanets.personality.NorthNode.line}` : ''
     }
 
-    console.log('发送给Dify的数据:', { inputs: difyInputs, query: message })
+    console.log('发送给Dify的数据:', { inputs: difyInputs, query: message, userId })
 
     // 调用Dify Workflow API
     const difyResponse = await fetch(difyWorkflowUrl, {
@@ -87,18 +96,26 @@ export async function POST(request: NextRequest) {
 
     if (!difyResponse.ok) {
       const errorText = await difyResponse.text()
-      console.error('Dify API 错误:', errorText)
-      throw new Error(`Dify API 返回错误: ${difyResponse.status}`)
+      console.error('Dify API 错误响应:', {
+        status: difyResponse.status,
+        statusText: difyResponse.statusText,
+        body: errorText
+      })
+      throw new Error(`Dify API 返回错误: ${difyResponse.status} - ${errorText}`)
     }
 
     const difyData = await difyResponse.json()
+    console.log('Dify API 响应:', JSON.stringify(difyData, null, 2))
 
     // 从workflow响应中提取答案
     // Dify workflow的响应格式可能是: { data: { outputs: { text: "..." } } }
     const answerText = difyData.data?.outputs?.text ||
+                      difyData.data?.outputs?.answer ||
                       difyData.answer ||
                       difyData.text ||
                       '抱歉，我暂时无法回复。'
+
+    console.log('提取的答案文本:', answerText)
 
     return NextResponse.json({
       message: answerText,

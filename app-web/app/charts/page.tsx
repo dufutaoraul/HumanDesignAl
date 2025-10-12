@@ -15,15 +15,27 @@ interface ChartData {
   name: string
   birth_date: string
   birth_time: string
-  birth_location: string
+  location: string
   is_self: boolean // 是否是本人
-  hd_type: string
-  hd_authority: string
-  hd_profile: string
-  hd_incarnation_cross: string
-  hd_definition: string
-  hd_channels: string[]
-  hd_centers: Record<string, boolean>
+  chart_data: {
+    analysis: {
+      type: string
+      profile: string
+      authority: string
+      definition: string
+      channels: string[]
+      definedCenters: string[]
+      incarnationCross: {
+        full: string
+        key: string
+        type: string
+      }
+    }
+    planets: {
+      design: Record<string, unknown>
+      personality: Record<string, unknown>
+    }
+  }
   created_at: string
 }
 
@@ -166,10 +178,10 @@ export default function ChartsListPage() {
                 className="glass floating-card fade-in-up overflow-hidden"
               >
                 {/* 图片预览区域 */}
-                <div className="h-32 bg-gradient-to-br from-purple-900/50 to-blue-900/50 flex items-center justify-center relative breathing-glow">
+                <div className="h-32 bg-gradient-to-br from-purple-800/40 to-blue-800/40 flex items-center justify-center relative">
                   <div className="text-5xl">👤</div>
                   {chart.is_self && (
-                    <div className="absolute top-2 right-2 px-3 py-1 text-xs rounded-full font-medium glow" style={{ background: 'linear-gradient(135deg, var(--star-gold), var(--light-gold))', color: 'var(--cosmic-blue)' }}>
+                    <div className="absolute top-2 right-2 px-3 py-1 text-xs rounded-full font-medium" style={{ background: 'linear-gradient(135deg, var(--star-gold), var(--light-gold))', color: 'var(--cosmic-blue)', boxShadow: '0 0 15px rgba(255, 215, 0, 0.4)' }}>
                       我的人类图
                     </div>
                   )}
@@ -186,29 +198,29 @@ export default function ChartsListPage() {
                     <div className="flex items-center gap-2">
                       <span className="font-medium text-gray-300 w-20">类型:</span>
                       <span className="px-2 py-1 rounded font-medium" style={{ background: 'rgba(124, 58, 237, 0.3)', color: 'var(--aurora-teal)' }}>
-                        {chart.hd_type || '未知'}
+                        {chart.chart_data?.analysis?.type || '未知'}
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="font-medium text-gray-300 w-20">人生角色:</span>
-                      <span className="text-white">{chart.hd_profile || '未知'}</span>
+                      <span className="text-white">{chart.chart_data?.analysis?.profile || '未知'}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="font-medium text-gray-300 w-20">内在权威:</span>
-                      <span className="text-white text-xs">{chart.hd_authority || '未知'}</span>
+                      <span className="text-white text-xs">{chart.chart_data?.analysis?.authority || '未知'}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="font-medium text-gray-300 w-20">定义:</span>
-                      <span className="text-white">{chart.hd_definition || '未知'}</span>
+                      <span className="text-white">{chart.chart_data?.analysis?.definition || '未知'}</span>
                     </div>
                   </div>
 
                   {/* 通道信息 */}
-                  {chart.hd_channels && chart.hd_channels.length > 0 && (
+                  {chart.chart_data?.analysis?.channels && chart.chart_data.analysis.channels.length > 0 && (
                     <div className="mb-4">
                       <div className="text-sm font-medium text-gray-300 mb-2">激活通道:</div>
                       <div className="flex flex-wrap gap-1">
-                        {chart.hd_channels.slice(0, 3).map((channel, idx) => (
+                        {chart.chart_data.analysis.channels.slice(0, 3).map((channel, idx) => (
                           <span
                             key={idx}
                             className="px-2 py-1 text-xs rounded"
@@ -217,9 +229,9 @@ export default function ChartsListPage() {
                             {channel}
                           </span>
                         ))}
-                        {chart.hd_channels.length > 3 && (
+                        {chart.chart_data.analysis.channels.length > 3 && (
                           <span className="px-2 py-1 text-xs rounded" style={{ background: 'rgba(255, 255, 255, 0.1)', color: 'var(--stardust-gray)' }}>
-                            +{chart.hd_channels.length - 3}
+                            +{chart.chart_data.analysis.channels.length - 3}
                           </span>
                         )}
                       </div>
@@ -227,10 +239,10 @@ export default function ChartsListPage() {
                   )}
 
                   {/* 轮回交叉 */}
-                  {chart.hd_incarnation_cross && (
+                  {chart.chart_data?.analysis?.incarnationCross?.full && (
                     <div className="mb-4 text-xs text-gray-300">
                       <span className="font-medium">轮回交叉: </span>
-                      <span>{chart.hd_incarnation_cross}</span>
+                      <span>{chart.chart_data.analysis.incarnationCross.full}</span>
                     </div>
                   )}
 

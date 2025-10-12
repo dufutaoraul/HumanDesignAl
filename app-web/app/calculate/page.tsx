@@ -306,36 +306,36 @@ export default function CalculatePage() {
   // 如果正在加载认证状态，显示加载画面
   if (authLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-purple-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-600">加载中...</p>
+          <div className="w-16 h-16 border-4 border-t-transparent rounded-full animate-spin mx-auto mb-4" style={{ borderColor: 'var(--star-gold)' }}></div>
+          <p className="text-gray-300">加载中...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       {/* 导航栏 */}
-      <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+      <nav className="glass border-b sticky top-0 z-50" style={{ borderColor: 'rgba(255, 215, 0, 0.2)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-8">
-              <h1 className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+              <h1 className="text-xl font-bold gradient-text">
                 人类图 AI 陪伴
               </h1>
-              <span className="text-gray-600">计算器</span>
+              <span className="text-gray-300">计算器</span>
             </div>
             <div className="flex items-center gap-4">
               {user && (
-                <span className="text-sm text-gray-600">
+                <span className="text-sm text-gray-300">
                   {user.email}
                 </span>
               )}
               <button
                 onClick={() => router.push('/charts')}
-                className="px-4 py-2 text-gray-600 hover:text-gray-900 transition-colors"
+                className="px-4 py-2 text-gray-300 hover:text-white transition-colors"
               >
                 我的资料
               </button>
@@ -345,61 +345,66 @@ export default function CalculatePage() {
       </nav>
 
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <h2 className="text-3xl font-bold mb-8 text-gray-900">人类图计算器</h2>
+        <h2 className="text-3xl font-bold mb-8 text-white">人类图计算器</h2>
 
         {/* 输入表单 */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <h2 className="text-xl font-semibold mb-4 text-gray-800">输入出生信息</h2>
+        <div className="glass p-6 mb-8">
+          <h2 className="text-xl font-semibold mb-4 text-white">输入出生信息</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1 text-gray-700">姓名</label>
+              <label className="block text-sm font-medium mb-1 text-gray-300">姓名</label>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2 text-gray-900"
+                className="w-full rounded px-3 py-2 text-white focus:outline-none"
+                style={{ background: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.2)' }}
                 placeholder="请输入姓名"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1 text-gray-700">出生日期</label>
+              <label className="block text-sm font-medium mb-1 text-gray-300">出生日期</label>
               <input
                 type="date"
                 value={birthDate}
                 onChange={(e) => setBirthDate(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2 text-gray-900"
+                className="w-full rounded px-3 py-2 text-white focus:outline-none"
+                style={{ background: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.2)' }}
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1 text-gray-700">出生时间</label>
+              <label className="block text-sm font-medium mb-1 text-gray-300">出生时间</label>
               <input
                 type="time"
                 value={birthTime}
                 onChange={(e) => setBirthTime(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2 text-gray-900"
+                className="w-full rounded px-3 py-2 text-white focus:outline-none"
+                style={{ background: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.2)' }}
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1 text-gray-700">出生地点</label>
+              <label className="block text-sm font-medium mb-1 text-gray-300">出生地点</label>
               <input
                 type="text"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2 text-gray-900"
+                className="w-full rounded px-3 py-2 text-white focus:outline-none"
+                style={{ background: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.2)' }}
                 placeholder="例如: 北京, 上海"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1 text-gray-700">时区</label>
+              <label className="block text-sm font-medium mb-1 text-gray-300">时区</label>
               <select
                 value={timezone}
                 onChange={(e) => setTimezone(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2 text-gray-900"
+                className="w-full rounded px-3 py-2 text-white focus:outline-none"
+                style={{ background: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.2)' }}
               >
                 <option value="Asia/Shanghai">中国(北京时间 UTC+8)</option>
                 <option value="America/New_York">美国东部(UTC-5/-4)</option>
@@ -411,8 +416,8 @@ export default function CalculatePage() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1 text-gray-700">
-                关系标签 {relationship === '本人' && <span className="text-red-600 text-xs">(每个用户只能有1个)</span>}
+              <label className="block text-sm font-medium mb-1 text-gray-300">
+                关系标签 {relationship === '本人' && <span className="text-xs" style={{ color: 'var(--aurora-teal)' }}>(每个用户只能有1个)</span>}
               </label>
               <div className="flex gap-2">
                 <select
@@ -425,7 +430,8 @@ export default function CalculatePage() {
                       setShowNewTagInput(false);
                     }
                   }}
-                  className="flex-1 border border-gray-300 rounded px-3 py-2 text-gray-900"
+                  className="flex-1 rounded px-3 py-2 text-white focus:outline-none"
+                  style={{ background: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.2)' }}
                 >
                   {availableTags.map(tag => (
                     <option key={tag} value={tag}>

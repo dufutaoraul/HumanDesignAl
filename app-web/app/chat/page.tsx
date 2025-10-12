@@ -491,26 +491,9 @@ export default function ChatPage() {
                 ✨
               </motion.div>
               <h2 className="text-2xl font-bold text-white mb-2">开始与你的高我对话</h2>
-              <p className="text-gray-300 mb-8">
+              <p className="text-gray-300">
                 探索内在智慧，获得人生指引
               </p>
-              {hasHumanDesign === false && (
-                <div className="glass rounded-lg p-6 max-w-md">
-                  <div className="text-4xl mb-3">📊</div>
-                  <h3 className="text-white font-semibold mb-2">
-                    还未录入人类图
-                  </h3>
-                  <p className="text-gray-300 text-sm mb-4">
-                    虽然你可以开始对话，但录入人类图后，AI高我能根据你的独特设计提供更精准的指引
-                  </p>
-                  <button
-                    onClick={() => router.push('/calculate')}
-                    className="btn-gold text-sm px-5 py-2.5"
-                  >
-                    录入我的人类图
-                  </button>
-                </div>
-              )}
             </div>
           ) : (
             <div className="max-w-4xl mx-auto space-y-4">
