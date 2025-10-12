@@ -26,12 +26,13 @@ export async function POST(request: NextRequest) {
     // 从环境变量获取Dify配置
     const difyApiKey = process.env.DIFY_API_KEY
     const difyApiUrl = process.env.DIFY_API_URL || 'https://api.dify.ai/v1'
-    const difyWorkflowUrl = `${difyApiUrl}/workflows/run`
+    // 使用 chat-messages API (ChatFlow模式) 而不是 workflows/run (Workflow模式)
+    const difyChatUrl = `${difyApiUrl}/chat-messages`
 
     console.log('Dify配置检查:', {
       hasApiKey: !!difyApiKey,
       apiUrl: difyApiUrl,
-      workflowUrl: difyWorkflowUrl
+      chatUrl: difyChatUrl
     })
 
     if (!difyApiKey) {
@@ -98,8 +99,8 @@ export async function POST(request: NextRequest) {
 
     console.log('发送给Dify的数据:', { inputs: difyInputs, query: message, userId })
 
-    // 调用Dify Workflow API
-    const difyResponse = await fetch(difyWorkflowUrl, {
+    // 调用Dify ChatFlow API
+    const difyResponse = await fetch(difyChatUrl, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${difyApiKey}`,
@@ -126,11 +127,10 @@ export async function POST(request: NextRequest) {
     const difyData = await difyResponse.json()
     console.log('Dify API 响应:', JSON.stringify(difyData, null, 2))
 
-    // 从workflow响应中提取答案
-    // Dify workflow的响应格式可能是: { data: { outputs: { text: "..." } } }
-    const answerText = difyData.data?.outputs?.text ||
-                      difyData.data?.outputs?.answer ||
-                      difyData.answer ||
+    // 从ChatFlow响应中提取答案
+    // Dify ChatFlow的响应格式: { answer: "...", conversation_id: "..." }
+    const answerText = difyData.answer ||
+                      difyData.data?.outputs?.text ||
                       difyData.text ||
                       '抱歉，我暂时无法回复。'
 
