@@ -9,6 +9,7 @@
  * 数据来源：SharpAstrology.HumanDesign/Utility/HumanDesignUtility.cs Line 709-742
  */
 
+/* eslint-disable @typescript-eslint/no-require-imports */
 const { FixingState, getFixingState } = require('./fixing-rules-complete.js');
 const { getHarmonicGates } = require('./harmonic-gates.js');
 

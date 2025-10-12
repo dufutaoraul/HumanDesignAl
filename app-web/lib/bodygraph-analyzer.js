@@ -3,6 +3,9 @@
  * 根据星盘激活数据计算类型、权威、人生角色等核心信息
  */
 
+/* eslint-disable @typescript-eslint/no-require-imports */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 // 通道对应的能量中心映射
 const CHANNEL_TO_CENTERS = {
   '1-8': ['G', 'Throat'],
@@ -112,7 +115,7 @@ function analyzeBodygraph(chartData) {
   const profile = `${personality.Sun.line}/${design.Sun.line}`;
 
   // 7. 计算定义（Definition）
-  const definition = calculateDefinition(channels, definedCenters, allActivatedGates);
+  const definition = calculateDefinition(channels, definedCenters);
 
   // 8. 计算轮回交叉（Incarnation Cross）
   const incarnationCross = calculateIncarnationCross(personality, design);
@@ -245,7 +248,7 @@ function calculateAuthority(channels, definedCenters) {
 /**
  * 计算定义类型
  */
-function calculateDefinition(channels, definedCenters, allActivatedGates) {
+function calculateDefinition(channels, definedCenters) {
   if (definedCenters.size === 0) {
     return 'No Definition (无定义)';
   }
@@ -261,7 +264,6 @@ function calculateDefinition(channels, definedCenters, allActivatedGates) {
   // 对于4个或以上的能量中心，需要检查是否分裂
   // 简化版本：根据通道连接性判断
   const areasOfDefinition = [];
-  const processedCenters = new Set();
 
   channels.forEach(channel => {
     const centers = CHANNEL_TO_CENTERS[channel];
