@@ -37,6 +37,15 @@ interface PlanetData {
   arrow: string;
 }
 
+interface ArrowData {
+  fixingState: number;
+}
+
+interface ArrowsResult {
+  personality: Record<string, ArrowData>;
+  design: Record<string, ArrowData>;
+}
+
 interface FinalResult {
   name: string;
   birthDate: string;
@@ -60,6 +69,7 @@ interface FinalResult {
 }
 
 // 地点名称转经纬度（简化版，实际应该使用地理编码API）
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function getCoordinates(location: string): { lat: number; lon: number } {
   // 常用城市坐标
   const coordinates: Record<string, { lat: number; lon: number }> = {
@@ -159,7 +169,7 @@ export async function POST(request: NextRequest) {
     });
 
     // 计算箭头
-    const arrows = arrowCalculator.calculateArrows(personalityActivations, designActivations);
+    const arrows = arrowCalculator.calculateArrows(personalityActivations, designActivations) as ArrowsResult;
 
     // 组合最终结果
     const finalResult: FinalResult = {
