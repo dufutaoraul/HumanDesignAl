@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { calculateHumanDesignChart } from '@/lib/astronomy-calculator.js';
+import arrowCalculator from '@/lib/arrow-calculator.js';
+import { analyzeBodygraph, generateDifySummary } from '@/lib/bodygraph-analyzer.js';
 
 // 地点名称转经纬度（简化版，实际应该使用地理编码API）
 function getCoordinates(location: string): { lat: number; lon: number } {
@@ -64,9 +67,6 @@ export async function POST(request: NextRequest) {
     // 获取经纬度
     const { lat, lon } = getCoordinates(location);
 
-    // 使用新的astronomy-engine计算器
-    const { calculateHumanDesignChart } = require('@/lib/astronomy-calculator.js');
-
     // 计算人类图（异步）
     const chartResult = await calculateHumanDesignChart(birthDateTime, lat, lon);
 
@@ -74,10 +74,6 @@ export async function POST(request: NextRequest) {
     console.log('=== 计算结果 ===');
     console.log('个性端 Moon:', chartResult.personality.Moon);
     console.log('设计端 Moon:', chartResult.design.Moon);
-
-    // 导入箭头计算和星盘分析逻辑
-    const arrowCalculator = require('@/lib/arrow-calculator.js');
-    const { analyzeBodygraph, generateDifySummary } = require('@/lib/bodygraph-analyzer.js');
 
     // 分析星盘数据（计算类型、权威、人生角色等）
     const analysis = analyzeBodygraph(chartResult);
@@ -88,8 +84,8 @@ export async function POST(request: NextRequest) {
     console.log('定义:', analysis.definition);
 
     // 准备箭头计算的激活数据
-    const personalityActivations: Record<string, any> = {};
-    const designActivations: Record<string, any> = {};
+    const personalityActivations: Record<string, { gate: number; line: number }> = {};
+    const designActivations: Record<string, { gate: number; line: number }> = {};
 
     const planets = ['Sun', 'Earth', 'Moon', 'NorthNode', 'SouthNode', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto'];
 
@@ -112,7 +108,7 @@ export async function POST(request: NextRequest) {
     const arrows = arrowCalculator.calculateArrows(personalityActivations, designActivations);
 
     // 组合最终结果
-    const finalResult: any = {
+    const finalResult: Record<string, unknown> = {
       name,
       birthDate,
       birthTime,

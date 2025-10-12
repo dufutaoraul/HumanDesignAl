@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
+import { calculateHumanDesignChart } from '@/lib/astronomy-calculator.js';
 
 export async function GET() {
-  const { calculateHumanDesignChart } = require('@/lib/astronomy-calculator.js');
 
   // 测试数据：1983-10-15 11:40 北京时间 = 1983-10-15 03:40 UTC
   const birthDateTime = new Date('1983-10-15T03:40:00Z');

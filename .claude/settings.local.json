@@ -51,7 +51,12 @@
       "Bash(git checkout:*)",
       "WebFetch(domain:vame5u4edsu.feishu.cn)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nInitial commit: 人类图 AI 高我陪伴平台\n\n完整功能:\n- 用户认证系统 (Supabase)\n- 人类图计算器\n- 与高我对话功能 (Dify AI集成)\n- 人类图资料管理\n- 侧边栏工具栏\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []

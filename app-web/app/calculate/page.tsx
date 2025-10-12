@@ -5,6 +5,12 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/lib/auth-context';
 import { supabase, TABLES } from '@/lib/supabase';
 
+interface PlanetData {
+  gate: number;
+  line: number;
+  arrow?: string;
+}
+
 interface ChartData {
   id?: string;
   name: string;
@@ -14,8 +20,8 @@ interface ChartData {
   timezone: string;
   relationship?: string;
   planets: {
-    personality: Record<string, any>;
-    design: Record<string, any>;
+    personality: Record<string, PlanetData>;
+    design: Record<string, PlanetData>;
   };
   analysis?: {
     type: string;
@@ -62,6 +68,7 @@ export default function CalculatePage() {
       loadSavedCharts();
       loadCustomTags();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const loadSavedCharts = async () => {
@@ -171,9 +178,10 @@ export default function CalculatePage() {
       setNewTag('');
       setShowNewTagInput(false);
       alert('新标签已添加');
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('添加标签失败:', error);
-      alert(`添加标签失败: ${error.message}`);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      alert(`添加标签失败: ${errorMessage}`);
     }
   };
 
@@ -234,9 +242,10 @@ export default function CalculatePage() {
           alert('⚠️ 每个用户只能有一个"本人"标签的人类图。\n\n请先删除或修改现有的"本人"图，或者为当前图选择其他标签。');
           return;
         }
-      } catch (error: any) {
+      } catch (error: unknown) {
         console.error('检查失败:', error);
-        alert(`检查失败: ${error.message}`);
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+        alert(`检查失败: ${errorMessage}`);
         return;
       }
     }
@@ -255,7 +264,7 @@ export default function CalculatePage() {
           relationship: relationship,
           chart_data: {
             planets: chartData.planets,
-            analysis: (chartData as any).analysis,
+            analysis: chartData.analysis,
           },
         });
 
@@ -264,13 +273,14 @@ export default function CalculatePage() {
       alert('✅ 保存成功！');
       await loadSavedCharts(); // 重新加载列表
       setRelationship('其他'); // 重置为默认值
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('保存失败:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
       // 检查是否是唯一性约束错误
-      if (error.message && error.message.includes('本人')) {
+      if (errorMessage.includes('本人')) {
         alert('⚠️ 每个用户只能有一个"本人"标签的人类图。请先删除或修改现有的"本人"图。');
       } else {
-        alert(`保存失败: ${error.message}`);
+        alert(`保存失败: ${errorMessage}`);
       }
     } finally {
       setLoading(false);
@@ -483,7 +493,7 @@ export default function CalculatePage() {
         {chartData && (
           <div className="space-y-6 mb-8">
             {/* 基本信息卡片 */}
-            {(chartData as any).analysis && (
+            {chartData.analysis && (
               <div className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-lg shadow-lg p-6 text-white">
                 <h2 className="text-2xl font-bold mb-6">基本信息</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -496,40 +506,40 @@ export default function CalculatePage() {
                   <div>
                     <label className="block text-blue-200 text-sm mb-2">类型</label>
                     <div className="bg-blue-800 bg-opacity-50 rounded-lg px-4 py-3 text-lg font-medium">
-                      {(chartData as any).analysis.type}
+                      {chartData.analysis.type}
                     </div>
                   </div>
                   <div>
                     <label className="block text-blue-200 text-sm mb-2">人生角色</label>
                     <div className="bg-blue-800 bg-opacity-50 rounded-lg px-4 py-3 text-lg font-medium">
-                      {(chartData as any).analysis.profile}
+                      {chartData.analysis.profile}
                     </div>
                   </div>
                   <div>
                     <label className="block text-blue-200 text-sm mb-2">内在权威</label>
                     <div className="bg-blue-800 bg-opacity-50 rounded-lg px-4 py-3 text-lg font-medium">
-                      {(chartData as any).analysis.authority}
+                      {chartData.analysis.authority}
                     </div>
                   </div>
                   <div>
                     <label className="block text-blue-200 text-sm mb-2">几分人</label>
                     <div className="bg-blue-800 bg-opacity-50 rounded-lg px-4 py-3 text-lg font-medium">
-                      {(chartData as any).analysis.definition}
+                      {chartData.analysis.definition}
                     </div>
                   </div>
                   <div>
                     <label className="block text-blue-200 text-sm mb-2">轮回交叉</label>
                     <div className="bg-blue-800 bg-opacity-50 rounded-lg px-4 py-3 text-lg font-medium">
-                      {(chartData as any).analysis.incarnationCross
-                        ? (chartData as any).analysis.incarnationCross.full
+                      {chartData.analysis.incarnationCross
+                        ? chartData.analysis.incarnationCross.full
                         : '-'}
                     </div>
                   </div>
                   <div className="md:col-span-2">
                     <label className="block text-blue-200 text-sm mb-2">通道 (Channels)</label>
                     <div className="bg-blue-800 bg-opacity-50 rounded-lg px-4 py-3 text-lg font-medium">
-                      {(chartData as any).analysis.channels.length > 0
-                        ? (chartData as any).analysis.channels.join(', ')
+                      {chartData.analysis.channels.length > 0
+                        ? chartData.analysis.channels.join(', ')
                         : '无通道'}
                     </div>
                   </div>
@@ -605,7 +615,7 @@ export default function CalculatePage() {
                 <span className="text-sm text-gray-600">排序：</span>
                 <select
                   value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value as any)}
+                  onChange={(e) => setSortBy(e.target.value as 'date' | 'name' | 'relationship' | 'type')}
                   className="border border-gray-300 rounded px-3 py-1 text-sm text-gray-900"
                 >
                   <option value="date">保存时间</option>

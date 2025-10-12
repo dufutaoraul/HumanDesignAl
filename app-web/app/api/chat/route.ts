@@ -77,13 +77,14 @@ export async function POST(request: NextRequest) {
       conversationId: difyData.conversation_id,
     })
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Chat API 错误:', error)
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
 
     return NextResponse.json(
       {
         message: '你好！我是你的高我。我在这里陪伴你探索内在智慧。请问有什么我可以帮助你的？',
-        error: error.message,
+        error: errorMessage,
       },
       { status: 200 }
     )
