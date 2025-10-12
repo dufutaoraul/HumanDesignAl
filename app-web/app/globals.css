@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+:root {
+  /* 深邃夜空 + 柔和星光主题 */
+  --cosmic-dark: #0a0e1a;
+  --nebula-deep: #141b2d;
+  --night-blue: #1a2332;
+  --star-glow: #d4af37;
+  --accent-purple: #6366f1;
+
+  --background: #0a0e1a;
+  --foreground: #e5e7eb;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* 自定义颜色 */
+  --color-cosmic-dark: #0a0e1a;
+  --color-nebula-deep: #141b2d;
+  --color-night-blue: #1a2332;
+  --color-star-glow: #d4af37;
+  --color-accent-purple: #6366f1;
+}
+
+body {
+  background: radial-gradient(ellipse at top, #1a2332 0%, #0a0e1a 100%);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* 星空背景 */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, #d4af37, transparent),
+    radial-gradient(2px 2px at 60px 70px, #d4af37, transparent),
+    radial-gradient(1px 1px at 50px 50px, #d4af37, transparent),
+    radial-gradient(1px 1px at 130px 80px, #d4af37, transparent),
+    radial-gradient(2px 2px at 90px 10px, #d4af37, transparent);
+  background-size: 200px 200px;
+  background-repeat: repeat;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 毛玻璃效果 - 更深邃柔和 */
+.glass {
+  background: rgba(20, 27, 45, 0.6);
+  backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* 渐变文字 - 柔和金色光晕 */
+.gradient-text {
+  background: linear-gradient(135deg, #d4af37 0%, #f4d03f 50%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.3));
+}
+
+/* 星光闪烁动画 */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.star {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+/* 光晕效果 */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+  }
+}
+
+.glow {
+  animation: glow 2s ease-in-out infinite;
+}

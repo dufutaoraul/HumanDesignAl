@@ -1,0 +1,450 @@
+[
+  {
+    "gate": 1,
+    "gate_name": "乾",
+    "center": "g",
+    "center_chinese": "G中心",
+    "center_english": "G Center"
+  },
+  {
+    "gate": 2,
+    "gate_name": "坤",
+    "center": "g",
+    "center_chinese": "G中心",
+    "center_english": "G Center"
+  },
+  {
+    "gate": 3,
+    "gate_name": "屯",
+    "center": "sacral",
+    "center_chinese": "荐骨中心",
+    "center_english": "Sacral Center"
+  },
+  {
+    "gate": 4,
+    "gate_name": "蒙",
+    "center": "ajna",
+    "center_chinese": "逻辑中心",
+    "center_english": "Ajna Center"
+  },
+  {
+    "gate": 5,
+    "gate_name": "需",
+    "center": "sacral",
+    "center_chinese": "荐骨中心",
+    "center_english": "Sacral Center"
+  },
+  {
+    "gate": 6,
+    "gate_name": "讼",
+    "center": "solar_plexus",
+    "center_chinese": "情绪中心",
+    "center_english": "Solar Plexus/Emotional Center"
+  },
+  {
+    "gate": 7,
+    "gate_name": "师",
+    "center": "g",
+    "center_chinese": "G中心",
+    "center_english": "G Center"
+  },
+  {
+    "gate": 8,
+    "gate_name": "比",
+    "center": "throat",
+    "center_chinese": "喉咙中心",
+    "center_english": "Throat Center"
+  },
+  {
+    "gate": 9,
+    "gate_name": "小畜",
+    "center": "sacral",
+    "center_chinese": "荐骨中心",
+    "center_english": "Sacral Center"
+  },
+  {
+    "gate": 10,
+    "gate_name": "履",
+    "center": "g",
+    "center_chinese": "G中心",
+    "center_english": "G Center"
+  },
+  {
+    "gate": 11,
+    "gate_name": "泰",
+    "center": "ajna",
+    "center_chinese": "逻辑中心",
+    "center_english": "Ajna Center"
+  },
+  {
+    "gate": 12,
+    "gate_name": "否",
+    "center": "throat",
+    "center_chinese": "喉咙中心",
+    "center_english": "Throat Center"
+  },
+  {
+    "gate": 13,
+    "gate_name": "同人",
+    "center": "g",
+    "center_chinese": "G中心",
+    "center_english": "G Center"
+  },
+  {
+    "gate": 14,
+    "gate_name": "大有",
+    "center": "sacral",
+    "center_chinese": "荐骨中心",
+    "center_english": "Sacral Center"
+  },
+  {
+    "gate": 15,
+    "gate_name": "谦",
+    "center": "g",
+    "center_chinese": "G中心",
+    "center_english": "G Center"
+  },
+  {
+    "gate": 16,
+    "gate_name": "豫",
+    "center": "throat",
+    "center_chinese": "喉咙中心",
+    "center_english": "Throat Center"
+  },
+  {
+    "gate": 17,
+    "gate_name": "随",
+    "center": "ajna",
+    "center_chinese": "逻辑中心",
+    "center_english": "Ajna Center"
+  },
+  {
+    "gate": 18,
+    "gate_name": "蛊",
+    "center": "spleen",
+    "center_chinese": "直觉中心",
+    "center_english": "Spleen Center"
+  },
+  {
+    "gate": 19,
+    "gate_name": "临",
+    "center": "root",
+    "center_chinese": "根部中心",
+    "center_english": "Root Center"
+  },
+  {
+    "gate": 20,
+    "gate_name": "观",
+    "center": "throat",
+    "center_chinese": "喉咙中心",
+    "center_english": "Throat Center"
+  },
+  {
+    "gate": 21,
+    "gate_name": "噬嗑",
+    "center": "heart",
+    "center_chinese": "意志力中心",
+    "center_english": "Heart/Ego Center"
+  },
+  {
+    "gate": 22,
+    "gate_name": "贲",
+    "center": "solar_plexus",
+    "center_chinese": "情绪中心",
+    "center_english": "Solar Plexus/Emotional Center"
+  },
+  {
+    "gate": 23,
+    "gate_name": "剥",
+    "center": "throat",
+    "center_chinese": "喉咙中心",
+    "center_english": "Throat Center"
+  },
+  {
+    "gate": 24,
+    "gate_name": "复",
+    "center": "ajna",
+    "center_chinese": "逻辑中心",
+    "center_english": "Ajna Center"
+  },
+  {
+    "gate": 25,
+    "gate_name": "无妄",
+    "center": "g",
+    "center_chinese": "G中心",
+    "center_english": "G Center"
+  },
+  {
+    "gate": 26,
+    "gate_name": "大畜",
+    "center": "heart",
+    "center_chinese": "意志力中心",
+    "center_english": "Heart/Ego Center"
+  },
+  {
+    "gate": 27,
+    "gate_name": "颐",
+    "center": "sacral",
+    "center_chinese": "荐骨中心",
+    "center_english": "Sacral Center"
+  },
+  {
+    "gate": 28,
+    "gate_name": "大过",
+    "center": "spleen",
+    "center_chinese": "直觉中心",
+    "center_english": "Spleen Center"
+  },
+  {
+    "gate": 29,
+    "gate_name": "坎",
+    "center": "sacral",
+    "center_chinese": "荐骨中心",
+    "center_english": "Sacral Center"
+  },
+  {
+    "gate": 30,
+    "gate_name": "离",
+    "center": "solar_plexus",
+    "center_chinese": "情绪中心",
+    "center_english": "Solar Plexus/Emotional Center"
+  },
+  {
+    "gate": 31,
+    "gate_name": "咸",
+    "center": "throat",
+    "center_chinese": "喉咙中心",
+    "center_english": "Throat Center"
+  },
+  {
+    "gate": 32,
+    "gate_name": "恒",
+    "center": "spleen",
+    "center_chinese": "直觉中心",
+    "center_english": "Spleen Center"
+  },
+  {
+    "gate": 33,
+    "gate_name": "遁",
+    "center": "throat",
+    "center_chinese": "喉咙中心",
+    "center_english": "Throat Center"
+  },
+  {
+    "gate": 34,
+    "gate_name": "大壮",
+    "center": "sacral",
+    "center_chinese": "荐骨中心",
+    "center_english": "Sacral Center"
+  },
+  {
+    "gate": 35,
+    "gate_name": "晋",
+    "center": "throat",
+    "center_chinese": "喉咙中心",
+    "center_english": "Throat Center"
+  },
+  {
+    "gate": 36,
+    "gate_name": "明夷",
+    "center": "solar_plexus",
+    "center_chinese": "情绪中心",
+    "center_english": "Solar Plexus/Emotional Center"
+  },
+  {
+    "gate": 37,
+    "gate_name": "家人",
+    "center": "solar_plexus",
+    "center_chinese": "情绪中心",
+    "center_english": "Solar Plexus/Emotional Center"
+  },
+  {
+    "gate": 38,
+    "gate_name": "睽",
+    "center": "root",
+    "center_chinese": "根部中心",
+    "center_english": "Root Center"
+  },
+  {
+    "gate": 39,
+    "gate_name": "蹇",
+    "center": "root",
+    "center_chinese": "根部中心",
+    "center_english": "Root Center"
+  },
+  {
+    "gate": 40,
+    "gate_name": "解",
+    "center": "heart",
+    "center_chinese": "意志力中心",
+    "center_english": "Heart/Ego Center"
+  },
+  {
+    "gate": 41,
+    "gate_name": "损",
+    "center": "root",
+    "center_chinese": "根部中心",
+    "center_english": "Root Center"
+  },
+  {
+    "gate": 42,
+    "gate_name": "益",
+    "center": "sacral",
+    "center_chinese": "荐骨中心",
+    "center_english": "Sacral Center"
+  },
+  {
+    "gate": 43,
+    "gate_name": "夬",
+    "center": "ajna",
+    "center_chinese": "逻辑中心",
+    "center_english": "Ajna Center"
+  },
+  {
+    "gate": 44,
+    "gate_name": "姤",
+    "center": "spleen",
+    "center_chinese": "直觉中心",
+    "center_english": "Spleen Center"
+  },
+  {
+    "gate": 45,
+    "gate_name": "萃",
+    "center": "throat",
+    "center_chinese": "喉咙中心",
+    "center_english": "Throat Center"
+  },
+  {
+    "gate": 46,
+    "gate_name": "升",
+    "center": "g",
+    "center_chinese": "G中心",
+    "center_english": "G Center"
+  },
+  {
+    "gate": 47,
+    "gate_name": "困",
+    "center": "ajna",
+    "center_chinese": "逻辑中心",
+    "center_english": "Ajna Center"
+  },
+  {
+    "gate": 48,
+    "gate_name": "井",
+    "center": "spleen",
+    "center_chinese": "直觉中心",
+    "center_english": "Spleen Center"
+  },
+  {
+    "gate": 49,
+    "gate_name": "革",
+    "center": "solar_plexus",
+    "center_chinese": "情绪中心",
+    "center_english": "Solar Plexus/Emotional Center"
+  },
+  {
+    "gate": 50,
+    "gate_name": "鼎",
+    "center": "spleen",
+    "center_chinese": "直觉中心",
+    "center_english": "Spleen Center"
+  },
+  {
+    "gate": 51,
+    "gate_name": "震",
+    "center": "heart",
+    "center_chinese": "意志力中心",
+    "center_english": "Heart/Ego Center"
+  },
+  {
+    "gate": 52,
+    "gate_name": "艮",
+    "center": "root",
+    "center_chinese": "根部中心",
+    "center_english": "Root Center"
+  },
+  {
+    "gate": 53,
+    "gate_name": "渐",
+    "center": "root",
+    "center_chinese": "根部中心",
+    "center_english": "Root Center"
+  },
+  {
+    "gate": 54,
+    "gate_name": "归妹",
+    "center": "root",
+    "center_chinese": "根部中心",
+    "center_english": "Root Center"
+  },
+  {
+    "gate": 55,
+    "gate_name": "丰",
+    "center": "solar_plexus",
+    "center_chinese": "情绪中心",
+    "center_english": "Solar Plexus/Emotional Center"
+  },
+  {
+    "gate": 56,
+    "gate_name": "旅",
+    "center": "throat",
+    "center_chinese": "喉咙中心",
+    "center_english": "Throat Center"
+  },
+  {
+    "gate": 57,
+    "gate_name": "巽",
+    "center": "spleen",
+    "center_chinese": "直觉中心",
+    "center_english": "Spleen Center"
+  },
+  {
+    "gate": 58,
+    "gate_name": "兑",
+    "center": "root",
+    "center_chinese": "根部中心",
+    "center_english": "Root Center"
+  },
+  {
+    "gate": 59,
+    "gate_name": "涣",
+    "center": "sacral",
+    "center_chinese": "荐骨中心",
+    "center_english": "Sacral Center"
+  },
+  {
+    "gate": 60,
+    "gate_name": "节",
+    "center": "root",
+    "center_chinese": "根部中心",
+    "center_english": "Root Center"
+  },
+  {
+    "gate": 61,
+    "gate_name": "中孚",
+    "center": "head",
+    "center_chinese": "头部中心",
+    "center_english": "Head Center"
+  },
+  {
+    "gate": 62,
+    "gate_name": "小过",
+    "center": "throat",
+    "center_chinese": "喉咙中心",
+    "center_english": "Throat Center"
+  },
+  {
+    "gate": 63,
+    "gate_name": "既济",
+    "center": "head",
+    "center_chinese": "头部中心",
+    "center_english": "Head Center"
+  },
+  {
+    "gate": 64,
+    "gate_name": "未济",
+    "center": "head",
+    "center_chinese": "头部中心",
+    "center_english": "Head Center"
+  }
+]

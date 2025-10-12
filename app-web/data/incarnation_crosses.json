@@ -1,0 +1,1514 @@
+[
+  {
+    "chinese_name": "右角度交叉之方向（人面狮身）",
+    "english_name": "DIRECTION(THESPHINX)",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 1,
+      "black_earth": 2,
+      "red_sun": 7,
+      "red_earth": 13
+    },
+    "key": "1-2-7-13"
+  },
+  {
+    "chinese_name": "左角度交叉之反抗",
+    "english_name": "DEFIANCE",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 1,
+      "black_earth": 2,
+      "red_sun": 4,
+      "red_earth": 49
+    },
+    "key": "1-2-4-49"
+  },
+  {
+    "chinese_name": "右角度交叉之方向（人面狮身）",
+    "english_name": "Direction（The Sphinx）",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 2,
+      "black_earth": 1,
+      "red_sun": 13,
+      "red_earth": 7
+    },
+    "key": "2-1-13-7"
+  },
+  {
+    "chinese_name": "左角度交叉之反抗",
+    "english_name": "Defiance",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 2,
+      "black_earth": 1,
+      "red_sun": 49,
+      "red_earth": 4
+    },
+    "key": "2-1-49-4"
+  },
+  {
+    "chinese_name": "右角度交叉之律法",
+    "english_name": "The Laws",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 3,
+      "black_earth": 50,
+      "red_sun": 60,
+      "red_earth": 56
+    },
+    "key": "3-50-60-56"
+  },
+  {
+    "chinese_name": "左角度交叉之希望",
+    "english_name": "Wishes",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 3,
+      "black_earth": 50,
+      "red_sun": 41,
+      "red_earth": 31
+    },
+    "key": "3-50-41-31"
+  },
+  {
+    "chinese_name": "右角度交叉之说明",
+    "english_name": "Explanation",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 4,
+      "black_earth": 49,
+      "red_sun": 23,
+      "red_earth": 43
+    },
+    "key": "4-49-23-43"
+  },
+  {
+    "chinese_name": "左角度交叉之反叛者（革命）",
+    "english_name": "THE REBEL(REVOLUTION)",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 4,
+      "black_earth": 49,
+      "red_sun": 8,
+      "red_earth": 14
+    },
+    "key": "4-49-8-14"
+  },
+  {
+    "chinese_name": "右角度交叉之意识",
+    "english_name": "CONSCIOUSNESS",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 5,
+      "black_earth": 35,
+      "red_sun": 64,
+      "red_earth": 63
+    },
+    "key": "5-35-64-63"
+  },
+  {
+    "chinese_name": "左角度交叉之分离",
+    "english_name": "SEPARATION",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 5,
+      "black_earth": 35,
+      "red_sun": 47,
+      "red_earth": 22
+    },
+    "key": "5-35-47-22"
+  },
+  {
+    "chinese_name": "右角度交叉之伊甸园",
+    "english_name": "THEGARDENOFEDEN",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 6,
+      "black_earth": 36,
+      "red_sun": 12,
+      "red_earth": 11
+    },
+    "key": "6-36-12-11"
+  },
+  {
+    "chinese_name": "左角度交叉之地球层面",
+    "english_name": "THE(EARTH)PLANE",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 6,
+      "black_earth": 36,
+      "red_sun": 15,
+      "red_earth": 10
+    },
+    "key": "6-36-15-10"
+  },
+  {
+    "chinese_name": "右角度交叉之方向人面狮身",
+    "english_name": "Direction（The Sphinx）",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 7,
+      "black_earth": 13,
+      "red_sun": 2,
+      "red_earth": 1
+    },
+    "key": "7-13-2-1"
+  },
+  {
+    "chinese_name": "左角度交叉之装模作样（面具）",
+    "english_name": "Charades（Masks）",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 7,
+      "black_earth": 13,
+      "red_sun": 23,
+      "red_earth": 43
+    },
+    "key": "7-13-23-43"
+  },
+  {
+    "chinese_name": "右角度交叉之转移（感染）",
+    "english_name": "TRANSFERENCE(CONTAGION)",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 8,
+      "black_earth": 14,
+      "red_sun": 30,
+      "red_earth": 29
+    },
+    "key": "8-14-30-29"
+  },
+  {
+    "chinese_name": "左角度交叉之不确定",
+    "english_name": "UNCERTAINTY",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 8,
+      "black_earth": 14,
+      "red_sun": 55,
+      "red_earth": 59
+    },
+    "key": "8-14-55-59"
+  },
+  {
+    "chinese_name": "右角度交叉之计划",
+    "english_name": "PLANNING",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 9,
+      "black_earth": 16,
+      "red_sun": 40,
+      "red_earth": 37
+    },
+    "key": "9-16-40-37"
+  },
+  {
+    "chinese_name": "左角度交叉之辨识",
+    "english_name": "IDENTIFICATION",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 9,
+      "black_earth": 16,
+      "red_sun": 64,
+      "red_earth": 63
+    },
+    "key": "9-16-64-63"
+  },
+  {
+    "chinese_name": "右角度交叉之爱的化身",
+    "english_name": "THEVESSELOFLOVE",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 10,
+      "black_earth": 15,
+      "red_sun": 46,
+      "red_earth": 25
+    },
+    "key": "10-15-46-25"
+  },
+  {
+    "chinese_name": "左角度交叉之预防",
+    "english_name": "PREVENTION",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 10,
+      "black_earth": 15,
+      "red_sun": 18,
+      "red_earth": 17
+    },
+    "key": "10-15-18-17"
+  },
+  {
+    "chinese_name": "右角度交叉之伊甸园",
+    "english_name": "THE GARDENOFEDEN",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 11,
+      "black_earth": 12,
+      "red_sun": 6,
+      "red_earth": 36
+    },
+    "key": "11-12-6-36"
+  },
+  {
+    "chinese_name": "左角度交叉之教育",
+    "english_name": "EDUCATION",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 11,
+      "black_earth": 12,
+      "red_sun": 46,
+      "red_earth": 25
+    },
+    "key": "11-12-46-25"
+  },
+  {
+    "chinese_name": "右角度交叉之伊甸园",
+    "english_name": "The Garden of Eden",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 12,
+      "black_earth": 11,
+      "red_sun": 36,
+      "red_earth": 6
+    },
+    "key": "12-11-36-6"
+  },
+  {
+    "chinese_name": "左角度交叉之教育",
+    "english_name": "Education",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 12,
+      "black_earth": 11,
+      "red_sun": 25,
+      "red_earth": 46
+    },
+    "key": "12-11-25-46"
+  },
+  {
+    "chinese_name": "右角度交叉之方向（人面狮身）",
+    "english_name": "Direction(The Sphinx)",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 13,
+      "black_earth": 7,
+      "red_sun": 1,
+      "red_earth": 2
+    },
+    "key": "13-7-1-2"
+  },
+  {
+    "chinese_name": "左角度交叉之装模作样（面具）",
+    "english_name": "Charades(Masks)",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 13,
+      "black_earth": 7,
+      "red_sun": 43,
+      "red_earth": 23
+    },
+    "key": "13-7-43-23"
+  },
+  {
+    "chinese_name": "右角度交叉之转移（感染）",
+    "english_name": "TRANSFERENCE(CONTAGION)",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 14,
+      "black_earth": 8,
+      "red_sun": 29,
+      "red_earth": 30
+    },
+    "key": "14-8-29-30"
+  },
+  {
+    "chinese_name": "左角度交叉之不确定",
+    "english_name": "UNCERTAINTY",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 14,
+      "black_earth": 8,
+      "red_sun": 59,
+      "red_earth": 55
+    },
+    "key": "14-8-59-55"
+  },
+  {
+    "chinese_name": "右角度交叉之爱的化身",
+    "english_name": "The Vessel of Love",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 15,
+      "black_earth": 10,
+      "red_sun": 25,
+      "red_earth": 46
+    },
+    "key": "15-10-25-46"
+  },
+  {
+    "chinese_name": "左角度交叉之预防",
+    "english_name": "Prevention",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 15,
+      "black_earth": 10,
+      "red_sun": 17,
+      "red_earth": 18
+    },
+    "key": "15-10-17-18"
+  },
+  {
+    "chinese_name": "右角度交叉之计划",
+    "english_name": "Planning",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 16,
+      "black_earth": 9,
+      "red_sun": 37,
+      "red_earth": 40
+    },
+    "key": "16-9-37-40"
+  },
+  {
+    "chinese_name": "左角度交叉之辨识",
+    "english_name": "Identification",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 16,
+      "black_earth": 9,
+      "red_sun": 63,
+      "red_earth": 64
+    },
+    "key": "16-9-63-64"
+  },
+  {
+    "chinese_name": "右角度交叉之服务",
+    "english_name": "Service",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 17,
+      "black_earth": 18,
+      "red_sun": 58,
+      "red_earth": 52
+    },
+    "key": "17-18-58-52"
+  },
+  {
+    "chinese_name": "左角度交叉之动荡",
+    "english_name": "Upheaval",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 17,
+      "black_earth": 18,
+      "red_sun": 38,
+      "red_earth": 39
+    },
+    "key": "17-18-38-39"
+  },
+  {
+    "chinese_name": "右角度交叉之服务",
+    "english_name": "SERVICE",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 18,
+      "black_earth": 17,
+      "red_sun": 52,
+      "red_earth": 58
+    },
+    "key": "18-17-52-58"
+  },
+  {
+    "chinese_name": "左角度交叉之动荡",
+    "english_name": "UPHEAVAL",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 18,
+      "black_earth": 17,
+      "red_sun": 39,
+      "red_earth": 38
+    },
+    "key": "18-17-39-38"
+  },
+  {
+    "chinese_name": "右角度交叉之四个方向（道路）",
+    "english_name": "THEFOURDIRECTIONS(WAYS)",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 19,
+      "black_earth": 33,
+      "red_sun": 44,
+      "red_earth": 24
+    },
+    "key": "19-33-44-24"
+  },
+  {
+    "chinese_name": "右角度交叉之沉睡凤凰（未来转变）",
+    "english_name": "THE SLEEPING PHOENIX(FUTURETRANSFORMATION)",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 20,
+      "black_earth": 34,
+      "red_sun": 55,
+      "red_earth": 59
+    },
+    "key": "20-34-55-59"
+  },
+  {
+    "chinese_name": "左角度交叉之二元性",
+    "english_name": "DUALITY",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 20,
+      "black_earth": 34,
+      "red_sun": 37,
+      "red_earth": 40
+    },
+    "key": "20-34-37-40"
+  },
+  {
+    "chinese_name": "右角度交叉之紧张",
+    "english_name": "Tension",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 21,
+      "black_earth": 48,
+      "red_sun": 38,
+      "red_earth": 39
+    },
+    "key": "21-48-38-39"
+  },
+  {
+    "chinese_name": "左角度交叉之努力",
+    "english_name": "Endeavor",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 21,
+      "black_earth": 48,
+      "red_sun": 54,
+      "red_earth": 53
+    },
+    "key": "21-48-54-53"
+  },
+  {
+    "chinese_name": "右角度交叉之统领",
+    "english_name": "Rulership",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 22,
+      "black_earth": 47,
+      "red_sun": 26,
+      "red_earth": 45
+    },
+    "key": "22-47-26-45"
+  },
+  {
+    "chinese_name": "左角度交叉之告知",
+    "english_name": "Informing",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 22,
+      "black_earth": 47,
+      "red_sun": 11,
+      "red_earth": 12
+    },
+    "key": "22-47-11-12"
+  },
+  {
+    "chinese_name": "右角度交叉之说明",
+    "english_name": "Explanation",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 23,
+      "black_earth": 43,
+      "red_sun": 49,
+      "red_earth": 4
+    },
+    "key": "23-43-49-4"
+  },
+  {
+    "chinese_name": "左角度交叉之奉献",
+    "english_name": "Dedication",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 23,
+      "black_earth": 43,
+      "red_sun": 30,
+      "red_earth": 29
+    },
+    "key": "23-43-30-29"
+  },
+  {
+    "chinese_name": "右角度交叉之四个方向（道路）",
+    "english_name": "The Four Directions(Ways)",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 24,
+      "black_earth": 44,
+      "red_sun": 19,
+      "red_earth": 33
+    },
+    "key": "24-44-19-33"
+  },
+  {
+    "chinese_name": "左角度交叉之体现",
+    "english_name": "INCARNATION",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 24,
+      "black_earth": 44,
+      "red_sun": 13,
+      "red_earth": 7
+    },
+    "key": "24-44-13-7"
+  },
+  {
+    "chinese_name": "右角度交叉之爱的化身",
+    "english_name": "The Vessel Of Love",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 25,
+      "black_earth": 46,
+      "red_sun": 10,
+      "red_earth": 15
+    },
+    "key": "25-46-10-15"
+  },
+  {
+    "chinese_name": "左角度交叉之疗愈",
+    "english_name": "HEALING",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 25,
+      "black_earth": 46,
+      "red_sun": 58,
+      "red_earth": 52
+    },
+    "key": "25-46-58-52"
+  },
+  {
+    "chinese_name": "右角度交叉之统领",
+    "english_name": "RULERSHIP",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 26,
+      "black_earth": 45,
+      "red_sun": 47,
+      "red_earth": 22
+    },
+    "key": "26-45-47-22"
+  },
+  {
+    "chinese_name": "左角度交叉之对抗",
+    "english_name": "CONFRONTATION",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 26,
+      "black_earth": 45,
+      "red_sun": 6,
+      "red_earth": 36
+    },
+    "key": "26-45-6-36"
+  },
+  {
+    "chinese_name": "右角度交叉之意料之外",
+    "english_name": "The Unexpected",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 27,
+      "black_earth": 28,
+      "red_sun": 41,
+      "red_earth": 31
+    },
+    "key": "27-28-41-31"
+  },
+  {
+    "chinese_name": "左角度交叉之校准",
+    "english_name": "Alignment",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 27,
+      "black_earth": 28,
+      "red_sun": 41,
+      "red_earth": 31
+    },
+    "key": "27-28-41-31"
+  },
+  {
+    "chinese_name": "右角度交叉之意料之外",
+    "english_name": "THEUNEXPECTED",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 28,
+      "black_earth": 27,
+      "red_sun": 31,
+      "red_earth": 41
+    },
+    "key": "28-27-31-41"
+  },
+  {
+    "chinese_name": "左角度交叉之校准",
+    "english_name": "ALIGNMENT",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 28,
+      "black_earth": 27,
+      "red_sun": 33,
+      "red_earth": 19
+    },
+    "key": "28-27-33-19"
+  },
+  {
+    "chinese_name": "右角度交叉之转移感染",
+    "english_name": "TRANSFERENCE(CONTAGION)",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 29,
+      "black_earth": 30,
+      "red_sun": 8,
+      "red_earth": 14
+    },
+    "key": "29-30-8-14"
+  },
+  {
+    "chinese_name": "左角度交叉之勤奋勤勉",
+    "english_name": "DILIGENCE(INDUSTRY)",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 29,
+      "black_earth": 30,
+      "red_sun": 20,
+      "red_earth": 34
+    },
+    "key": "29-30-20-34"
+  },
+  {
+    "chinese_name": "右角度交叉之转移（感染）",
+    "english_name": "Transference(Contagion)",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 30,
+      "black_earth": 29,
+      "red_sun": 14,
+      "red_earth": 8
+    },
+    "key": "30-29-14-8"
+  },
+  {
+    "chinese_name": "右角度交叉之勤奋勤勉",
+    "english_name": "Diligence(Industry)",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 30,
+      "black_earth": 29,
+      "red_sun": 34,
+      "red_earth": 20
+    },
+    "key": "30-29-34-20"
+  },
+  {
+    "chinese_name": "右角度交叉之意料之外",
+    "english_name": "The Unexpected",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 31,
+      "black_earth": 41,
+      "red_sun": 27,
+      "red_earth": 28
+    },
+    "key": "31-41-27-28"
+  },
+  {
+    "chinese_name": "左角度交叉之领头者",
+    "english_name": "The Alpha",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 31,
+      "black_earth": 41,
+      "red_sun": 24,
+      "red_earth": 44
+    },
+    "key": "31-41-24-44"
+  },
+  {
+    "chinese_name": "右角度交叉之马雅",
+    "english_name": "THEMAYA",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 32,
+      "black_earth": 42,
+      "red_sun": 62,
+      "red_earth": 61
+    },
+    "key": "32-42-62-61"
+  },
+  {
+    "chinese_name": "左角度交叉之局限",
+    "english_name": "LIMITATION",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 32,
+      "black_earth": 42,
+      "red_sun": 56,
+      "red_earth": 60
+    },
+    "key": "32-42-56-60"
+  },
+  {
+    "chinese_name": "右角度交叉之四个方向（道路）",
+    "english_name": "The Four Directions（Ways）",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 33,
+      "black_earth": 19,
+      "red_sun": 24,
+      "red_earth": 44
+    },
+    "key": "33-19-24-44"
+  },
+  {
+    "chinese_name": "左角度交叉之精致",
+    "english_name": "Refinement",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 33,
+      "black_earth": 19,
+      "red_sun": 2,
+      "red_earth": 1
+    },
+    "key": "33-19-2-1"
+  },
+  {
+    "chinese_name": "左角度交叉之二元性",
+    "english_name": "DUALITY",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 34,
+      "black_earth": 20,
+      "red_sun": 40,
+      "red_earth": 37
+    },
+    "key": "34-20-40-37"
+  },
+  {
+    "chinese_name": "右角度交叉之意识",
+    "english_name": "CONSCIOUSNESS",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 35,
+      "black_earth": 5,
+      "red_sun": 63,
+      "red_earth": 64
+    },
+    "key": "35-5-63-64"
+  },
+  {
+    "chinese_name": "左角度交叉之分离",
+    "english_name": "Separation",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 35,
+      "black_earth": 5,
+      "red_sun": 22,
+      "red_earth": 47
+    },
+    "key": "35-5-22-47"
+  },
+  {
+    "chinese_name": "右角度交叉之伊甸园",
+    "english_name": "The Garden Of Eden",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 36,
+      "black_earth": 6,
+      "red_sun": 11,
+      "red_earth": 12
+    },
+    "key": "36-6-11-12"
+  },
+  {
+    "chinese_name": "左角度交叉之地球层面",
+    "english_name": "The（Earth）Plane",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 36,
+      "black_earth": 6,
+      "red_sun": 10,
+      "red_earth": 15
+    },
+    "key": "36-6-10-15"
+  },
+  {
+    "chinese_name": "右角度交叉之计划",
+    "english_name": "Planning",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 37,
+      "black_earth": 40,
+      "red_sun": 9,
+      "red_earth": 16
+    },
+    "key": "37-40-9-16"
+  },
+  {
+    "chinese_name": "左角度交叉之进步社区迁徙",
+    "english_name": "ProgressiveCommunity（Migration)",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 37,
+      "black_earth": 40,
+      "red_sun": 5,
+      "red_earth": 35
+    },
+    "key": "37-40-5-35"
+  },
+  {
+    "chinese_name": "右角度交叉之紧张",
+    "english_name": "TENSION",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 38,
+      "black_earth": 39,
+      "red_sun": 57,
+      "red_earth": 51
+    },
+    "key": "38-39-57-51"
+  },
+  {
+    "chinese_name": "左角度交叉之个人主义",
+    "english_name": "INDIVIDUALISM",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 38,
+      "black_earth": 39,
+      "red_sun": 57,
+      "red_earth": 51
+    },
+    "key": "38-39-57-51"
+  },
+  {
+    "chinese_name": "右角度交叉之紧张",
+    "english_name": "Tension",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 39,
+      "black_earth": 38,
+      "red_sun": 21,
+      "red_earth": 48
+    },
+    "key": "39-38-21-48"
+  },
+  {
+    "chinese_name": "左角度交叉之个人主义",
+    "english_name": "Individualism",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 39,
+      "black_earth": 38,
+      "red_sun": 51,
+      "red_earth": 57
+    },
+    "key": "39-38-51-57"
+  },
+  {
+    "chinese_name": "右角度交叉之计划",
+    "english_name": "PLANNING",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 40,
+      "black_earth": 37,
+      "red_sun": 16,
+      "red_earth": 9
+    },
+    "key": "40-37-16-9"
+  },
+  {
+    "chinese_name": "左角度交叉之进步社区迁徙",
+    "english_name": "PROGRESSIVECOMMUNITY(MIGRATION)",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 40,
+      "black_earth": 37,
+      "red_sun": 35,
+      "red_earth": 5
+    },
+    "key": "40-37-35-5"
+  },
+  {
+    "chinese_name": "右角度交叉之意料之外",
+    "english_name": "THEUNEXPECTED",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 41,
+      "black_earth": 31,
+      "red_sun": 28,
+      "red_earth": 27
+    },
+    "key": "41-31-28-27"
+  },
+  {
+    "chinese_name": "左角度交叉之领头者",
+    "english_name": "THEALPHA",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 41,
+      "black_earth": 31,
+      "red_sun": 44,
+      "red_earth": 24
+    },
+    "key": "41-31-44-24"
+  },
+  {
+    "chinese_name": "右角度交叉之马雅",
+    "english_name": "The Maya",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 42,
+      "black_earth": 32,
+      "red_sun": 61,
+      "red_earth": 62
+    },
+    "key": "42-32-61-62"
+  },
+  {
+    "chinese_name": "左角度交叉之侷限",
+    "english_name": "LIMITATION",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 42,
+      "black_earth": 32,
+      "red_sun": 60,
+      "red_earth": 56
+    },
+    "key": "42-32-60-56"
+  },
+  {
+    "chinese_name": "右角度交叉之说明",
+    "english_name": "EXPLANATION",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 43,
+      "black_earth": 23,
+      "red_sun": 4,
+      "red_earth": 49
+    },
+    "key": "43-23-4-49"
+  },
+  {
+    "chinese_name": "左角度交叉之奉献",
+    "english_name": "DEDICATION",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 43,
+      "black_earth": 23,
+      "red_sun": 29,
+      "red_earth": 30
+    },
+    "key": "43-23-29-30"
+  },
+  {
+    "chinese_name": "右角度交叉之四个方向道路",
+    "english_name": "THEFOURDIRECTIONS(WAYS)",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 44,
+      "black_earth": 24,
+      "red_sun": 33,
+      "red_earth": 19
+    },
+    "key": "44-24-33-19"
+  },
+  {
+    "chinese_name": "左角度交叉之体现",
+    "english_name": "INCARNATION",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 44,
+      "black_earth": 24,
+      "red_sun": 7,
+      "red_earth": 13
+    },
+    "key": "44-24-7-13"
+  },
+  {
+    "chinese_name": "右角度交叉之统领",
+    "english_name": "Rulership",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 45,
+      "black_earth": 26,
+      "red_sun": 22,
+      "red_earth": 47
+    },
+    "key": "45-26-22-47"
+  },
+  {
+    "chinese_name": "左角度交叉之对抗",
+    "english_name": "Confrontation",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 45,
+      "black_earth": 26,
+      "red_sun": 36,
+      "red_earth": 6
+    },
+    "key": "45-26-36-6"
+  },
+  {
+    "chinese_name": "右角度交叉之爱的化身",
+    "english_name": "LOVE",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 46,
+      "black_earth": 25,
+      "red_sun": 15,
+      "red_earth": 10
+    },
+    "key": "46-25-15-10"
+  },
+  {
+    "chinese_name": "左角度交叉之疗愈",
+    "english_name": "HEALING",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 46,
+      "black_earth": 25,
+      "red_sun": 52,
+      "red_earth": 58
+    },
+    "key": "46-25-52-58"
+  },
+  {
+    "chinese_name": "右角度交叉之统领",
+    "english_name": "RULERSHIP",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 47,
+      "black_earth": 22,
+      "red_sun": 45,
+      "red_earth": 26
+    },
+    "key": "47-22-45-26"
+  },
+  {
+    "chinese_name": "左角度交叉之告知",
+    "english_name": "INFORMING",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 47,
+      "black_earth": 22,
+      "red_sun": 12,
+      "red_earth": 11
+    },
+    "key": "47-22-12-11"
+  },
+  {
+    "chinese_name": "右角度交叉之紧张",
+    "english_name": "TENSION",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 48,
+      "black_earth": 21,
+      "red_sun": 39,
+      "red_earth": 38
+    },
+    "key": "48-21-39-38"
+  },
+  {
+    "chinese_name": "左角度交叉之努力",
+    "english_name": "ENDEAVOR",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 48,
+      "black_earth": 21,
+      "red_sun": 53,
+      "red_earth": 54
+    },
+    "key": "48-21-53-54"
+  },
+  {
+    "chinese_name": "右角度交叉之说明",
+    "english_name": "Explanation",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 49,
+      "black_earth": 4,
+      "red_sun": 43,
+      "red_earth": 23
+    },
+    "key": "49-4-43-23"
+  },
+  {
+    "chinese_name": "左角度交叉之反叛者（革命）",
+    "english_name": "The Rebel(Revolution)",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 49,
+      "black_earth": 4,
+      "red_sun": 14,
+      "red_earth": 8
+    },
+    "key": "49-4-14-8"
+  },
+  {
+    "chinese_name": "右角度交叉之律法",
+    "english_name": "THELAWS",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 50,
+      "black_earth": 3,
+      "red_sun": 56,
+      "red_earth": 60
+    },
+    "key": "50-3-56-60"
+  },
+  {
+    "chinese_name": "左角度交叉之希望",
+    "english_name": "WISHES",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 50,
+      "black_earth": 3,
+      "red_sun": 31,
+      "red_earth": 41
+    },
+    "key": "50-3-31-41"
+  },
+  {
+    "chinese_name": "右角度交叉之渗透",
+    "english_name": "Penetration",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 51,
+      "black_earth": 57,
+      "red_sun": 54,
+      "red_earth": 53
+    },
+    "key": "51-57-54-53"
+  },
+  {
+    "chinese_name": "左角度交叉之号角",
+    "english_name": "The Clarion",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 51,
+      "black_earth": 57,
+      "red_sun": 61,
+      "red_earth": 62
+    },
+    "key": "51-57-61-62"
+  },
+  {
+    "chinese_name": "右角度交叉之服务",
+    "english_name": "Service",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 52,
+      "black_earth": 58,
+      "red_sun": 17,
+      "red_earth": 18
+    },
+    "key": "52-58-17-18"
+  },
+  {
+    "chinese_name": "左角度交叉之要求",
+    "english_name": "Demands",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 52,
+      "black_earth": 58,
+      "red_sun": 21,
+      "red_earth": 48
+    },
+    "key": "52-58-21-48"
+  },
+  {
+    "chinese_name": "右角度交叉之渗透",
+    "english_name": "Penetration",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 53,
+      "black_earth": 54,
+      "red_sun": 51,
+      "red_earth": 57
+    },
+    "key": "53-54-51-57"
+  },
+  {
+    "chinese_name": "左角度交叉之循环",
+    "english_name": "Cycles",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 53,
+      "black_earth": 54,
+      "red_sun": 42,
+      "red_earth": 32
+    },
+    "key": "53-54-42-32"
+  },
+  {
+    "chinese_name": "右角度交叉之渗透",
+    "english_name": "PENETRATION",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 54,
+      "black_earth": 53,
+      "red_sun": 57,
+      "red_earth": 51
+    },
+    "key": "54-53-57-51"
+  },
+  {
+    "chinese_name": "左角度交叉之循环",
+    "english_name": "CYCLES",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 54,
+      "black_earth": 53,
+      "red_sun": 32,
+      "red_earth": 42
+    },
+    "key": "54-53-32-42"
+  },
+  {
+    "chinese_name": "右角度交叉之沉睡凤凰（未来转变）",
+    "english_name": "The Sleeping Phoenix(Future Transformation)",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 55,
+      "black_earth": 59,
+      "red_sun": 34,
+      "red_earth": 20
+    },
+    "key": "55-59-34-20"
+  },
+  {
+    "chinese_name": "左角度交叉之心灵",
+    "english_name": "Spirit",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 55,
+      "black_earth": 59,
+      "red_sun": 9,
+      "red_earth": 16
+    },
+    "key": "55-59-9-16"
+  },
+  {
+    "chinese_name": "右角度交叉之律法",
+    "english_name": "The Laws",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 56,
+      "black_earth": 60,
+      "red_sun": 3,
+      "red_earth": 50
+    },
+    "key": "56-60-3-50"
+  },
+  {
+    "chinese_name": "左角度交叉之分心",
+    "english_name": "Distraction",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 56,
+      "black_earth": 60,
+      "red_sun": 27,
+      "red_earth": 28
+    },
+    "key": "56-60-27-28"
+  },
+  {
+    "chinese_name": "右角度交叉之渗透",
+    "english_name": "PENETRATION",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 57,
+      "black_earth": 51,
+      "red_sun": 53,
+      "red_earth": 54
+    },
+    "key": "57-51-53-54"
+  },
+  {
+    "chinese_name": "左角度交叉之号角",
+    "english_name": "THECLARION",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 57,
+      "black_earth": 51,
+      "red_sun": 62,
+      "red_earth": 61
+    },
+    "key": "57-51-62-61"
+  },
+  {
+    "chinese_name": "右角度交叉之服务",
+    "english_name": "SERVICE",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 58,
+      "black_earth": 52,
+      "red_sun": 18,
+      "red_earth": 17
+    },
+    "key": "58-52-18-17"
+  },
+  {
+    "chinese_name": "左角度交叉之要求",
+    "english_name": "DEMANDS",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 58,
+      "black_earth": 52,
+      "red_sun": 48,
+      "red_earth": 21
+    },
+    "key": "58-52-48-21"
+  },
+  {
+    "chinese_name": "右角度交叉之沉睡凤凰（未来转变）",
+    "english_name": "THESLEEPINGPHOENIX(FUTURETRANSFORMATION)",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 59,
+      "black_earth": 55,
+      "red_sun": 20,
+      "red_earth": 34
+    },
+    "key": "59-55-20-34"
+  },
+  {
+    "chinese_name": "左角度交叉之心灵",
+    "english_name": "SPIRIT",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 59,
+      "black_earth": 55,
+      "red_sun": 16,
+      "red_earth": 9
+    },
+    "key": "59-55-16-9"
+  },
+  {
+    "chinese_name": "右角度交叉之律法",
+    "english_name": "THELAWS",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 60,
+      "black_earth": 56,
+      "red_sun": 50,
+      "red_earth": 3
+    },
+    "key": "60-56-50-3"
+  },
+  {
+    "chinese_name": "左角度交叉之分心",
+    "english_name": "DISTRACTION",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 60,
+      "black_earth": 56,
+      "red_sun": 28,
+      "red_earth": 27
+    },
+    "key": "60-56-28-27"
+  },
+  {
+    "chinese_name": "右角度交叉之马雅",
+    "english_name": "THEMAYA",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 61,
+      "black_earth": 62,
+      "red_sun": 32,
+      "red_earth": 42
+    },
+    "key": "61-62-32-42"
+  },
+  {
+    "chinese_name": "左角度交叉之遮蔽（隐藏）",
+    "english_name": "OBSCURATION(CONCEALING）",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 61,
+      "black_earth": 62,
+      "red_sun": 50,
+      "red_earth": 3
+    },
+    "key": "61-62-50-3"
+  },
+  {
+    "chinese_name": "右角度交叉之马雅",
+    "english_name": "The Maya",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 62,
+      "black_earth": 61,
+      "red_sun": 42,
+      "red_earth": 32
+    },
+    "key": "62-61-42-32"
+  },
+  {
+    "chinese_name": "左角度交叉之遮蔽（隐藏）",
+    "english_name": "Obscuration（Concealing）",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 62,
+      "black_earth": 61,
+      "red_sun": 3,
+      "red_earth": 50
+    },
+    "key": "62-61-3-50"
+  },
+  {
+    "chinese_name": "右角度交叉之意识",
+    "english_name": "Consciousness",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 63,
+      "black_earth": 64,
+      "red_sun": 5,
+      "red_earth": 35
+    },
+    "key": "63-64-5-35"
+  },
+  {
+    "chinese_name": "左角度交叉之主控",
+    "english_name": "Dominion",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 63,
+      "black_earth": 64,
+      "red_sun": 26,
+      "red_earth": 45
+    },
+    "key": "63-64-26-45"
+  },
+  {
+    "chinese_name": "右角度交叉之意识",
+    "english_name": "CONSCIOUSNESS",
+    "type": "右角度",
+    "gates": {
+      "black_sun": 64,
+      "black_earth": 63,
+      "red_sun": 35,
+      "red_earth": 5
+    },
+    "key": "64-63-35-5"
+  },
+  {
+    "chinese_name": "左角度交叉之主控",
+    "english_name": "DOMINION",
+    "type": "左角度",
+    "gates": {
+      "black_sun": 64,
+      "black_earth": 63,
+      "red_sun": 45,
+      "red_earth": 26
+    },
+    "key": "64-63-45-26"
+  }
+]

@@ -1,0 +1,398 @@
+[
+  {
+    "gates": [
+      1,
+      8
+    ],
+    "chinese_name": "启发的通道",
+    "english_name": "创意的典范的设计  A Design of a Creative Role Model",
+    "description": "创意典范的设计",
+    "key": "1-8",
+    "source": "区分的科学 + 东昍老师版"
+  },
+  {
+    "gates": [
+      2,
+      14
+    ],
+    "chinese_name": "脉动的通道",
+    "english_name": "掌管钥匙的人的设计 A Design of being a Keeper of Keys",
+    "description": "钥匙掌管者的设计",
+    "key": "2-14",
+    "source": "区分的科学 + 东昍老师版"
+  },
+  {
+    "gates": [
+      3,
+      60
+    ],
+    "chinese_name": "突变的通道",
+    "english_name": "能量开始与流动，脉搏的设计  A Design of Energy which Initiates and Fluctuates - Pulse",
+    "description": "能量波动与启动的设计",
+    "key": "3-60",
+    "source": "区分的科学 + 东昍老师版"
+  },
+  {
+    "gates": [
+      4,
+      63
+    ],
+    "chinese_name": "逻辑的通道",
+    "english_name": "",
+    "description": "心智安逸与怀疑并存的设计",
+    "key": "4-63",
+    "source": "东昍老师版"
+  },
+  {
+    "gates": [
+      5,
+      15
+    ],
+    "chinese_name": "韵律的通道",
+    "english_name": "",
+    "description": "顺流的设计",
+    "key": "5-15",
+    "source": "东昍老师版"
+  },
+  {
+    "gates": [
+      6,
+      59
+    ],
+    "chinese_name": "亲密的通道",
+    "english_name": "专注于生产的设计 A Design Focused on Reproduction",
+    "description": "专注生育的设计",
+    "key": "6-59",
+    "source": "区分的科学 + 东昍老师版"
+  },
+  {
+    "gates": [
+      7,
+      31
+    ],
+    "chinese_name": "创始者的通道",
+    "english_name": "",
+    "description": "领导力的设计",
+    "key": "7-31",
+    "source": "东昍老师版"
+  },
+  {
+    "gates": [
+      9,
+      52
+    ],
+    "chinese_name": "专心的通道",
+    "english_name": "",
+    "description": "专注的设计",
+    "key": "9-52",
+    "source": "东昍老师版"
+  },
+  {
+    "gates": [
+      10,
+      20
+    ],
+    "chinese_name": "觉醒的通道",
+    "english_name": "承诺去追寻更高层真理的设计 A Design of Commitment to Higher Principles",
+    "description": "",
+    "key": "10-20",
+    "source": "区分的科学 + 东昍老师版"
+  },
+  {
+    "gates": [
+      10,
+      34
+    ],
+    "chinese_name": "探索的通道",
+    "english_name": "遵从自己的信念的设计  A Design of Following One's Convictions",
+    "description": "遵循自己信念的设计",
+    "key": "10-34",
+    "source": "区分的科学 + 东昍老师版"
+  },
+  {
+    "gates": [
+      10,
+      57
+    ],
+    "chinese_name": "完美形式的通道",
+    "english_name": "求存的设计 A Design of Survival",
+    "description": "求存的设计",
+    "key": "10-57",
+    "source": "区分的科学 + 东昍老师版"
+  },
+  {
+    "gates": [
+      11,
+      56
+    ],
+    "chinese_name": "好奇的通道",
+    "english_name": "",
+    "description": "追寻者的设计",
+    "key": "11-56",
+    "source": "东昍老师版"
+  },
+  {
+    "gates": [
+      12,
+      22
+    ],
+    "chinese_name": "开放的通道",
+    "english_name": "社交人的设计  A Design of a Social Being",
+    "description": "社交人的设计",
+    "key": "12-22",
+    "source": "区分的科学 + 东昍老师版"
+  },
+  {
+    "gates": [
+      13,
+      33
+    ],
+    "chinese_name": "足智多谋的通道",
+    "english_name": "",
+    "description": "见证者的设计",
+    "key": "13-33",
+    "source": "东昍老师版"
+  },
+  {
+    "gates": [
+      16,
+      48
+    ],
+    "chinese_name": "波长的通道",
+    "english_name": "才华的设计 A Design of Talent",
+    "description": "才华的设计、专才的设计",
+    "key": "16-48",
+    "source": "区分的科学 + 东昍老师版"
+  },
+  {
+    "gates": [
+      17,
+      62
+    ],
+    "chinese_name": "接受的通道",
+    "english_name": "",
+    "description": "组织化的设计",
+    "key": "17-62",
+    "source": "东昍老师版"
+  },
+  {
+    "gates": [
+      18,
+      58
+    ],
+    "chinese_name": "批判的通道",
+    "english_name": "",
+    "description": "不知足、完美主义的设计",
+    "key": "18-58",
+    "source": "东昍老师版"
+  },
+  {
+    "gates": [
+      19,
+      49
+    ],
+    "chinese_name": "整合综效的通道",
+    "english_name": "敏感的设计  A Design of Sensitivity",
+    "description": "敏感的设计",
+    "key": "19-49",
+    "source": "区分的科学 + 东昍老师版"
+  },
+  {
+    "gates": [
+      20,
+      34
+    ],
+    "chinese_name": "魅力的通道",
+    "english_name": "即知即行的设计 A Design where Awareness must Become Deed",
+    "description": "即知即行的设计",
+    "key": "20-34",
+    "source": "区分的科学 + 东昍老师版"
+  },
+  {
+    "gates": [
+      20,
+      57
+    ],
+    "chinese_name": "脑波的通道",
+    "english_name": "渗透性的觉知的设计  A Design of Penetrating Awareness",
+    "description": "渗透性觉知的设计",
+    "key": "20-57",
+    "source": "区分的科学 + 东昍老师版"
+  },
+  {
+    "gates": [
+      21,
+      45
+    ],
+    "chinese_name": "金钱线的通道",
+    "english_name": "唯物主义者的设计   A Design of a Materialist",
+    "description": "唯物主义者的设计",
+    "key": "21-45",
+    "source": "区分的科学 + 东昍老师版"
+  },
+  {
+    "gates": [
+      23,
+      43
+    ],
+    "chinese_name": "架构的通道",
+    "english_name": "个体性的设计（从天才到疯子）A Design of lndividuality (from Genius to Freak)",
+    "description": "从天才到疯子的设计",
+    "key": "23-43",
+    "source": "区分的科学 + 东昍老师版"
+  },
+  {
+    "gates": [
+      24,
+      61
+    ],
+    "chinese_name": "察觉的通道",
+    "english_name": "思考者的设计  A Design of a Thinker",
+    "description": "思想家的设计",
+    "key": "24-61",
+    "source": "区分的科学 + 东昍老师版"
+  },
+  {
+    "gates": [
+      25,
+      51
+    ],
+    "chinese_name": "发起的通道",
+    "english_name": "想要成为第一人的设计 A Design of Needing to be First",
+    "description": "想成为第一人的设计",
+    "key": "25-51",
+    "source": "区分的科学 + 东昍老师版"
+  },
+  {
+    "gates": [
+      26,
+      44
+    ],
+    "chinese_name": "投降的通道",
+    "english_name": "传递讯息的设计 A Design of aTransmitter",
+    "description": "讯息传递者的设计",
+    "key": "26-44",
+    "source": "区分的科学 + 东昍老师版"
+  },
+  {
+    "gates": [
+      27,
+      50
+    ],
+    "chinese_name": "保存的通道",
+    "english_name": "监护人的设计 A Design of Custodianship",
+    "description": "监护人的设计",
+    "key": "27-50",
+    "source": "区分的科学 + 东昍老师版"
+  },
+  {
+    "gates": [
+      28,
+      38
+    ],
+    "chinese_name": "困顿挣扎的通道",
+    "english_name": "顽固的设计  A Design of Stubbornness",
+    "description": "顽固的设计",
+    "key": "28-38",
+    "source": "区分的科学 + 东昍老师版"
+  },
+  {
+    "gates": [
+      29,
+      46
+    ],
+    "chinese_name": "发现的通道",
+    "english_name": "",
+    "description": "成功源于他人的失败的设计、好胜心强的设计",
+    "key": "29-46",
+    "source": "东昍老师版"
+  },
+  {
+    "gates": [
+      30,
+      41
+    ],
+    "chinese_name": "梦想家的通道",
+    "english_name": "",
+    "description": "充满能量的设计",
+    "key": "30-41",
+    "source": "东昍老师版"
+  },
+  {
+    "gates": [
+      32,
+      54
+    ],
+    "chinese_name": "蜕变的通道",
+    "english_name": "自我驱动的设计 A Design of Being Driven",
+    "description": "",
+    "key": "32-54",
+    "source": "区分的科学 + 东昍老师版"
+  },
+  {
+    "gates": [
+      34,
+      57
+    ],
+    "chinese_name": "力量的通道",
+    "english_name": "人的原型的设计 A Design of an Archetype",
+    "description": "人的原型的设计",
+    "key": "34-57",
+    "source": "区分的科学 + 东昍老师版"
+  },
+  {
+    "gates": [
+      35,
+      36
+    ],
+    "chinese_name": "无常的通道",
+    "english_name": "",
+    "description": "杂而不精的设计、通才的设计",
+    "key": "35-36",
+    "source": "东昍老师版"
+  },
+  {
+    "gates": [
+      37,
+      40
+    ],
+    "chinese_name": "经营社群的通道",
+    "english_name": "凝聚与归属感的设计 A Design of a Part seeking a Whole",
+    "description": "寻找归属感的设计",
+    "key": "37-40",
+    "source": "区分的科学 + 东昍老师版"
+  },
+  {
+    "gates": [
+      39,
+      55
+    ],
+    "chinese_name": "情绪的通道",
+    "english_name": "多愁善感的设计  A Design of Moodiness",
+    "description": "多愁善感的设计",
+    "key": "39-55",
+    "source": "区分的科学 + 东昍老师版"
+  },
+  {
+    "gates": [
+      42,
+      53
+    ],
+    "chinese_name": "成熟的通道",
+    "english_name": "",
+    "description": "均衡发展的设计",
+    "key": "42-53",
+    "source": "东昍老师版"
+  },
+  {
+    "gates": [
+      47,
+      64
+    ],
+    "chinese_name": "抽象的通道",
+    "english_name": "",
+    "description": "心智活跃与厘清思绪的设计",
+    "key": "47-64",
+    "source": "东昍老师版"
+  }
+]

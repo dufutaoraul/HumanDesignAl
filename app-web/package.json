@@ -1,0 +1,39 @@
+{
+  "name": "app-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "import-data": "tsx scripts/import-static-data.ts",
+    "swisseph": "node server/swisseph-service.js",
+    "test:precision": "node test-api-integration.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@supabase/supabase-js": "^2.75.0",
+    "astronomy-engine": "^2.1.19",
+    "global-agent": "^3.0.0",
+    "https-proxy-agent": "^7.0.6",
+    "next": "15.5.4",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "swisseph-wasm": "^0.0.2",
+    "undici": "^7.16.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "dotenv": "^17.2.3",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.4",
+    "tailwindcss": "^4",
+    "tsx": "^4.20.6",
+    "typescript": "^5"
+  }
+}
