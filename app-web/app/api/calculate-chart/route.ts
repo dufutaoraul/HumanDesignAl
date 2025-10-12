@@ -31,6 +31,34 @@ interface AnalysisResult {
   definedCenters: string[];
 }
 
+interface PlanetData {
+  gate: number;
+  line: number;
+  arrow: string;
+}
+
+interface FinalResult {
+  name: string;
+  birthDate: string;
+  birthTime: string;
+  location: string;
+  timezone: string;
+  analysis: {
+    type: string;
+    authority: string;
+    profile: string;
+    definition: string;
+    incarnationCross: IncarnationCross;
+    channels: string[];
+    definedCenters: string[];
+  };
+  dify: unknown;
+  planets: {
+    personality: Record<string, PlanetData>;
+    design: Record<string, PlanetData>;
+  };
+}
+
 // 地点名称转经纬度（简化版，实际应该使用地理编码API）
 function getCoordinates(location: string): { lat: number; lon: number } {
   // 常用城市坐标
@@ -134,7 +162,7 @@ export async function POST(request: NextRequest) {
     const arrows = arrowCalculator.calculateArrows(personalityActivations, designActivations);
 
     // 组合最终结果
-    const finalResult: Record<string, unknown> = {
+    const finalResult: FinalResult = {
       name,
       birthDate,
       birthTime,
