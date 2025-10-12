@@ -18,7 +18,7 @@ export default function TestDatabasePage() {
 
     try {
       // 测试数据库连接
-      const { data, error } = await supabase.from('_test').select('*').limit(1)
+      const { error } = await supabase.from('_test').select('*').limit(1)
 
       if (error) {
         // 如果表不存在是正常的,说明连接成功
@@ -32,9 +32,10 @@ export default function TestDatabasePage() {
         setStatus('success')
         setMessage('✓ 数据库连接成功!')
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Unknown error'
       setStatus('error')
-      setMessage(`✗ 连接失败:\n\n${err.message}\n\n请检查 .env.local 文件中的配置是否正确。`)
+      setMessage(`✗ 连接失败:\n\n${errorMessage}\n\n请检查 .env.local 文件中的配置是否正确。`)
       console.error('数据库连接错误:', err)
     }
   }

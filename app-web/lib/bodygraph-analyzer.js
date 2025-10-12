@@ -4,7 +4,6 @@
  */
 
 /* eslint-disable @typescript-eslint/no-require-imports */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 
 // 通道对应的能量中心映射
 const CHANNEL_TO_CENTERS = {
