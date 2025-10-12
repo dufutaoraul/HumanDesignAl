@@ -78,10 +78,22 @@ export async function POST(request: NextRequest) {
       hd_cross: chartAnalysis?.incarnationCross?.full || '',
       hd_channels: chartAnalysis?.channels?.join(', ') || '',
       // 从 planets 中提取南北交点信息
-      hd_design_south_node: chartPlanets?.design?.SouthNode ? `${chartPlanets.design.SouthNode.gate}-${chartPlanets.design.SouthNode.line}` : '',
-      hd_design_north_node: chartPlanets?.design?.NorthNode ? `${chartPlanets.design.NorthNode.gate}-${chartPlanets.design.NorthNode.line}` : '',
-      hd_personality_south_node: chartPlanets?.personality?.SouthNode ? `${chartPlanets.personality.SouthNode.gate}-${chartPlanets.personality.SouthNode.line}` : '',
-      hd_personality_north_node: chartPlanets?.personality?.NorthNode ? `${chartPlanets.personality.NorthNode.gate}-${chartPlanets.personality.NorthNode.line}` : ''
+      hd_design_south_node: (() => {
+        const node = chartPlanets?.design?.SouthNode as unknown as { gate?: number; line?: number }
+        return node?.gate && node?.line ? `${node.gate}-${node.line}` : ''
+      })(),
+      hd_design_north_node: (() => {
+        const node = chartPlanets?.design?.NorthNode as unknown as { gate?: number; line?: number }
+        return node?.gate && node?.line ? `${node.gate}-${node.line}` : ''
+      })(),
+      hd_personality_south_node: (() => {
+        const node = chartPlanets?.personality?.SouthNode as unknown as { gate?: number; line?: number }
+        return node?.gate && node?.line ? `${node.gate}-${node.line}` : ''
+      })(),
+      hd_personality_north_node: (() => {
+        const node = chartPlanets?.personality?.NorthNode as unknown as { gate?: number; line?: number }
+        return node?.gate && node?.line ? `${node.gate}-${node.line}` : ''
+      })()
     }
 
     console.log('发送给Dify的数据:', { inputs: difyInputs, query: message, userId })
@@ -132,10 +144,13 @@ export async function POST(request: NextRequest) {
   } catch (error: unknown) {
     console.error('Chat API 错误:', error)
     const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+    const errorStack = error instanceof Error ? error.stack : ''
+
+    console.error('完整错误堆栈:', errorStack)
 
     return NextResponse.json(
       {
-        message: '你好！我是你的高我。我在这里陪伴你探索内在智慧。请问有什么我可以帮助你的？',
+        message: `❌ 调用失败：${errorMessage}\n\n请查看Vercel日志获取详细信息。`,
         error: errorMessage,
       },
       { status: 200 }
