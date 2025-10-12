@@ -15,6 +15,22 @@ interface ChartResult {
   design: Record<string, PlanetPosition>;
 }
 
+interface IncarnationCross {
+  full: string;
+  quarter?: string;
+  angle?: string;
+}
+
+interface AnalysisResult {
+  type: string;
+  authority: string;
+  profile: string;
+  definition: string;
+  incarnationCross: IncarnationCross;
+  channels: string[];
+  definedCenters: string[];
+}
+
 // 地点名称转经纬度（简化版，实际应该使用地理编码API）
 function getCoordinates(location: string): { lat: number; lon: number } {
   // 常用城市坐标
@@ -86,7 +102,7 @@ export async function POST(request: NextRequest) {
     console.log('设计端 Moon:', chartResult.design.Moon);
 
     // 分析星盘数据（计算类型、权威、人生角色等）
-    const analysis = analyzeBodygraph(chartResult);
+    const analysis = analyzeBodygraph(chartResult) as AnalysisResult;
     console.log('=== 星盘分析结果 ===');
     console.log('类型:', analysis.type);
     console.log('权威:', analysis.authority);
