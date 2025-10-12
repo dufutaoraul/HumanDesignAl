@@ -25,7 +25,14 @@ export async function POST(request: NextRequest) {
 
     // 从环境变量获取Dify配置
     const difyApiKey = process.env.DIFY_API_KEY
-    const difyWorkflowUrl = process.env.DIFY_WORKFLOW_URL || 'https://api.dify.ai/v1/workflows/run'
+    const difyApiUrl = process.env.DIFY_API_URL || 'https://api.dify.ai/v1'
+    const difyWorkflowUrl = `${difyApiUrl}/workflows/run`
+
+    console.log('Dify配置检查:', {
+      hasApiKey: !!difyApiKey,
+      apiUrl: difyApiUrl,
+      workflowUrl: difyWorkflowUrl
+    })
 
     if (!difyApiKey) {
       console.error('DIFY_API_KEY 未配置')
