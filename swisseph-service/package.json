@@ -1,0 +1,16 @@
+{
+  "name": "swisseph-service",
+  "version": "1.0.0",
+  "description": "Swiss Ephemeris calculation service for Human Design",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "swisseph-wasm": "^0.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
