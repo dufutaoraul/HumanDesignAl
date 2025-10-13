@@ -4,6 +4,7 @@
  * 使用 Swiss Ephemeris 服务计算精确的 True Node
  */
 
+/* eslint-disable @typescript-eslint/no-require-imports */
 const Astronomy = require('astronomy-engine');
 
 // Swiss Ephemeris 服务配置
@@ -280,11 +281,9 @@ async function calculateDesign(birthDate) {
 /**
  * 完整计算人类图（异步）
  * @param {Date} birthDate - 出生时间 (UTC)
- * @param {number} latitude - 纬度
- * @param {number} longitude - 经度
  * @returns {Promise<{personality: Object, design: Object}>}
  */
-async function calculateHumanDesignChart(birthDate, latitude, longitude) {
+async function calculateHumanDesignChart(birthDate) {
   console.log('[astronomy-calculator] 开始计算人类图...');
   const personality = await calculatePersonality(birthDate);
   console.log('[astronomy-calculator] 个性端计算完成:', personality.Sun);
