@@ -104,6 +104,13 @@ body::before {
   transition: all 0.3s ease;
 }
 
+/* 玻璃效果 - 参考 Xiaohongshu 项目的轻量级样式 */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
 /* 渐变文字 - 灵性光芒 */
 .gradient-text {
   background: linear-gradient(135deg, var(--star-gold) 0%, var(--aurora-teal) 50%, var(--mystic-purple) 100%);
