@@ -6,19 +6,29 @@
 
 /* eslint-disable @typescript-eslint/no-require-imports */
 const Astronomy = require('astronomy-engine');
-const swissephWrapper = require('./swisseph-wrapper.js');
+
+// 动态导入 swisseph-wrapper，失败则使用回退公式
+let swissephWrapper = null;
+try {
+  swissephWrapper = require('./swisseph-wrapper.js');
+} catch (error) {
+  console.warn('[astronomy-calculator] Swiss Ephemeris 不可用，将使用回退公式');
+}
 
 /**
- * 从Swiss Ephemeris WASM 获取True Node
+ * 从Swiss Ephemeris WASM获取True Node
  */
 async function fetchTrueNodeFromSwisseph(date) {
+  if (!swissephWrapper) {
+    return null;
+  }
+
   try {
     const longitude = await swissephWrapper.calculateTrueNodeLongitude(date);
     console.log(`[SwissEph] True Node longitude: ${longitude}°`);
     return longitude;
   } catch (error) {
     console.error('[SwissEph] 计算失败:', error.message);
-    // 如果失败，返回null让调用者使用回退方案
     return null;
   }
 }
@@ -137,10 +147,9 @@ function calculateTrueNodeLongitude(date) {
   // True Node = Mean Node + 修正
   let trueNode = Omega + deltaOmega;
 
-  // 经验修正以匹配实际观测值
-  // 根据测试数据调整：1983-10-15 11:40 四川泸州
-  // 应该是闸门45.1（黄道经度77°）
-  trueNode += 41.4;
+  // 经验修正以匹配 Swiss Ephemeris (~0.7度)
+  // 这个修正补偿了 Jean Meeus 公式与现代星历表之间的细微差异
+  trueNode -= 0.7;
 
   // 确保在0-360范围内
   trueNode = ((trueNode % 360) + 360) % 360;
@@ -171,7 +180,7 @@ async function calculatePlanetLongitude(date, body) {
         return swissephResult;
       }
       // 回退到公式计算
-      console.warn('[astronomy-calculator] Swiss Ephemeris 不可用，使用回退公式');
+      console.warn('[astronomy-calculator] 使用回退公式计算 True Node');
       return calculateTrueNodeLongitude(date);
     } else if (body === 'SouthNode') {
       // 南交点是北交点对面180度
