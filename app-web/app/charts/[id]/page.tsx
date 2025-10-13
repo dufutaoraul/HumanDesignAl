@@ -1,5 +1,5 @@
 /**
- * 人类图详情页
+ * 人类图详情页 - 简洁深邃星空风格
  */
 
 'use client'
@@ -80,7 +80,8 @@ export default function ChartDetailPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-t-transparent rounded-full animate-spin mx-auto mb-4" style={{ borderColor: 'var(--star-gold)' }}></div>
+          <div className="w-16 h-16 border-4 border-t-transparent rounded-full animate-spin mx-auto mb-4"
+               style={{ borderColor: 'var(--star-gold)', borderTopColor: 'transparent' }}></div>
           <p className="text-gray-300">加载中...</p>
         </div>
       </div>
@@ -92,113 +93,107 @@ export default function ChartDetailPage() {
   }
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen">
       {/* 顶部导航 */}
-      <nav className="bg-gray-800/50 backdrop-blur-sm border-b border-gray-700">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <h1 className="text-xl font-bold gradient-text">
-              人类图 AI 陪伴
-            </h1>
-            <div className="flex gap-6">
-              <Link href="/chat" className="text-gray-300 hover:text-white transition-colors text-sm">
-                聊天
-              </Link>
-              <Link href="/charts" className="text-yellow-400 font-medium text-sm">
-                我的资料
-              </Link>
-            </div>
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-md border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+          <h1 className="text-xl font-bold gradient-text">人类图 AI 陪伴</h1>
+          <div className="flex gap-8">
+            <Link href="/chat" className="text-gray-400 hover:text-white transition-colors">
+              聊天
+            </Link>
+            <Link href="/charts" className="text-white font-medium">
+              我的资料
+            </Link>
           </div>
         </div>
       </nav>
 
       {/* 主内容区 */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="pt-24 px-6 pb-12 max-w-5xl mx-auto">
         {/* 返回按钮 */}
-        <div className="mb-6">
-          <Link
-            href="/charts"
-            className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-2"
-          >
-            <span>←</span> 返回列表
-          </Link>
+        <Link
+          href="/charts"
+          className="inline-flex items-center text-gray-400 hover:text-white transition-colors mb-8"
+        >
+          <span className="mr-2">←</span> 返回列表
+        </Link>
+
+        {/* 页面标题 */}
+        <div className="mb-8">
+          <div className="flex items-center gap-3 mb-2">
+            <h1 className="text-3xl font-bold gradient-text">{chart.name} 的人类图</h1>
+            {chart.is_self && (
+              <span className="px-3 py-1 text-xs rounded-full bg-yellow-500/20 text-yellow-400 border border-yellow-500/30">
+                我的人类图
+              </span>
+            )}
+          </div>
+          <p className="text-gray-400">创建于 {new Date(chart.created_at).toLocaleString()}</p>
         </div>
 
-        {/* 标题行 */}
-        <div className="mb-12 text-center">
-          <h1 className="text-4xl font-bold gradient-text mb-4">
-            {chart.name} 的人类图
-          </h1>
-          {chart.is_self && (
-            <span className="inline-block px-4 py-2 text-sm rounded-full bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-medium shadow-lg">
-              我的人类图
-            </span>
-          )}
-        </div>
-
-        {/* 详细信息 */}
         <div className="space-y-6">
           {/* 基本信息卡片 */}
-          <div className="glass-effect p-8 rounded-3xl border border-white/20 backdrop-blur-lg">
-            <h2 className="text-2xl font-bold text-white mb-6">基本信息</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+            <h2 className="text-xl font-bold text-white mb-4">基本信息</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <span className="text-sm text-white/60 block mb-2">出生日期</span>
-                <span className="text-lg text-white font-semibold">{chart.birth_date}</span>
+                <div className="text-xs text-gray-500 mb-1">出生日期</div>
+                <div className="text-sm text-white">{chart.birth_date}</div>
               </div>
               <div>
-                <span className="text-sm text-white/60 block mb-2">出生时间</span>
-                <span className="text-lg text-white font-semibold">{chart.birth_time}</span>
+                <div className="text-xs text-gray-500 mb-1">出生时间</div>
+                <div className="text-sm text-white">{chart.birth_time}</div>
               </div>
-              <div className="md:col-span-2">
-                <span className="text-sm text-white/60 block mb-2">出生地点</span>
-                <span className="text-lg text-white font-semibold">{chart.location}</span>
+              <div>
+                <div className="text-xs text-gray-500 mb-1">出生地点</div>
+                <div className="text-sm text-white">{chart.location}</div>
               </div>
             </div>
           </div>
 
           {/* 人类图类型信息 */}
-          <div className="glass-effect p-8 rounded-3xl border border-white/20 backdrop-blur-lg">
-            <h2 className="text-2xl font-bold text-white mb-6">人类图类型</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div className="bg-white/5 p-4 rounded-lg border border-white/10">
-                <span className="text-xs text-white/60 block mb-2">类型</span>
-                <span className="text-base text-white font-semibold">
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+            <h2 className="text-xl font-bold text-white mb-4">人类图类型</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div>
+                <div className="text-xs text-gray-500 mb-1">类型</div>
+                <div className="text-sm text-white font-medium">
                   {chart.chart_data?.analysis?.type || '未知'}
-                </span>
+                </div>
               </div>
-              <div className="bg-white/5 p-4 rounded-lg border border-white/10">
-                <span className="text-xs text-white/60 block mb-2">人生角色</span>
-                <span className="text-base text-white font-semibold">
+              <div>
+                <div className="text-xs text-gray-500 mb-1">人生角色</div>
+                <div className="text-sm text-white font-medium">
                   {chart.chart_data?.analysis?.profile || '未知'}
-                </span>
+                </div>
               </div>
-              <div className="bg-white/5 p-4 rounded-lg border border-white/10">
-                <span className="text-xs text-white/60 block mb-2">内在权威</span>
-                <span className="text-base text-white font-semibold">
+              <div>
+                <div className="text-xs text-gray-500 mb-1">内在权威</div>
+                <div className="text-sm text-white font-medium">
                   {chart.chart_data?.analysis?.authority || '未知'}
-                </span>
+                </div>
               </div>
-              <div className="bg-white/5 p-4 rounded-lg border border-white/10">
-                <span className="text-xs text-white/60 block mb-2">定义</span>
-                <span className="text-base text-white font-semibold">
+              <div>
+                <div className="text-xs text-gray-500 mb-1">定义</div>
+                <div className="text-sm text-white font-medium">
                   {chart.chart_data?.analysis?.definition || '未知'}
-                </span>
+                </div>
               </div>
             </div>
           </div>
 
           {/* 激活通道 */}
           {chart.chart_data?.analysis?.channels && chart.chart_data.analysis.channels.length > 0 && (
-            <div className="glass-effect p-8 rounded-3xl border border-white/20 backdrop-blur-lg">
-              <h2 className="text-2xl font-bold text-white mb-6">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+              <h2 className="text-xl font-bold text-white mb-4">
                 激活通道 ({chart.chart_data.analysis.channels.length})
               </h2>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2">
                 {chart.chart_data.analysis.channels.map((channel, idx) => (
                   <span
                     key={idx}
-                    className="px-4 py-2 text-base rounded-lg bg-blue-500/20 text-blue-300 border border-blue-400/30 font-medium"
+                    className="px-3 py-1.5 text-sm rounded-md bg-blue-500/20 text-blue-300 border border-blue-500/30"
                   >
                     {channel}
                   </span>
@@ -209,15 +204,15 @@ export default function ChartDetailPage() {
 
           {/* 定义中心 */}
           {chart.chart_data?.analysis?.definedCenters && chart.chart_data.analysis.definedCenters.length > 0 && (
-            <div className="glass-effect p-8 rounded-3xl border border-white/20 backdrop-blur-lg">
-              <h2 className="text-2xl font-bold text-white mb-6">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+              <h2 className="text-xl font-bold text-white mb-4">
                 定义中心 ({chart.chart_data.analysis.definedCenters.length})
               </h2>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2">
                 {chart.chart_data.analysis.definedCenters.map((center, idx) => (
                   <span
                     key={idx}
-                    className="px-4 py-2 text-base rounded-lg bg-green-500/20 text-green-300 border border-green-400/30 font-medium"
+                    className="px-3 py-1.5 text-sm rounded-md bg-green-500/20 text-green-300 border border-green-500/30"
                   >
                     {center}
                   </span>
@@ -228,14 +223,14 @@ export default function ChartDetailPage() {
 
           {/* 轮回交叉 */}
           {chart.chart_data?.analysis?.incarnationCross?.full && (
-            <div className="glass-effect p-8 rounded-3xl border border-white/20 backdrop-blur-lg">
-              <h2 className="text-2xl font-bold text-white mb-6">轮回交叉</h2>
-              <div className="p-6 bg-purple-500/10 rounded-lg border border-purple-400/30">
-                <p className="text-lg text-white">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+              <h2 className="text-xl font-bold text-white mb-4">轮回交叉</h2>
+              <div className="p-4 bg-purple-500/10 border border-purple-500/20 rounded-lg">
+                <p className="text-sm text-white mb-2">
                   {chart.chart_data.analysis.incarnationCross.full}
                 </p>
                 {chart.chart_data.analysis.incarnationCross.type && (
-                  <p className="text-sm text-purple-300 mt-2">
+                  <p className="text-xs text-purple-400">
                     类型: {chart.chart_data.analysis.incarnationCross.type}
                   </p>
                 )}
@@ -244,16 +239,16 @@ export default function ChartDetailPage() {
           )}
 
           {/* 操作按钮 */}
-          <div className="flex flex-wrap gap-4 pt-6">
+          <div className="flex flex-wrap gap-3 pt-4">
             <Link
               href="/chat"
-              className="px-6 py-3 bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold rounded-lg hover:from-green-600 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+              className="px-6 py-3 bg-gradient-to-r from-green-600 to-teal-600 text-white font-medium rounded-lg hover:from-green-700 hover:to-teal-700 transition-all duration-200"
             >
-              💬 与高我对话
+              与高我对话
             </Link>
             <Link
               href="/charts"
-              className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+              className="px-6 py-3 bg-white/10 text-white font-medium rounded-lg hover:bg-white/20 transition-all duration-200"
             >
               返回列表
             </Link>
