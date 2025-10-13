@@ -1,34 +1,39 @@
 /**
  * 人类图天文计算模块
  * 使用 astronomy-engine 进行准确的行星位置计算
- * 使用 Swiss Ephemeris WASM 计算精确的 True Node
+ * 使用 Swiss Ephemeris 服务计算精确的 True Node
  */
 
-/* eslint-disable @typescript-eslint/no-require-imports */
 const Astronomy = require('astronomy-engine');
 
-// 动态导入 swisseph-wrapper，失败则使用回退公式
-let swissephWrapper = null;
-try {
-  swissephWrapper = require('./swisseph-wrapper.js');
-} catch (error) {
-  console.warn('[astronomy-calculator] Swiss Ephemeris 不可用，将使用回退公式');
-}
+// Swiss Ephemeris 服务配置
+const SWISSEPH_SERVICE_URL = process.env.SWISSEPH_SERVICE_URL || 'http://localhost:3100';
 
 /**
- * 从Swiss Ephemeris WASM获取True Node
+ * 从Swiss Ephemeris服务获取True Node
  */
-async function fetchTrueNodeFromSwisseph(date) {
-  if (!swissephWrapper) {
-    return null;
-  }
-
+async function fetchTrueNodeFromService(date) {
   try {
-    const longitude = await swissephWrapper.calculateTrueNodeLongitude(date);
-    console.log(`[SwissEph] True Node longitude: ${longitude}°`);
-    return longitude;
+    const response = await fetch(`${SWISSEPH_SERVICE_URL}/calculate-node`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ date: date.toISOString() }),
+      signal: AbortSignal.timeout(2000) // 2秒超时
+    });
+
+    if (!response.ok) {
+      throw new Error(`Service responded with ${response.status}`);
+    }
+
+    const result = await response.json();
+
+    if (result.success) {
+      return result.longitude;
+    } else {
+      throw new Error(result.error || 'Calculation failed');
+    }
   } catch (error) {
-    console.error('[SwissEph] 计算失败:', error.message);
+    // 服务不可用，返回null让调用者使用回退方案
     return null;
   }
 }
@@ -174,13 +179,12 @@ async function calculatePlanetLongitude(date, body) {
       ecliptic = Astronomy.EclipticGeoMoon(date);
       return ecliptic.lon;
     } else if (body === 'NorthNode') {
-      // 优先使用 Swiss Ephemeris WASM，失败则回退到公式
-      const swissephResult = await fetchTrueNodeFromSwisseph(date);
-      if (swissephResult !== null) {
-        return swissephResult;
+      // 优先使用 Swiss Ephemeris 服务，失败则回退到公式
+      const serviceResult = await fetchTrueNodeFromService(date);
+      if (serviceResult !== null) {
+        return serviceResult;
       }
       // 回退到公式计算
-      console.warn('[astronomy-calculator] 使用回退公式计算 True Node');
       return calculateTrueNodeLongitude(date);
     } else if (body === 'SouthNode') {
       // 南交点是北交点对面180度
@@ -276,9 +280,11 @@ async function calculateDesign(birthDate) {
 /**
  * 完整计算人类图（异步）
  * @param {Date} birthDate - 出生时间 (UTC)
+ * @param {number} latitude - 纬度
+ * @param {number} longitude - 经度
  * @returns {Promise<{personality: Object, design: Object}>}
  */
-async function calculateHumanDesignChart(birthDate) {
+async function calculateHumanDesignChart(birthDate, latitude, longitude) {
   console.log('[astronomy-calculator] 开始计算人类图...');
   const personality = await calculatePersonality(birthDate);
   console.log('[astronomy-calculator] 个性端计算完成:', personality.Sun);
