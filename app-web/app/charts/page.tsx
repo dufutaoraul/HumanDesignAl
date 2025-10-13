@@ -51,12 +51,6 @@ export default function ChartsListPage() {
     }
   }, [user, loading, router])
 
-  useEffect(() => {
-    if (user) {
-      loadCharts()
-    }
-  }, [user])
-
   const loadCharts = async () => {
     if (!user) return
 
@@ -78,6 +72,12 @@ export default function ChartsListPage() {
       setLoadingCharts(false)
     }
   }
+
+  useEffect(() => {
+    if (user) {
+      loadCharts()
+    }
+  }, [user])
 
   const deleteChart = async (id: string) => {
     if (!confirm('确定要删除这个人类图资料吗？')) {
@@ -156,7 +156,7 @@ export default function ChartsListPage() {
             <div className="text-8xl mb-8 animate-pulse">📊</div>
             <h1 className="text-4xl font-bold gradient-text mb-6">还没有人类图资料</h1>
             <p className="text-xl text-white/80 mb-8 leading-relaxed">
-              请点击上方"新增人类图"按钮，输入出生信息来创建人类图
+              请点击上方&ldquo;新增人类图&rdquo;按钮，输入出生信息来创建人类图
             </p>
             <Link
               href="/calculate"

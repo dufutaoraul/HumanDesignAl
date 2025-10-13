@@ -52,12 +52,6 @@ export default function ChartDetailPage() {
     }
   }, [user, loading, router])
 
-  useEffect(() => {
-    if (user && params.id) {
-      loadChart(params.id as string)
-    }
-  }, [user, params.id])
-
   const loadChart = async (id: string) => {
     try {
       const response = await fetch(`/api/charts/${id}`)
@@ -75,6 +69,12 @@ export default function ChartDetailPage() {
       setLoadingChart(false)
     }
   }
+
+  useEffect(() => {
+    if (user && params.id) {
+      loadChart(params.id as string)
+    }
+  }, [user, params.id])
 
   if (loading || loadingChart) {
     return (
