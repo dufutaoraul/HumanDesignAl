@@ -448,7 +448,8 @@ export default function CalculatePage() {
                     value={newTag}
                     onChange={(e) => setNewTag(e.target.value)}
                     placeholder="输入新标签名称"
-                    className="flex-1 border border-gray-300 rounded px-3 py-2 text-gray-900"
+                    className="flex-1 rounded px-3 py-2 text-white focus:outline-none"
+                    style={{ background: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.2)' }}
                     onKeyPress={(e) => {
                       if (e.key === 'Enter') {
                         handleAddNewTag();
@@ -457,7 +458,7 @@ export default function CalculatePage() {
                   />
                   <button
                     onClick={handleAddNewTag}
-                    className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                    className="btn-gold text-sm px-4 py-2"
                   >
                     添加
                   </button>
@@ -466,7 +467,8 @@ export default function CalculatePage() {
                       setShowNewTagInput(false);
                       setNewTag('');
                     }}
-                    className="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
+                    className="px-4 py-2 rounded text-gray-300 hover:text-white transition-colors text-sm"
+                    style={{ background: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.2)' }}
                   >
                     取消
                   </button>

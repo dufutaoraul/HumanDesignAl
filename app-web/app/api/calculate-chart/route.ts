@@ -114,20 +114,26 @@ export async function POST(request: NextRequest) {
     const [year, month, day] = birthDate.split('-').map(Number);
     const [hours, minutes] = birthTime.split(':').map(Number);
 
-    // 创建一个UTC时间对象
-    let birthDateTime: Date;
+    // 时区偏移量映射（UTC偏移小时数）
+    const timezoneOffsets: Record<string, number> = {
+      'Asia/Shanghai': 8,
+      'America/New_York': -5,
+      'America/Los_Angeles': -8,
+      'Europe/London': 0,
+      'Europe/Paris': 1,
+      'Asia/Tokyo': 9,
+    };
 
-    if (timezone === 'Asia/Shanghai') {
-      // 北京时间是UTC+8，用户输入11:40表示北京时间11:40
-      // 需要转换为UTC时间：11:40 - 8小时 = 03:40 UTC
-      birthDateTime = new Date(Date.UTC(year, month - 1, day, hours - 8, minutes));
-    } else {
-      // 其他时区暂时按UTC处理
-      birthDateTime = new Date(Date.UTC(year, month - 1, day, hours, minutes));
-    }
+    // 获取时区偏移
+    const offset = timezoneOffsets[timezone] || 0;
+
+    // 用户输入的是当地时间，需要转换为UTC
+    // 例如：北京时间11:40 = UTC 03:40 (11:40 - 8小时)
+    const birthDateTime = new Date(Date.UTC(year, month - 1, day, hours - offset, minutes));
 
     console.log('=== 时间转换调试 ===');
     console.log('输入时间:', birthDate, birthTime, timezone);
+    console.log('时区偏移:', offset, '小时');
     console.log('UTC时间:', birthDateTime.toISOString());
 
     // 计算人类图（异步）

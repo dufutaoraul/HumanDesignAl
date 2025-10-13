@@ -248,7 +248,7 @@ export default function ChartsListPage() {
                     与高我对话
                   </Link>
                   <Link
-                    href={`/charts/${chart.id}`}
+                    href={`/calculate?chartId=${chart.id}`}
                     className="px-5 py-2 bg-white/10 text-white text-sm font-medium rounded-lg hover:bg-white/20 transition-all duration-200"
                   >
                     查看详情
