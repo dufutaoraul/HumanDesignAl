@@ -13,10 +13,10 @@ const supabase = createClient(
 // GET /api/charts/[id] - 获取单个chart详情
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params
+    const { id } = await params
 
     const { data: chart, error } = await supabase
       .from('charts')
@@ -45,10 +45,10 @@ export async function GET(
 // DELETE /api/charts/[id] - 删除chart
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params
+    const { id } = await params
 
     const { error } = await supabase
       .from('charts')
