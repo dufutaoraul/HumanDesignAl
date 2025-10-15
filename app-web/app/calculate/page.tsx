@@ -1,5 +1,5 @@
 /**
- * 人类图计算器 - 标准简洁设计
+ * 人类图计算器 - 现代美观设计
  */
 
 'use client';
@@ -293,40 +293,40 @@ export default function CalculatePage() {
   // 认证加载状态
   if (authLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-900">
+      <div className="min-h-screen flex items-center justify-center main-content">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-300">加载中...</p>
+          <div className="w-20 h-20 border-4 border-blue-400 border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
+          <p className="text-xl text-gray-300">加载中...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen main-content">
       {/* 导航栏 */}
-      <nav className="bg-gray-800 border-b border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <h1 className="text-xl font-semibold text-white">人类图 AI 陪伴</h1>
-              <span className="ml-4 text-sm text-gray-400">星图计算器</span>
+      <nav className="bg-black/40 backdrop-blur-xl border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center space-x-8">
+              <h1 className="text-2xl font-bold text-white">人类图 AI 陪伴</h1>
+              <span className="text-gray-300 text-lg">星图计算器</span>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-6">
               {user && (
-                <span className="text-sm text-gray-300">{user.email}</span>
+                <span className="text-gray-300 text-lg">{user.email}</span>
               )}
               <button
                 onClick={() => router.push('/chat')}
-                className="text-gray-300 hover:text-white"
+                className="text-gray-300 hover:text-white transition-colors"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
               </button>
               <button
                 onClick={() => router.push('/charts')}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                className="px-6 py-3 bg-blue-600 text-white text-lg font-medium rounded-xl hover:bg-blue-700 transition-all"
               >
                 我的星图
               </button>
@@ -335,78 +335,80 @@ export default function CalculatePage() {
         </div>
       </nav>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-6 py-8">
         {/* 页面标题 */}
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-white mb-2">人类图计算器</h2>
-          <p className="text-gray-400">探索您的宇宙能量印记，解析独特的生命密码</p>
+        <div className="text-center mb-12">
+          <h2 className="text-5xl font-black text-white mb-4">人类图计算器</h2>
+          <p className="text-xl text-gray-300">探索您的宇宙能量印记，解析独特的生命密码</p>
         </div>
 
         {/* 输入表单区域 - 只有当没有本人资料时才显示 */}
         {!hasSelfChart && (
-          <div className="bg-gray-800 rounded-lg p-6 mb-8">
-            <h3 className="text-lg font-medium text-white mb-4">出生信息</h3>
-            <p className="text-gray-400 text-sm mb-6">请填写准确的出生信息以计算您的人类图</p>
+          <div className="bg-black/30 backdrop-blur-xl rounded-2xl p-8 mb-12 border border-white/10">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold text-white mb-3">出生信息</h3>
+              <p className="text-lg text-gray-300">请填写准确的出生信息以计算您的人类图</p>
+            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
+                <label className="block text-lg font-semibold text-gray-200 mb-3">
                   姓名
                 </label>
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-5 py-4 bg-black/50 border border-white/20 rounded-xl text-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                   placeholder="请输入姓名"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
+                <label className="block text-lg font-semibold text-gray-200 mb-3">
                   出生日期
                 </label>
                 <input
                   type="date"
                   value={birthDate}
                   onChange={(e) => setBirthDate(e.target.value)}
-                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-5 py-4 bg-black/50 border border-white/20 rounded-xl text-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
+                <label className="block text-lg font-semibold text-gray-200 mb-3">
                   出生时间
                 </label>
                 <input
                   type="time"
                   value={birthTime}
                   onChange={(e) => setBirthTime(e.target.value)}
-                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-5 py-4 bg-black/50 border border-white/20 rounded-xl text-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
+                <label className="block text-lg font-semibold text-gray-200 mb-3">
                   出生地点
                 </label>
                 <input
                   type="text"
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
-                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-5 py-4 bg-black/50 border border-white/20 rounded-xl text-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                   placeholder="例如: 北京, 上海"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
+                <label className="block text-lg font-semibold text-gray-200 mb-3">
                   时区
                 </label>
                 <select
                   value={timezone}
                   onChange={(e) => setTimezone(e.target.value)}
-                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-5 py-4 bg-black/50 border border-white/20 rounded-xl text-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                 >
                   <option value="Asia/Shanghai">中国(北京时间 UTC+8)</option>
                   <option value="America/New_York">美国东部(UTC-5/-4)</option>
@@ -418,10 +420,10 @@ export default function CalculatePage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
+                <label className="block text-lg font-semibold text-gray-200 mb-3">
                   关系标签
                   {relationship === '本人' && (
-                    <span className="text-xs ml-2 text-yellow-400">
+                    <span className="text-base ml-3 text-yellow-400">
                       (每个用户只能有1个)
                     </span>
                   )}
@@ -436,7 +438,7 @@ export default function CalculatePage() {
                       setShowNewTagInput(false);
                     }
                   }}
-                  className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-5 py-4 bg-black/50 border border-white/20 rounded-xl text-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                 >
                   {availableTags.map(tag => (
                     <option key={tag} value={tag}>
@@ -446,13 +448,13 @@ export default function CalculatePage() {
                   <option value="__new__">+ 新建标签</option>
                 </select>
                 {showNewTagInput && (
-                  <div className="mt-2 flex gap-2">
+                  <div className="mt-4 flex gap-3">
                     <input
                       type="text"
                       value={newTag}
                       onChange={(e) => setNewTag(e.target.value)}
                       placeholder="输入新标签名称"
-                      className="flex-1 px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="flex-1 px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                       onKeyPress={(e) => {
                         if (e.key === 'Enter') {
                           handleAddNewTag();
@@ -461,7 +463,7 @@ export default function CalculatePage() {
                     />
                     <button
                       onClick={handleAddNewTag}
-                      className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                      className="px-6 py-3 bg-blue-600 text-white text-lg font-medium rounded-xl hover:bg-blue-700 transition-all"
                     >
                       添加
                     </button>
@@ -470,7 +472,7 @@ export default function CalculatePage() {
                         setShowNewTagInput(false);
                         setNewTag('');
                       }}
-                      className="px-4 py-2 bg-gray-600 text-gray-300 rounded-md hover:bg-gray-700"
+                      className="px-6 py-3 bg-gray-600 text-gray-300 text-lg font-medium rounded-xl hover:bg-gray-700 transition-all"
                     >
                       取消
                     </button>
@@ -479,11 +481,11 @@ export default function CalculatePage() {
               </div>
             </div>
 
-            <div className="mt-6 flex gap-4">
+            <div className="mt-10 flex gap-4 max-w-2xl mx-auto">
               <button
                 onClick={handleCalculate}
                 disabled={loading}
-                className="flex-1 px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 px-8 py-4 bg-blue-600 text-white text-xl font-bold rounded-xl hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
               >
                 {loading ? '计算中...' : '计算人类图'}
               </button>
@@ -491,7 +493,7 @@ export default function CalculatePage() {
               {chartData && (
                 <button
                   onClick={handleSave}
-                  className="px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700"
+                  className="px-8 py-4 bg-green-600 text-white text-xl font-bold rounded-xl hover:bg-green-700 transition-all"
                 >
                   保存星图
                 </button>
@@ -502,45 +504,45 @@ export default function CalculatePage() {
 
         {/* 已有本人资料的提示 */}
         {hasSelfChart && (
-          <div className="bg-blue-900/30 border border-blue-700 rounded-lg p-4 mb-8">
+          <div className="bg-blue-900/30 backdrop-blur-xl border border-blue-500/50 rounded-2xl p-6 mb-12">
             <div className="flex items-center">
-              <svg className="w-5 h-5 text-blue-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-8 h-8 text-blue-400 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <p className="text-blue-300">您已经创建了本人的人类图资料，可以在下方查看或继续为其他人创建人类图。</p>
+              <p className="text-blue-300 text-lg">您已经创建了本人的人类图资料，可以在下方查看或继续为其他人创建人类图。</p>
             </div>
           </div>
         )}
 
         {/* 计算结果 */}
         {chartData && (
-          <div className="bg-gray-800 rounded-lg p-6 mb-8">
-            <h3 className="text-lg font-medium text-white mb-4">{chartData.name} 的人类图分析</h3>
+          <div className="bg-black/30 backdrop-blur-xl rounded-2xl p-8 mb-12 border border-white/10">
+            <h3 className="text-2xl font-bold text-white mb-6">{chartData.name} 的人类图分析</h3>
 
             {chartData.analysis && (
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                <div className="bg-gray-700 rounded p-3">
-                  <p className="text-xs text-gray-400 mb-1">类型</p>
-                  <p className="text-sm font-medium text-white">{chartData.analysis.type}</p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+                <div className="bg-black/40 rounded-2xl p-6 border border-white/10">
+                  <p className="text-base text-gray-400 mb-2">类型</p>
+                  <p className="text-xl font-bold text-white">{chartData.analysis.type}</p>
                 </div>
-                <div className="bg-gray-700 rounded p-3">
-                  <p className="text-xs text-gray-400 mb-1">人生角色</p>
-                  <p className="text-sm font-medium text-white">{chartData.analysis.profile}</p>
+                <div className="bg-black/40 rounded-2xl p-6 border border-white/10">
+                  <p className="text-base text-gray-400 mb-2">人生角色</p>
+                  <p className="text-xl font-bold text-white">{chartData.analysis.profile}</p>
                 </div>
-                <div className="bg-gray-700 rounded p-3">
-                  <p className="text-xs text-gray-400 mb-1">内在权威</p>
-                  <p className="text-sm font-medium text-white">{chartData.analysis.authority}</p>
+                <div className="bg-black/40 rounded-2xl p-6 border border-white/10">
+                  <p className="text-base text-gray-400 mb-2">内在权威</p>
+                  <p className="text-xl font-bold text-white">{chartData.analysis.authority}</p>
                 </div>
-                <div className="bg-gray-700 rounded p-3">
-                  <p className="text-xs text-gray-400 mb-1">定义</p>
-                  <p className="text-sm font-medium text-white">{chartData.analysis.definition}</p>
+                <div className="bg-black/40 rounded-2xl p-6 border border-white/10">
+                  <p className="text-base text-gray-400 mb-2">定义</p>
+                  <p className="text-xl font-bold text-white">{chartData.analysis.definition}</p>
                 </div>
               </div>
             )}
 
-            <div className="bg-gray-700 rounded p-3">
-              <p className="text-xs text-gray-400 mb-2">出生信息</p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-gray-300">
+            <div className="bg-black/40 rounded-2xl p-6 border border-white/10">
+              <p className="text-base text-gray-400 mb-4">出生信息</p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-lg text-gray-300">
                 <div>📅 {chartData.birthDate}</div>
                 <div>🕐 {chartData.birthTime}</div>
                 <div>📍 {chartData.location}</div>
@@ -553,14 +555,14 @@ export default function CalculatePage() {
         {/* 已保存的数据列表 */}
         {savedCharts.length > 0 && (
           <div>
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-lg font-medium text-white">已保存的星图</h3>
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-400">排序：</span>
+            <div className="flex justify-between items-center mb-8">
+              <h3 className="text-2xl font-bold text-white">已保存的星图</h3>
+              <div className="flex items-center gap-3">
+                <span className="text-lg text-gray-300">排序：</span>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as 'date' | 'name' | 'relationship' | 'type')}
-                  className="px-3 py-1 bg-gray-700 border border-gray-600 rounded text-sm text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="px-4 py-2 bg-black/50 border border-white/20 rounded-lg text-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 >
                   <option value="date">保存时间</option>
                   <option value="name">姓名</option>
@@ -570,16 +572,16 @@ export default function CalculatePage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {getSortedCharts().map((chart, index) => (
                 <div
                   key={chart.id || index}
-                  className="bg-gray-800 rounded-lg p-4 cursor-pointer hover:bg-gray-750 transition-colors"
+                  className="bg-black/30 backdrop-blur-xl rounded-2xl p-6 cursor-pointer hover:bg-black/40 transition-all border border-white/10 hover:border-white/30"
                   onClick={() => setChartData(chart)}
                 >
-                  <div className="flex justify-between items-start mb-3">
-                    <h4 className="font-medium text-white">{chart.name}</h4>
-                    <span className={`px-2 py-1 rounded text-xs font-medium ${
+                  <div className="flex justify-between items-start mb-4">
+                    <h4 className="text-xl font-semibold text-white">{chart.name}</h4>
+                    <span className={`px-3 py-2 rounded-lg text-base font-bold ${
                       chart.relationship === '本人'
                         ? 'bg-blue-600 text-white'
                         : chart.relationship === '家人'
@@ -592,19 +594,19 @@ export default function CalculatePage() {
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2 mb-3 text-sm">
+                  <div className="grid grid-cols-2 gap-4 mb-4 text-base">
                     <div>
                       <span className="text-gray-400">类型:</span>
-                      <span className="ml-1 text-white">{chart.analysis?.type || '-'}</span>
+                      <span className="ml-2 text-white">{chart.analysis?.type || '-'}</span>
                     </div>
                     <div>
                       <span className="text-gray-400">角色:</span>
-                      <span className="ml-1 text-white">{chart.analysis?.profile || '-'}</span>
+                      <span className="ml-2 text-white">{chart.analysis?.profile || '-'}</span>
                     </div>
                   </div>
 
-                  <div className="text-xs text-gray-400 border-t border-gray-700 pt-2">
-                    <div>📅 {chart.birthDate} 🕐 {chart.birthTime}</div>
+                  <div className="text-base text-gray-400 border-t border-white/10 pt-4">
+                    <div className="mb-2">📅 {chart.birthDate} 🕐 {chart.birthTime}</div>
                     <div>📍 {chart.location}</div>
                   </div>
                 </div>

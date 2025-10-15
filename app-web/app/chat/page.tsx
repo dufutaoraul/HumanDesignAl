@@ -228,52 +228,52 @@ export default function ChatPage() {
 
   return (
     <div className="flex h-screen main-content">
-      {/* 左侧边栏 */}
+      {/* 左侧边栏 - 更大尺寸设计 */}
       <AnimatePresence>
         {sidebarOpen && (
           <motion.div
-            initial={{ x: -300 }}
+            initial={{ x: -400 }}
             animate={{ x: 0 }}
-            exit={{ x: -300 }}
-            className="fixed lg:relative z-50 w-80 h-screen flex flex-col bg-gray-800 border-r border-gray-700"
+            exit={{ x: -400 }}
+            className="fixed lg:relative z-50 w-96 h-screen flex flex-col bg-black/40 backdrop-blur-xl border-r border-white/10"
           >
             {/* 侧边栏头部 */}
-            <div className="p-4 border-b border-gray-700">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-semibold text-white">
+            <div className="p-8 border-b border-white/10">
+              <div className="flex items-center justify-between mb-8">
+                <h2 className="text-3xl font-bold text-white">
                   人类图 AI
                 </h2>
                 <button
                   onClick={() => setSidebarOpen(false)}
-                  className="lg:hidden text-gray-400 hover:text-white"
+                  className="lg:hidden text-gray-300 hover:text-white transition-colors"
                 >
-                  <X className="w-6 h-6" />
+                  <X className="w-8 h-8" />
                 </button>
               </div>
 
               {/* 用户信息 */}
-              <div className="bg-gray-700 rounded-lg p-3 mb-4">
-                <div className="flex items-center mb-2">
-                  <UserIcon className="w-5 h-5 mr-2 text-blue-400" />
-                  <span className="text-sm truncate text-white">{user.email}</span>
+              <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 mb-8 border border-white/10">
+                <div className="flex items-center mb-4">
+                  <UserIcon className="w-7 h-7 mr-4 text-blue-400" />
+                  <span className="text-xl truncate text-white font-medium">{user.email}</span>
                 </div>
                 {hasHumanDesign !== null && (
-                  <div className="flex items-center justify-between pt-2 border-t border-gray-600">
-                    <div className="flex items-center text-xs">
+                  <div className="flex items-center justify-between pt-6 border-t border-white/10">
+                    <div className="flex items-center text-lg">
                       <div
-                        className={`w-2 h-2 rounded-full mr-2 ${
+                        className={`w-4 h-4 rounded-full mr-3 ${
                           hasHumanDesign ? 'animate-pulse' : ''
                         }`}
                         style={{ background: hasHumanDesign ? '#10b981' : '#6b7280' }}
                       />
-                      <span className="text-gray-300">
+                      <span className="text-gray-300 font-medium">
                         {hasHumanDesign ? '已录入人类图' : '未录入人类图'}
                       </span>
                     </div>
                     {!hasHumanDesign && (
                       <button
                         onClick={() => router.push('/calculate')}
-                        className="text-xs px-2 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
+                        className="text-lg px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors font-medium"
                       >
                         录入
                       </button>
@@ -285,33 +285,33 @@ export default function ChatPage() {
               {/* 新对话按钮 */}
               <button
                 onClick={createNewConversation}
-                className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center justify-center"
+                className="w-full px-8 py-5 bg-blue-600 text-white rounded-2xl hover:bg-blue-700 flex items-center justify-center text-xl font-bold transition-all hover:scale-105"
               >
-                <Plus className="w-5 h-5 mr-2" />
+                <Plus className="w-7 h-7 mr-4" />
                 新对话
               </button>
             </div>
 
             {/* 对话历史 */}
-            <div className="flex-1 overflow-y-auto p-4">
-              <h3 className="text-sm font-medium text-gray-400 mb-3">对话历史</h3>
-              <div className="space-y-2">
+            <div className="flex-1 overflow-y-auto p-8">
+              <h3 className="text-xl font-bold text-gray-300 mb-6">对话历史</h3>
+              <div className="space-y-4">
                 {conversations.map((conversation) => (
                   <div
                     key={conversation.id}
-                    className={`relative group rounded-lg border-2 transition-colors ${
+                    className={`relative group rounded-2xl border-2 transition-all duration-300 hover:scale-102 ${
                       currentConversation?.id === conversation.id
-                        ? 'border-blue-500 bg-gray-700'
-                        : 'border-transparent bg-gray-700 hover:bg-gray-600'
+                        ? 'border-blue-500 bg-white/10 backdrop-blur-xl'
+                        : 'border-white/10 bg-white/5 backdrop-blur-xl hover:bg-white/10'
                     }`}
                   >
                     {editingConversationId === conversation.id ? (
-                      <div className="p-3">
+                      <div className="p-6">
                         <input
                           type="text"
                           value={editingTitle}
                           onChange={(e) => setEditingTitle(e.target.value)}
-                          className="w-full px-2 py-1 rounded border border-blue-500 bg-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-4 py-3 rounded-xl border border-blue-500 bg-white/10 backdrop-blur-xl text-white text-lg focus:outline-none focus:ring-4 focus:ring-blue-500/50"
                           autoFocus
                           onKeyDown={(e) => {
                             if (e.key === 'Enter') {
@@ -321,20 +321,20 @@ export default function ChatPage() {
                             }
                           }}
                         />
-                        <div className="flex items-center justify-end space-x-2 mt-2">
+                        <div className="flex items-center justify-end space-x-4 mt-4">
                           <button
                             onClick={() => saveConversationTitle(conversation.id)}
-                            className="p-1 rounded text-green-400 hover:text-green-300"
+                            className="p-3 rounded-xl text-green-400 hover:text-green-300 hover:bg-green-400/10 transition-all"
                             title="保存"
                           >
-                            <Check size={16} />
+                            <Check size={20} />
                           </button>
                           <button
                             onClick={cancelEditing}
-                            className="p-1 rounded text-red-400 hover:text-red-300"
+                            className="p-3 rounded-xl text-red-400 hover:text-red-300 hover:bg-red-400/10 transition-all"
                             title="取消"
                           >
-                            <XCircle size={16} />
+                            <XCircle size={20} />
                           </button>
                         </div>
                       </div>
@@ -342,35 +342,35 @@ export default function ChatPage() {
                       <>
                         <button
                           onClick={() => selectConversation(conversation)}
-                          className="w-full text-left p-3"
+                          className="w-full text-left p-6"
                         >
-                          <div className="truncate font-medium pr-16 text-white">
+                          <div className="truncate text-xl font-bold pr-20 text-white mb-2">
                             {conversation.title}
                           </div>
-                          <div className="text-xs mt-1 text-gray-400">
+                          <div className="text-lg text-gray-400">
                             {conversation.updatedAt.toLocaleDateString()}
                           </div>
                         </button>
-                        <div className="absolute right-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity flex items-center space-x-1">
+                        <div className="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity flex items-center space-x-2">
                           <button
                             onClick={(e) => {
                               e.stopPropagation()
                               startEditingConversation(conversation)
                             }}
-                            className="p-1.5 rounded text-blue-400 hover:text-blue-300"
+                            className="p-3 rounded-xl text-blue-400 hover:text-blue-300 hover:bg-blue-400/10 transition-all"
                             title="编辑标题"
                           >
-                            <Edit2 size={14} />
+                            <Edit2 size={18} />
                           </button>
                           <button
                             onClick={(e) => {
                               e.stopPropagation()
                               deleteConversation(conversation.id)
                             }}
-                            className="p-1.5 rounded text-red-400 hover:text-red-300"
+                            className="p-3 rounded-xl text-red-400 hover:text-red-300 hover:bg-red-400/10 transition-all"
                             title="删除对话"
                           >
-                            <Trash2 size={14} />
+                            <Trash2 size={18} />
                           </button>
                         </div>
                       </>
@@ -381,12 +381,12 @@ export default function ChatPage() {
             </div>
 
             {/* 侧边栏底部 */}
-            <div className="p-4 border-t border-gray-700">
+            <div className="p-8 border-t border-white/10">
               <button
                 onClick={handleSignOut}
-                className="w-full py-2.5 px-4 bg-gray-700 text-white rounded-lg hover:bg-gray-600 flex items-center justify-center"
+                className="w-full py-5 px-8 bg-white/10 backdrop-blur-xl text-white rounded-2xl hover:bg-white/20 flex items-center justify-center text-xl font-bold transition-all hover:scale-105 border border-white/10"
               >
-                <LogOut className="w-5 h-5 mr-2" />
+                <LogOut className="w-7 h-7 mr-4" />
                 退出登录
               </button>
             </div>
@@ -394,28 +394,28 @@ export default function ChatPage() {
         )}
       </AnimatePresence>
 
-      {/* 主聊天区域 */}
+      {/* 主聊天区域 - 更大布局 */}
       <div className="flex-1 flex flex-col">
         {/* 顶部导航 */}
-        <div className="bg-gray-800 p-4 border-b border-gray-700">
+        <div className="bg-black/40 backdrop-blur-xl p-6 border-b border-white/10">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <button
                 onClick={() => setSidebarOpen(!sidebarOpen)}
-                className="mr-3 text-gray-400 hover:text-white"
+                className="mr-6 text-gray-300 hover:text-white transition-colors"
                 title={sidebarOpen ? "隐藏对话列表" : "显示对话列表"}
               >
-                <Menu className="w-6 h-6" />
+                <Menu className="w-8 h-8" />
               </button>
-              <Sparkles className="w-6 h-6 mr-2 text-blue-400" />
-              <h1 className="text-xl font-semibold text-white">
+              <Sparkles className="w-8 h-8 mr-4 text-blue-400" />
+              <h1 className="text-3xl font-bold text-white">
                 {currentConversation?.title || '与高我对话'}
               </h1>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-6">
               <button
                 onClick={() => router.push('/charts')}
-                className="px-4 py-2 text-sm font-medium text-blue-400 hover:text-blue-300"
+                className="px-8 py-4 text-xl font-bold text-blue-400 hover:text-blue-300 transition-colors"
               >
                 人类图
               </button>
@@ -423,54 +423,57 @@ export default function ChatPage() {
           </div>
         </div>
 
-        {/* 聊天消息区域 */}
-        <div className="flex-1 overflow-y-auto p-4">
+        {/* 聊天消息区域 - 更大间距和文字 */}
+        <div className="flex-1 overflow-y-auto p-8">
           {messages.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center">
-              <div className="text-6xl mb-4">✨</div>
-              <h2 className="text-2xl font-bold text-white mb-2">开始与你的高我对话</h2>
-              <p className="text-gray-400">
+              <div className="text-8xl mb-8">✨</div>
+              <h2 className="text-5xl font-black text-white mb-6">开始与你的高我对话</h2>
+              <p className="text-2xl text-gray-300 max-w-2xl">
                 探索内在智慧，获得人生指引
               </p>
             </div>
           ) : (
-            <div className="max-w-4xl mx-auto space-y-4">
+            <div className="max-w-6xl mx-auto space-y-8">
               {messages.map((message) => (
                 <motion.div
                   key={message.id}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   className={`flex ${
                     message.role === 'user' ? 'justify-end' : 'justify-start'
                   }`}
                 >
                   <div
-                    className={`flex items-start space-x-3 max-w-[70%] ${
+                    className={`flex items-start space-x-6 max-w-[80%] ${
                       message.role === 'user' ? 'flex-row-reverse space-x-reverse' : ''
                     }`}
                   >
                     <div
-                      className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                      className={`w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0 ${
                         message.role === 'user'
                           ? 'bg-blue-600 text-white'
-                          : 'bg-gray-700 text-blue-400'
+                          : 'bg-white/10 backdrop-blur-xl text-blue-400 border-2 border-white/20'
                       }`}
                     >
                       {message.role === 'user' ? (
-                        <UserIcon className="w-5 h-5" />
+                        <UserIcon className="w-10 h-10" />
                       ) : (
-                        <Bot className="w-5 h-5" />
+                        <Bot className="w-10 h-10" />
                       )}
                     </div>
-                    <div>
+                    <div className="max-w-full">
                       <div
-                        className={`px-4 py-3 rounded-lg ${
+                        className={`px-8 py-6 rounded-2xl backdrop-blur-xl ${
                           message.role === 'user'
-                            ? 'bg-blue-600 text-white rounded-br-sm'
-                            : 'bg-gray-700 text-white rounded-bl-sm'
+                            ? 'bg-blue-600 text-white rounded-br-2xl'
+                            : 'bg-white/10 text-white rounded-bl-2xl border border-white/20'
                         }`}
                       >
-                        <p className="whitespace-pre-wrap">{message.content}</p>
+                        <p className="text-xl leading-relaxed whitespace-pre-wrap">{message.content}</p>
+                      </div>
+                      <div className="text-gray-400 mt-3 text-lg">
+                        {message.timestamp.toLocaleTimeString()}
                       </div>
                     </div>
                   </div>
@@ -478,15 +481,15 @@ export default function ChatPage() {
               ))}
               {isSending && (
                 <div className="flex justify-start">
-                  <div className="flex items-start space-x-3">
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center bg-gray-700">
-                      <Bot className="w-5 h-5 text-blue-400" />
+                  <div className="flex items-start space-x-6">
+                    <div className="w-16 h-16 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-xl border-2 border-white/20">
+                      <Bot className="w-10 h-10 text-blue-400" />
                     </div>
-                    <div className="px-4 py-3 bg-gray-700 rounded-lg rounded-bl-sm">
-                      <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                        <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                    <div className="px-8 py-6 bg-white/10 rounded-2xl rounded-bl-2xl backdrop-blur-xl border border-white/20">
+                      <div className="flex space-x-3">
+                        <div className="w-4 h-4 bg-blue-400 rounded-full animate-bounce"></div>
+                        <div className="w-4 h-4 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                        <div className="w-4 h-4 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                       </div>
                     </div>
                   </div>
@@ -497,24 +500,24 @@ export default function ChatPage() {
           )}
         </div>
 
-        {/* 输入区域 */}
-        <div className="bg-gray-800 p-4 border-t border-gray-700">
-          <div className="max-w-4xl mx-auto">
-            <form onSubmit={handleSendMessage} className="flex space-x-4">
+        {/* 输入区域 - 更大设计 */}
+        <div className="bg-black/40 backdrop-blur-xl p-8 border-t border-white/10">
+          <div className="max-w-6xl mx-auto">
+            <form onSubmit={handleSendMessage} className="flex space-x-6">
               <input
                 type="text"
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 placeholder="输入你想说的话..."
-                className="flex-1 px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="flex-1 px-8 py-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl text-white placeholder-gray-400 text-xl focus:outline-none focus:ring-4 focus:ring-blue-500/50 focus:border-blue-500 transition-all"
                 disabled={isSending}
               />
               <button
                 type="submit"
                 disabled={isSending || !inputMessage.trim()}
-                className="px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
+                className="px-10 py-6 bg-blue-600 text-white rounded-2xl hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center text-xl font-bold transition-all hover:scale-105 disabled:hover:scale-100"
               >
-                <Send className="w-5 h-5" />
+                <Send className="w-7 h-7" />
               </button>
             </form>
           </div>
@@ -524,7 +527,7 @@ export default function ChatPage() {
       {/* 移动端遮罩 */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
           onClick={() => setSidebarOpen(false)}
         />
       )}
