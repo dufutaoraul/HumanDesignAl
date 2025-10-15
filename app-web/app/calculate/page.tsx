@@ -73,7 +73,7 @@ export default function CalculatePage() {
       loadSavedCharts();
       loadCustomTags();
     }
-  }, [user]);
+  }, [user, loadSavedCharts, loadCustomTags]);
 
   const loadSavedCharts = async () => {
     if (!user) return;
