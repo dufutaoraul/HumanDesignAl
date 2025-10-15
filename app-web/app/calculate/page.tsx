@@ -67,14 +67,6 @@ export default function CalculatePage() {
     }
   }, [user, authLoading, router]);
 
-  // 加载数据
-  useEffect(() => {
-    if (user) {
-      loadSavedCharts();
-      loadCustomTags();
-    }
-  }, [user, loadSavedCharts, loadCustomTags]);
-
   const loadSavedCharts = useCallback(async () => {
     if (!user) return;
 
@@ -123,6 +115,14 @@ export default function CalculatePage() {
       console.error('加载自定义标签失败:', error);
     }
   }, [user, availableTags]);
+
+  // 加载数据
+  useEffect(() => {
+    if (user) {
+      loadSavedCharts();
+      loadCustomTags();
+    }
+  }, [user, loadSavedCharts, loadCustomTags]);
 
   const getSortedCharts = () => {
     const sorted = [...savedCharts];
