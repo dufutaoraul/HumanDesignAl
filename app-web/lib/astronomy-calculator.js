@@ -35,6 +35,7 @@ async function fetchTrueNodeFromService(date) {
     }
   } catch (error) {
     // 服务不可用，返回null让调用者使用回退方案
+    console.warn('Swiss Ephemeris服务不可用:', error.message);
     return null;
   }
 }

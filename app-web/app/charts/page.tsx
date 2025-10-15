@@ -4,7 +4,7 @@
 
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/lib/auth-context'
 import Link from 'next/link'
@@ -51,7 +51,7 @@ export default function ChartsListPage() {
     }
   }, [user, loading, router])
 
-  const loadCharts = async () => {
+  const loadCharts = useCallback(async () => {
     if (!user) return
 
     try {
@@ -70,13 +70,13 @@ export default function ChartsListPage() {
     } finally {
       setLoadingCharts(false)
     }
-  }
+  }, [user])
 
   useEffect(() => {
     if (user) {
       loadCharts()
     }
-  }, [user])
+  }, [user, loadCharts])
 
   const deleteChart = async (id: string) => {
     if (!confirm('确定要删除这个人类图资料吗？')) {

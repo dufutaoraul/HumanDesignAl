@@ -5,7 +5,7 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/lib/auth-context';
 import { supabase, TABLES } from '@/lib/supabase';
@@ -75,7 +75,7 @@ export default function CalculatePage() {
     }
   }, [user, loadSavedCharts, loadCustomTags]);
 
-  const loadSavedCharts = async () => {
+  const loadSavedCharts = useCallback(async () => {
     if (!user) return;
 
     try {
@@ -102,9 +102,9 @@ export default function CalculatePage() {
     } catch (error) {
       console.error('加载图表失败:', error);
     }
-  };
+  }, [user]);
 
-  const loadCustomTags = async () => {
+  const loadCustomTags = useCallback(async () => {
     if (!user) return;
 
     try {
@@ -122,7 +122,7 @@ export default function CalculatePage() {
     } catch (error) {
       console.error('加载自定义标签失败:', error);
     }
-  };
+  }, [user, availableTags]);
 
   const getSortedCharts = () => {
     const sorted = [...savedCharts];
@@ -566,7 +566,7 @@ export default function CalculatePage() {
               <ul className="space-y-2 text-sm text-secondary">
                 <li>• 请确保出生时间准确到分钟</li>
                 <li>• 选择正确的时区对计算结果至关重要</li>
-                <li>• "本人"标签每个用户只能使用一次</li>
+                <li>• &quot;本人&quot;标签每个用户只能使用一次</li>
                 <li>• 计算结果基于瑞士星历表精确算法</li>
               </ul>
             </div>

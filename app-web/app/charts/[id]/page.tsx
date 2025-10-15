@@ -4,7 +4,7 @@
 
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { useAuth } from '@/lib/auth-context'
 import Link from 'next/link'
@@ -52,7 +52,7 @@ export default function ChartDetailPage() {
     }
   }, [user, loading, router])
 
-  const loadChart = async (id: string) => {
+  const loadChart = useCallback(async (id: string) => {
     try {
       const response = await fetch(`/api/charts/${id}`)
       if (response.ok) {
@@ -68,13 +68,13 @@ export default function ChartDetailPage() {
     } finally {
       setLoadingChart(false)
     }
-  }
+  }, [router])
 
   useEffect(() => {
     if (user && params.id) {
       loadChart(params.id as string)
     }
-  }, [user, params.id])
+  }, [user, params.id, loadChart])
 
   if (loading || loadingChart) {
     return (
