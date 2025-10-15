@@ -227,57 +227,32 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="flex h-screen main-content">
-      {/* 左侧边栏 - 更大尺寸设计 */}
+    <div className="h-screen main-content flex">
+      {/* 全新设计：左侧简洁面板 */}
       <AnimatePresence>
         {sidebarOpen && (
           <motion.div
-            initial={{ x: -400 }}
-            animate={{ x: 0 }}
-            exit={{ x: -400 }}
-            className="fixed lg:relative z-50 w-96 h-screen flex flex-col bg-black/40 backdrop-blur-xl border-r border-white/10"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            className="w-80 bg-white/5 backdrop-blur-sm border-r border-white/10"
           >
-            {/* 侧边栏头部 */}
-            <div className="p-8 border-b border-white/10">
-              <div className="flex items-center justify-between mb-8">
-                <h2 className="text-3xl font-bold text-white">
-                  人类图 AI
-                </h2>
-                <button
-                  onClick={() => setSidebarOpen(false)}
-                  className="lg:hidden text-gray-300 hover:text-white transition-colors"
-                >
-                  <X className="w-8 h-8" />
-                </button>
-              </div>
-
-              {/* 用户信息 */}
-              <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 mb-8 border border-white/10">
-                <div className="flex items-center mb-4">
-                  <UserIcon className="w-7 h-7 mr-4 text-blue-400" />
-                  <span className="text-xl truncate text-white font-medium">{user.email}</span>
+            <div className="p-6 space-y-6">
+              {/* 用户信息卡片 */}
+              <div className="bg-white/10 rounded-xl p-4 border border-white/20">
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                    <UserIcon className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-sm text-white/80 font-medium">用户</p>
+                    <p className="text-xs text-white/60 truncate">{user.email}</p>
+                  </div>
                 </div>
-                {hasHumanDesign !== null && (
-                  <div className="flex items-center justify-between pt-6 border-t border-white/10">
-                    <div className="flex items-center text-lg">
-                      <div
-                        className={`w-4 h-4 rounded-full mr-3 ${
-                          hasHumanDesign ? 'animate-pulse' : ''
-                        }`}
-                        style={{ background: hasHumanDesign ? '#10b981' : '#6b7280' }}
-                      />
-                      <span className="text-gray-300 font-medium">
-                        {hasHumanDesign ? '已录入人类图' : '未录入人类图'}
-                      </span>
-                    </div>
-                    {!hasHumanDesign && (
-                      <button
-                        onClick={() => router.push('/calculate')}
-                        className="text-lg px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors font-medium"
-                      >
-                        录入
-                      </button>
-                    )}
+                {hasHumanDesign && (
+                  <div className="flex items-center text-xs text-green-400 bg-green-400/10 rounded-lg px-3 py-2">
+                    <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
+                    已录入人类图
                   </div>
                 )}
               </div>
@@ -285,249 +260,198 @@ export default function ChatPage() {
               {/* 新对话按钮 */}
               <button
                 onClick={createNewConversation}
-                className="w-full px-8 py-5 bg-blue-600 text-white rounded-2xl hover:bg-blue-700 flex items-center justify-center text-xl font-bold transition-all hover:scale-105"
+                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl py-3 px-4 font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200 flex items-center justify-center space-x-2"
               >
-                <Plus className="w-7 h-7 mr-4" />
-                新对话
+                <Plus className="w-5 h-5" />
+                <span>新对话</span>
               </button>
-            </div>
 
-            {/* 对话历史 */}
-            <div className="flex-1 overflow-y-auto p-8">
-              <h3 className="text-xl font-bold text-gray-300 mb-6">对话历史</h3>
-              <div className="space-y-4">
-                {conversations.map((conversation) => (
-                  <div
-                    key={conversation.id}
-                    className={`relative group rounded-2xl border-2 transition-all duration-300 hover:scale-102 ${
-                      currentConversation?.id === conversation.id
-                        ? 'border-blue-500 bg-white/10 backdrop-blur-xl'
-                        : 'border-white/10 bg-white/5 backdrop-blur-xl hover:bg-white/10'
-                    }`}
-                  >
-                    {editingConversationId === conversation.id ? (
-                      <div className="p-6">
-                        <input
-                          type="text"
-                          value={editingTitle}
-                          onChange={(e) => setEditingTitle(e.target.value)}
-                          className="w-full px-4 py-3 rounded-xl border border-blue-500 bg-white/10 backdrop-blur-xl text-white text-lg focus:outline-none focus:ring-4 focus:ring-blue-500/50"
-                          autoFocus
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter') {
-                              saveConversationTitle(conversation.id)
-                            } else if (e.key === 'Escape') {
-                              cancelEditing()
-                            }
-                          }}
-                        />
-                        <div className="flex items-center justify-end space-x-4 mt-4">
-                          <button
-                            onClick={() => saveConversationTitle(conversation.id)}
-                            className="p-3 rounded-xl text-green-400 hover:text-green-300 hover:bg-green-400/10 transition-all"
-                            title="保存"
-                          >
-                            <Check size={20} />
-                          </button>
-                          <button
-                            onClick={cancelEditing}
-                            className="p-3 rounded-xl text-red-400 hover:text-red-300 hover:bg-red-400/10 transition-all"
-                            title="取消"
-                          >
-                            <XCircle size={20} />
-                          </button>
-                        </div>
-                      </div>
-                    ) : (
-                      <>
-                        <button
-                          onClick={() => selectConversation(conversation)}
-                          className="w-full text-left p-6"
-                        >
-                          <div className="truncate text-xl font-bold pr-20 text-white mb-2">
-                            {conversation.title}
-                          </div>
-                          <div className="text-lg text-gray-400">
+              {/* 对话列表 */}
+              <div className="space-y-2">
+                <h3 className="text-xs font-medium text-white/60 uppercase tracking-wider">对话历史</h3>
+                <div className="space-y-1 max-h-96 overflow-y-auto">
+                  {conversations.map((conversation) => (
+                    <div
+                      key={conversation.id}
+                      className={`group rounded-lg p-3 cursor-pointer transition-all duration-200 ${
+                        currentConversation?.id === conversation.id
+                          ? 'bg-white/20 text-white'
+                          : 'text-white/70 hover:bg-white/10 hover:text-white'
+                      }`}
+                      onClick={() => selectConversation(conversation)}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium truncate">{conversation.title}</p>
+                          <p className="text-xs text-white/50 mt-1">
                             {conversation.updatedAt.toLocaleDateString()}
-                          </div>
-                        </button>
-                        <div className="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity flex items-center space-x-2">
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation()
-                              startEditingConversation(conversation)
-                            }}
-                            className="p-3 rounded-xl text-blue-400 hover:text-blue-300 hover:bg-blue-400/10 transition-all"
-                            title="编辑标题"
-                          >
-                            <Edit2 size={18} />
-                          </button>
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation()
-                              deleteConversation(conversation.id)
-                            }}
-                            className="p-3 rounded-xl text-red-400 hover:text-red-300 hover:bg-red-400/10 transition-all"
-                            title="删除对话"
-                          >
-                            <Trash2 size={18} />
-                          </button>
+                          </p>
                         </div>
-                      </>
-                    )}
-                  </div>
-                ))}
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            deleteConversation(conversation.id)
+                          }}
+                          className="opacity-0 group-hover:opacity-100 transition-opacity p-1 hover:bg-white/10 rounded"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* 侧边栏底部 */}
-            <div className="p-8 border-t border-white/10">
-              <button
-                onClick={handleSignOut}
-                className="w-full py-5 px-8 bg-white/10 backdrop-blur-xl text-white rounded-2xl hover:bg-white/20 flex items-center justify-center text-xl font-bold transition-all hover:scale-105 border border-white/10"
-              >
-                <LogOut className="w-7 h-7 mr-4" />
-                退出登录
-              </button>
+              {/* 底部操作 */}
+              <div className="pt-4 border-t border-white/10 space-y-2">
+                <button
+                  onClick={() => router.push('/charts')}
+                  className="w-full text-left text-white/70 hover:text-white py-2 px-3 rounded-lg hover:bg-white/10 transition-all duration-200 text-sm"
+                >
+                  人类图管理
+                </button>
+                <button
+                  onClick={handleSignOut}
+                  className="w-full text-left text-white/70 hover:text-white py-2 px-3 rounded-lg hover:bg-white/10 transition-all duration-200 text-sm"
+                >
+                  退出登录
+                </button>
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* 主聊天区域 - 更大布局 */}
-      <div className="flex-1 flex flex-col">
-        {/* 顶部导航 */}
-        <div className="bg-black/40 backdrop-blur-xl p-6 border-b border-white/10">
+      {/* 全新设计：主聊天区域 */}
+      <div className="flex-1 flex flex-col bg-black/20">
+        {/* 简洁顶部栏 */}
+        <header className="bg-white/5 backdrop-blur-sm border-b border-white/10 px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center">
+            <div className="flex items-center space-x-4">
               <button
                 onClick={() => setSidebarOpen(!sidebarOpen)}
-                className="mr-6 text-gray-300 hover:text-white transition-colors"
-                title={sidebarOpen ? "隐藏对话列表" : "显示对话列表"}
+                className="p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
               >
-                <Menu className="w-8 h-8" />
+                <Menu className="w-5 h-5" />
               </button>
-              <Sparkles className="w-8 h-8 mr-4 text-blue-400" />
-              <h1 className="text-3xl font-bold text-white">
-                {currentConversation?.title || '与高我对话'}
-              </h1>
+              <div>
+                <h1 className="text-lg font-semibold text-white">
+                  {currentConversation?.title || '与高我对话'}
+                </h1>
+                <p className="text-xs text-white/60">AI心灵陪伴</p>
+              </div>
             </div>
-            <div className="flex items-center space-x-6">
+            {!hasHumanDesign && (
               <button
-                onClick={() => router.push('/charts')}
-                className="px-8 py-4 text-xl font-bold text-blue-400 hover:text-blue-300 transition-colors"
+                onClick={() => router.push('/calculate')}
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-all duration-200"
               >
-                人类图
+                录入人类图
               </button>
-            </div>
+            )}
           </div>
-        </div>
+        </header>
 
-        {/* 聊天消息区域 - 更大间距和文字 */}
-        <div className="flex-1 overflow-y-auto p-8">
-          {messages.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-full text-center">
-              <div className="text-8xl mb-8">✨</div>
-              <h2 className="text-5xl font-black text-white mb-6">开始与你的高我对话</h2>
-              <p className="text-2xl text-gray-300 max-w-2xl">
-                探索内在智慧，获得人生指引
-              </p>
-            </div>
-          ) : (
-            <div className="max-w-6xl mx-auto space-y-8">
-              {messages.map((message) => (
-                <motion.div
-                  key={message.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className={`flex ${
-                    message.role === 'user' ? 'justify-end' : 'justify-start'
-                  }`}
-                >
+        {/* 聊天内容区域 */}
+        <div className="flex-1 overflow-hidden flex flex-col">
+          <main className="flex-1 overflow-y-auto p-6">
+            {messages.length === 0 ? (
+              <div className="h-full flex items-center justify-center">
+                <div className="text-center max-w-md">
+                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <Sparkles className="w-8 h-8 text-white" />
+                  </div>
+                  <h2 className="text-xl font-semibold text-white mb-2">开始与你的高我对话</h2>
+                  <p className="text-sm text-white/60">
+                    探索内在智慧，获得人生指引
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-6 max-w-4xl mx-auto">
+                {messages.map((message) => (
                   <div
-                    className={`flex items-start space-x-6 max-w-[80%] ${
-                      message.role === 'user' ? 'flex-row-reverse space-x-reverse' : ''
+                    key={message.id}
+                    className={`flex items-end space-x-3 ${
+                      message.role === 'user' ? 'justify-end' : 'justify-start'
                     }`}
                   >
+                    {message.role === 'assistant' && (
+                      <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Bot className="w-5 h-5 text-white" />
+                      </div>
+                    )}
                     <div
-                      className={`w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0 ${
+                      className={`max-w-[70%] px-4 py-3 rounded-2xl ${
                         message.role === 'user'
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-white/10 backdrop-blur-xl text-blue-400 border-2 border-white/20'
+                          ? 'bg-blue-600 text-white rounded-br-sm'
+                          : 'bg-white/10 text-white backdrop-blur-sm rounded-bl-sm border border-white/20'
                       }`}
                     >
-                      {message.role === 'user' ? (
-                        <UserIcon className="w-10 h-10" />
-                      ) : (
-                        <Bot className="w-10 h-10" />
-                      )}
+                      <p className="text-sm leading-relaxed whitespace-pre-wrap">
+                        {message.content}
+                      </p>
+                      <p className="text-xs text-white/50 mt-2">
+                        {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                      </p>
                     </div>
-                    <div className="max-w-full">
-                      <div
-                        className={`px-8 py-6 rounded-2xl backdrop-blur-xl ${
-                          message.role === 'user'
-                            ? 'bg-blue-600 text-white rounded-br-2xl'
-                            : 'bg-white/10 text-white rounded-bl-2xl border border-white/20'
-                        }`}
-                      >
-                        <p className="text-xl leading-relaxed whitespace-pre-wrap">{message.content}</p>
+                    {message.role === 'user' && (
+                      <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <UserIcon className="w-5 h-5 text-white" />
                       </div>
-                      <div className="text-gray-400 mt-3 text-lg">
-                        {message.timestamp.toLocaleTimeString()}
+                    )}
+                  </div>
+                ))}
+                {isSending && (
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                      <Bot className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl rounded-bl-sm px-4 py-3">
+                      <div className="flex space-x-1">
+                        <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                        <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                       </div>
                     </div>
                   </div>
-                </motion.div>
-              ))}
-              {isSending && (
-                <div className="flex justify-start">
-                  <div className="flex items-start space-x-6">
-                    <div className="w-16 h-16 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-xl border-2 border-white/20">
-                      <Bot className="w-10 h-10 text-blue-400" />
-                    </div>
-                    <div className="px-8 py-6 bg-white/10 rounded-2xl rounded-bl-2xl backdrop-blur-xl border border-white/20">
-                      <div className="flex space-x-3">
-                        <div className="w-4 h-4 bg-blue-400 rounded-full animate-bounce"></div>
-                        <div className="w-4 h-4 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                        <div className="w-4 h-4 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-              <div ref={messagesEndRef} />
-            </div>
-          )}
-        </div>
+                )}
+                <div ref={messagesEndRef} />
+              </div>
+            )}
+          </main>
 
-        {/* 输入区域 - 更大设计 */}
-        <div className="bg-black/40 backdrop-blur-xl p-8 border-t border-white/10">
-          <div className="max-w-6xl mx-auto">
-            <form onSubmit={handleSendMessage} className="flex space-x-6">
-              <input
-                type="text"
-                value={inputMessage}
-                onChange={(e) => setInputMessage(e.target.value)}
-                placeholder="输入你想说的话..."
-                className="flex-1 px-8 py-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl text-white placeholder-gray-400 text-xl focus:outline-none focus:ring-4 focus:ring-blue-500/50 focus:border-blue-500 transition-all"
-                disabled={isSending}
-              />
-              <button
-                type="submit"
-                disabled={isSending || !inputMessage.trim()}
-                className="px-10 py-6 bg-blue-600 text-white rounded-2xl hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center text-xl font-bold transition-all hover:scale-105 disabled:hover:scale-100"
-              >
-                <Send className="w-7 h-7" />
-              </button>
+          {/* 输入区域 */}
+          <footer className="bg-white/5 backdrop-blur-sm border-t border-white/10 p-4">
+            <form onSubmit={handleSendMessage} className="max-w-4xl mx-auto">
+              <div className="flex items-center space-x-3">
+                <div className="flex-1 relative">
+                  <input
+                    type="text"
+                    value={inputMessage}
+                    onChange={(e) => setInputMessage(e.target.value)}
+                    placeholder="输入你想说的话..."
+                    className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 pr-12 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    disabled={isSending}
+                  />
+                  <button
+                    type="submit"
+                    disabled={isSending || !inputMessage.trim()}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                  >
+                    <Send className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
             </form>
-          </div>
+          </footer>
         </div>
       </div>
 
       {/* 移动端遮罩 */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
           onClick={() => setSidebarOpen(false)}
         />
       )}

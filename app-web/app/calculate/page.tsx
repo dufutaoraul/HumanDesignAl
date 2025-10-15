@@ -303,189 +303,121 @@ export default function CalculatePage() {
   }
 
   return (
-    <div className="min-h-screen main-content">
-      {/* 导航栏 */}
-      <nav className="bg-black/40 backdrop-blur-xl border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-8">
-              <h1 className="text-2xl font-bold text-white">人类图 AI 陪伴</h1>
-              <span className="text-gray-300 text-lg">星图计算器</span>
-            </div>
-            <div className="flex items-center space-x-6">
-              {user && (
-                <span className="text-gray-300 text-lg">{user.email}</span>
-              )}
-              <button
-                onClick={() => router.push('/chat')}
-                className="text-gray-300 hover:text-white transition-colors"
-              >
-                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                </svg>
-              </button>
-              <button
-                onClick={() => router.push('/charts')}
-                className="px-6 py-3 bg-blue-600 text-white text-lg font-medium rounded-xl hover:bg-blue-700 transition-all"
-              >
-                我的星图
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        {/* 页面标题 */}
-        <div className="text-center mb-12">
-          <h2 className="text-5xl font-black text-white mb-4">人类图计算器</h2>
-          <p className="text-xl text-gray-300">探索您的宇宙能量印记，解析独特的生命密码</p>
+    <div className="min-h-screen main-content flex">
+      {/* 全新设计：左侧操作面板 */}
+      <div className="w-96 bg-white/5 backdrop-blur-sm border-r border-white/10 p-6">
+        {/* 标题 */}
+        <div className="mb-8">
+          <h1 className="text-xl font-bold text-white mb-2">人类图计算器</h1>
+          <p className="text-sm text-white/60">探索您的宇宙能量印记</p>
         </div>
 
-        {/* 输入表单区域 - 只有当没有本人资料时才显示 */}
+        {/* 输入表单 - 只有当没有本人资料时才显示 */}
         {!hasSelfChart && (
-          <div className="bg-black/30 backdrop-blur-xl rounded-2xl p-8 mb-12 border border-white/10">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-white mb-3">出生信息</h3>
-              <p className="text-lg text-gray-300">请填写准确的出生信息以计算您的人类图</p>
+          <div className="space-y-4 mb-6">
+            <div>
+              <label className="block text-sm font-medium text-white/80 mb-2">姓名</label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-sm text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                placeholder="请输入姓名"
+              />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              <div>
-                <label className="block text-lg font-semibold text-gray-200 mb-3">
-                  姓名
-                </label>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full px-5 py-4 bg-black/50 border border-white/20 rounded-xl text-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                  placeholder="请输入姓名"
-                />
-              </div>
-
-              <div>
-                <label className="block text-lg font-semibold text-gray-200 mb-3">
-                  出生日期
-                </label>
-                <input
-                  type="date"
-                  value={birthDate}
-                  onChange={(e) => setBirthDate(e.target.value)}
-                  className="w-full px-5 py-4 bg-black/50 border border-white/20 rounded-xl text-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                />
-              </div>
-
-              <div>
-                <label className="block text-lg font-semibold text-gray-200 mb-3">
-                  出生时间
-                </label>
-                <input
-                  type="time"
-                  value={birthTime}
-                  onChange={(e) => setBirthTime(e.target.value)}
-                  className="w-full px-5 py-4 bg-black/50 border border-white/20 rounded-xl text-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                />
-              </div>
-
-              <div>
-                <label className="block text-lg font-semibold text-gray-200 mb-3">
-                  出生地点
-                </label>
-                <input
-                  type="text"
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-                  className="w-full px-5 py-4 bg-black/50 border border-white/20 rounded-xl text-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                  placeholder="例如: 北京, 上海"
-                />
-              </div>
-
-              <div>
-                <label className="block text-lg font-semibold text-gray-200 mb-3">
-                  时区
-                </label>
-                <select
-                  value={timezone}
-                  onChange={(e) => setTimezone(e.target.value)}
-                  className="w-full px-5 py-4 bg-black/50 border border-white/20 rounded-xl text-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                >
-                  <option value="Asia/Shanghai">中国(北京时间 UTC+8)</option>
-                  <option value="America/New_York">美国东部(UTC-5/-4)</option>
-                  <option value="America/Los_Angeles">美国西部(UTC-8/-7)</option>
-                  <option value="Europe/London">英国(UTC+0/+1)</option>
-                  <option value="Europe/Paris">欧洲中部(UTC+1/+2)</option>
-                  <option value="Asia/Tokyo">日本(UTC+9)</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-lg font-semibold text-gray-200 mb-3">
-                  关系标签
-                  {relationship === '本人' && (
-                    <span className="text-base ml-3 text-yellow-400">
-                      (每个用户只能有1个)
-                    </span>
-                  )}
-                </label>
-                <select
-                  value={relationship}
-                  onChange={(e) => {
-                    if (e.target.value === '__new__') {
-                      setShowNewTagInput(true);
-                    } else {
-                      setRelationship(e.target.value);
-                      setShowNewTagInput(false);
-                    }
-                  }}
-                  className="w-full px-5 py-4 bg-black/50 border border-white/20 rounded-xl text-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                >
-                  {availableTags.map(tag => (
-                    <option key={tag} value={tag}>
-                      {tag}
-                    </option>
-                  ))}
-                  <option value="__new__">+ 新建标签</option>
-                </select>
-                {showNewTagInput && (
-                  <div className="mt-4 flex gap-3">
-                    <input
-                      type="text"
-                      value={newTag}
-                      onChange={(e) => setNewTag(e.target.value)}
-                      placeholder="输入新标签名称"
-                      className="flex-1 px-4 py-3 bg-black/50 border border-white/20 rounded-xl text-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-                      onKeyPress={(e) => {
-                        if (e.key === 'Enter') {
-                          handleAddNewTag();
-                        }
-                      }}
-                    />
-                    <button
-                      onClick={handleAddNewTag}
-                      className="px-6 py-3 bg-blue-600 text-white text-lg font-medium rounded-xl hover:bg-blue-700 transition-all"
-                    >
-                      添加
-                    </button>
-                    <button
-                      onClick={() => {
-                        setShowNewTagInput(false);
-                        setNewTag('');
-                      }}
-                      className="px-6 py-3 bg-gray-600 text-gray-300 text-lg font-medium rounded-xl hover:bg-gray-700 transition-all"
-                    >
-                      取消
-                    </button>
-                  </div>
-                )}
-              </div>
+            <div>
+              <label className="block text-sm font-medium text-white/80 mb-2">出生日期</label>
+              <input
+                type="date"
+                value={birthDate}
+                onChange={(e) => setBirthDate(e.target.value)}
+                className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              />
             </div>
 
-            <div className="mt-10 flex gap-4 max-w-2xl mx-auto">
+            <div>
+              <label className="block text-sm font-medium text-white/80 mb-2">出生时间</label>
+              <input
+                type="time"
+                value={birthTime}
+                onChange={(e) => setBirthTime(e.target.value)}
+                className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-white/80 mb-2">出生地点</label>
+              <input
+                type="text"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+                className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-sm text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                placeholder="例如: 北京"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-white/80 mb-2">时区</label>
+              <select
+                value={timezone}
+                onChange={(e) => setTimezone(e.target.value)}
+                className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              >
+                <option value="Asia/Shanghai">中国(UTC+8)</option>
+                <option value="America/New_York">美国东部(UTC-5/-4)</option>
+                <option value="America/Los_Angeles">美国西部(UTC-8/-7)</option>
+                <option value="Europe/London">英国(UTC+0/+1)</option>
+                <option value="Europe/Paris">欧洲中部(UTC+1/+2)</option>
+                <option value="Asia/Tokyo">日本(UTC+9)</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-white/80 mb-2">关系标签</label>
+              <select
+                value={relationship}
+                onChange={(e) => {
+                  if (e.target.value === '__new__') {
+                    setShowNewTagInput(true);
+                  } else {
+                    setRelationship(e.target.value);
+                    setShowNewTagInput(false);
+                  }
+                }}
+                className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              >
+                {availableTags.map(tag => (
+                  <option key={tag} value={tag}>
+                    {tag}
+                  </option>
+                ))}
+                <option value="__new__">+ 新建标签</option>
+              </select>
+              {showNewTagInput && (
+                <div className="mt-2 flex gap-2">
+                  <input
+                    type="text"
+                    value={newTag}
+                    onChange={(e) => setNewTag(e.target.value)}
+                    placeholder="新标签"
+                    className="flex-1 px-2 py-1 bg-white/10 border border-white/20 rounded text-sm text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  />
+                  <button
+                    onClick={handleAddNewTag}
+                    className="px-3 py-1 bg-blue-600 text-white text-sm rounded hover:bg-blue-700 transition-all"
+                  >
+                    添加
+                  </button>
+                </div>
+              )}
+            </div>
+
+            <div className="pt-4 space-y-2">
               <button
                 onClick={handleCalculate}
                 disabled={loading}
-                className="flex-1 px-8 py-4 bg-blue-600 text-white text-xl font-bold rounded-xl hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2 px-4 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
               >
                 {loading ? '计算中...' : '计算人类图'}
               </button>
@@ -493,7 +425,7 @@ export default function CalculatePage() {
               {chartData && (
                 <button
                   onClick={handleSave}
-                  className="px-8 py-4 bg-green-600 text-white text-xl font-bold rounded-xl hover:bg-green-700 transition-all"
+                  className="w-full bg-green-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-green-700 transition-all duration-200"
                 >
                   保存星图
                 </button>
@@ -504,113 +436,191 @@ export default function CalculatePage() {
 
         {/* 已有本人资料的提示 */}
         {hasSelfChart && (
-          <div className="bg-blue-900/30 backdrop-blur-xl border border-blue-500/50 rounded-2xl p-6 mb-12">
-            <div className="flex items-center">
-              <svg className="w-8 h-8 text-blue-400 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="bg-blue-900/20 border border-blue-500/50 rounded-lg p-4 mb-6">
+            <div className="flex items-start">
+              <svg className="w-5 h-5 text-blue-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <p className="text-blue-300 text-lg">您已经创建了本人的人类图资料，可以在下方查看或继续为其他人创建人类图。</p>
+              <p className="text-blue-300 text-sm leading-relaxed">
+                您已创建本人的人类图资料，可在右侧查看或继续为他人创建。
+              </p>
             </div>
           </div>
         )}
 
+        {/* 导航按钮 */}
+        <div className="pt-4 border-t border-white/10 space-y-2">
+          <button
+            onClick={() => router.push('/chat')}
+            className="w-full text-left text-white/70 hover:text-white py-2 px-3 rounded-lg hover:bg-white/10 transition-all duration-200 text-sm flex items-center"
+          >
+            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+            与高我对话
+          </button>
+          <button
+            onClick={() => router.push('/charts')}
+            className="w-full text-left text-white/70 hover:text-white py-2 px-3 rounded-lg hover:bg-white/10 transition-all duration-200 text-sm"
+          >
+            我的星图
+          </button>
+        </div>
+      </div>
+
+      {/* 右侧内容区域 */}
+      <div className="flex-1 flex flex-col bg-black/20">
         {/* 计算结果 */}
-        {chartData && (
-          <div className="bg-black/30 backdrop-blur-xl rounded-2xl p-8 mb-12 border border-white/10">
-            <h3 className="text-2xl font-bold text-white mb-6">{chartData.name} 的人类图分析</h3>
+        {chartData ? (
+          <div className="flex-1 overflow-y-auto p-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 mb-6 border border-white/10">
+                <h2 className="text-2xl font-bold text-white mb-6">{chartData.name} 的人类图</h2>
 
-            {chartData.analysis && (
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-                <div className="bg-black/40 rounded-2xl p-6 border border-white/10">
-                  <p className="text-base text-gray-400 mb-2">类型</p>
-                  <p className="text-xl font-bold text-white">{chartData.analysis.type}</p>
-                </div>
-                <div className="bg-black/40 rounded-2xl p-6 border border-white/10">
-                  <p className="text-base text-gray-400 mb-2">人生角色</p>
-                  <p className="text-xl font-bold text-white">{chartData.analysis.profile}</p>
-                </div>
-                <div className="bg-black/40 rounded-2xl p-6 border border-white/10">
-                  <p className="text-base text-gray-400 mb-2">内在权威</p>
-                  <p className="text-xl font-bold text-white">{chartData.analysis.authority}</p>
-                </div>
-                <div className="bg-black/40 rounded-2xl p-6 border border-white/10">
-                  <p className="text-base text-gray-400 mb-2">定义</p>
-                  <p className="text-xl font-bold text-white">{chartData.analysis.definition}</p>
+                {chartData.analysis && (
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <div className="bg-white/10 rounded-lg p-4 border border-white/20">
+                      <p className="text-xs text-white/60 mb-1">类型</p>
+                      <p className="text-lg font-semibold text-white">{chartData.analysis.type}</p>
+                    </div>
+                    <div className="bg-white/10 rounded-lg p-4 border border-white/20">
+                      <p className="text-xs text-white/60 mb-1">人生角色</p>
+                      <p className="text-lg font-semibold text-white">{chartData.analysis.profile}</p>
+                    </div>
+                    <div className="bg-white/10 rounded-lg p-4 border border-white/20">
+                      <p className="text-xs text-white/60 mb-1">内在权威</p>
+                      <p className="text-lg font-semibold text-white">{chartData.analysis.authority}</p>
+                    </div>
+                    <div className="bg-white/10 rounded-lg p-4 border border-white/20">
+                      <p className="text-xs text-white/60 mb-1">定义</p>
+                      <p className="text-lg font-semibold text-white">{chartData.analysis.definition}</p>
+                    </div>
+                  </div>
+                )}
+
+                <div className="bg-white/10 rounded-lg p-4 border border-white/20">
+                  <p className="text-xs text-white/60 mb-3">出生信息</p>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-white/80">
+                    <div className="flex items-center">
+                      <span className="mr-2">📅</span> {chartData.birthDate}
+                    </div>
+                    <div className="flex items-center">
+                      <span className="mr-2">🕐</span> {chartData.birthTime}
+                    </div>
+                    <div className="flex items-center">
+                      <span className="mr-2">📍</span> {chartData.location}
+                    </div>
+                    <div className="flex items-center">
+                      <span className="mr-2">🌍</span> {chartData.timezone}
+                    </div>
+                  </div>
                 </div>
               </div>
-            )}
 
-            <div className="bg-black/40 rounded-2xl p-6 border border-white/10">
-              <p className="text-base text-gray-400 mb-4">出生信息</p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-lg text-gray-300">
-                <div>📅 {chartData.birthDate}</div>
-                <div>🕐 {chartData.birthTime}</div>
-                <div>📍 {chartData.location}</div>
-                <div>🌍 {chartData.timezone}</div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
+                <h3 className="text-lg font-semibold text-white mb-4">快速操作</h3>
+                <div className="grid grid-cols-2 gap-4">
+                  <button
+                    onClick={() => router.push('/chat')}
+                    className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-4 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200"
+                  >
+                    开始对话
+                  </button>
+                  <button
+                    onClick={() => router.push('/charts')}
+                    className="bg-white/10 text-white py-3 px-4 rounded-lg font-medium hover:bg-white/20 border border-white/20 transition-all duration-200"
+                  >
+                    查看详情
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="flex-1 flex items-center justify-center p-8">
+            <div className="text-center max-w-md">
+              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              </div>
+              <h2 className="text-xl font-semibold text-white mb-2">开始计算人类图</h2>
+              <p className="text-sm text-white/60 mb-6">
+                在左侧输入出生信息，探索独特的生命密码
+              </p>
+              <div className="text-left bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+                <h3 className="font-medium text-white mb-3">人类图包含的信息：</h3>
+                <ul className="space-y-2 text-sm text-white/70">
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
+                    内在权威与决策策略
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+                    人生角色与生命主题
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
+                    能量类型与互动方式
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-yellow-400 rounded-full mr-3"></div>
+                    轮回交叉与人生使命
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         )}
 
-        {/* 已保存的数据列表 */}
+        {/* 底部：已保存的星图列表 */}
         {savedCharts.length > 0 && (
-          <div>
-            <div className="flex justify-between items-center mb-8">
-              <h3 className="text-2xl font-bold text-white">已保存的星图</h3>
-              <div className="flex items-center gap-3">
-                <span className="text-lg text-gray-300">排序：</span>
+          <div className="border-t border-white/10 bg-white/5 backdrop-blur-sm">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-lg font-semibold text-white">已保存的星图</h3>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as 'date' | 'name' | 'relationship' | 'type')}
-                  className="px-4 py-2 bg-black/50 border border-white/20 rounded-lg text-lg text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="px-3 py-1 bg-white/10 border border-white/20 rounded text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 >
-                  <option value="date">保存时间</option>
-                  <option value="name">姓名</option>
-                  <option value="relationship">关系标签</option>
-                  <option value="type">类型</option>
+                  <option value="date">时间排序</option>
+                  <option value="name">姓名排序</option>
+                  <option value="relationship">标签排序</option>
+                  <option value="type">类型排序</option>
                 </select>
               </div>
-            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {getSortedCharts().map((chart, index) => (
-                <div
-                  key={chart.id || index}
-                  className="bg-black/30 backdrop-blur-xl rounded-2xl p-6 cursor-pointer hover:bg-black/40 transition-all border border-white/10 hover:border-white/30"
-                  onClick={() => setChartData(chart)}
-                >
-                  <div className="flex justify-between items-start mb-4">
-                    <h4 className="text-xl font-semibold text-white">{chart.name}</h4>
-                    <span className={`px-3 py-2 rounded-lg text-base font-bold ${
-                      chart.relationship === '本人'
-                        ? 'bg-blue-600 text-white'
-                        : chart.relationship === '家人'
-                          ? 'bg-green-600 text-white'
-                          : chart.relationship === '朋友'
-                            ? 'bg-yellow-600 text-white'
-                            : 'bg-gray-600 text-white'
-                    }`}>
-                      {chart.relationship}
-                    </span>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4 mb-4 text-base">
-                    <div>
-                      <span className="text-gray-400">类型:</span>
-                      <span className="ml-2 text-white">{chart.analysis?.type || '-'}</span>
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 max-h-40 overflow-y-auto">
+                {getSortedCharts().map((chart, index) => (
+                  <div
+                    key={chart.id || index}
+                    className="bg-white/10 rounded-lg p-3 cursor-pointer hover:bg-white/20 transition-all duration-200 border border-white/20 hover:border-white/40"
+                    onClick={() => setChartData(chart)}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="text-sm font-medium text-white truncate flex-1">{chart.name}</h4>
+                      <span className={`ml-2 px-2 py-0.5 rounded text-xs font-bold ${
+                        chart.relationship === '本人'
+                          ? 'bg-blue-600 text-white'
+                          : chart.relationship === '家人'
+                            ? 'bg-green-600 text-white'
+                            : chart.relationship === '朋友'
+                              ? 'bg-yellow-600 text-white'
+                              : 'bg-gray-600 text-white'
+                      }`}>
+                        {chart.relationship}
+                      </span>
                     </div>
-                    <div>
-                      <span className="text-gray-400">角色:</span>
-                      <span className="ml-2 text-white">{chart.analysis?.profile || '-'}</span>
+                    <div className="text-xs text-white/60 truncate">
+                      {chart.analysis?.type || '未计算'}
+                    </div>
+                    <div className="text-xs text-white/50 truncate mt-1">
+                      {chart.birthDate}
                     </div>
                   </div>
-
-                  <div className="text-base text-gray-400 border-t border-white/10 pt-4">
-                    <div className="mb-2">📅 {chart.birthDate} 🕐 {chart.birthTime}</div>
-                    <div>📍 {chart.location}</div>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         )}
