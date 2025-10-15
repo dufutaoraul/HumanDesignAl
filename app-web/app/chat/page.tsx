@@ -1,5 +1,5 @@
 /**
- * 与高我对话界面 - 主对话页面
+ * 与高我对话界面 - 标准简洁设计
  */
 
 'use client'
@@ -49,7 +49,6 @@ export default function ChatPage() {
   const [editingConversationId, setEditingConversationId] = useState<string | null>(null)
   const [editingTitle, setEditingTitle] = useState('')
   const [hasHumanDesign, setHasHumanDesign] = useState<boolean | null>(null)
-  const [showGuidanceBanner, setShowGuidanceBanner] = useState(true)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -68,7 +67,7 @@ export default function ChatPage() {
         const response = await fetch(`/api/charts?userId=${user.id}`)
         if (response.ok) {
           const data = await response.json()
-          const hasSelfChart = data.charts?.some((chart: { is_self: boolean }) => chart.is_self)
+          const hasSelfChart = data.charts?.some((chart: { relationship: string }) => chart.relationship === '本人')
           setHasHumanDesign(hasSelfChart)
         }
       } catch (error) {
@@ -206,10 +205,10 @@ export default function ChatPage() {
   // 加载中显示加载状态
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--cosmic-blue)' }}>
+      <div className="min-h-screen flex items-center justify-center bg-gray-900">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-t-transparent rounded-full animate-spin mx-auto mb-4" style={{ borderColor: 'var(--star-gold)' }}></div>
-          <p className="text-white">加载中...</p>
+          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-300">加载中...</p>
         </div>
       </div>
     )
@@ -218,17 +217,17 @@ export default function ChatPage() {
   // 如果未登录，显示加载状态（即将跳转）
   if (!user) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--cosmic-blue)' }}>
+      <div className="min-h-screen flex items-center justify-center bg-gray-900">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-t-transparent rounded-full animate-spin mx-auto mb-4" style={{ borderColor: 'var(--star-gold)' }}></div>
-          <p className="text-white">正在跳转...</p>
+          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-300">正在跳转...</p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="flex h-screen" style={{ background: 'var(--cosmic-blue)' }}>
+    <div className="flex h-screen main-content">
       {/* 左侧边栏 */}
       <AnimatePresence>
         {sidebarOpen && (
@@ -236,38 +235,36 @@ export default function ChatPage() {
             initial={{ x: -300 }}
             animate={{ x: 0 }}
             exit={{ x: -300 }}
-            className="fixed lg:relative z-50 w-80 h-screen flex flex-col shadow-lg"
-            style={{ background: 'var(--nebula-purple)', borderRight: '1px solid rgba(255, 215, 0, 0.2)' }}
+            className="fixed lg:relative z-50 w-80 h-screen flex flex-col bg-gray-800 border-r border-gray-700"
           >
             {/* 侧边栏头部 */}
-            <div className="p-4" style={{ borderBottom: '1px solid rgba(255, 215, 0, 0.2)' }}>
+            <div className="p-4 border-b border-gray-700">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-bold gradient-text">
+                <h2 className="text-xl font-semibold text-white">
                   人类图 AI
                 </h2>
                 <button
                   onClick={() => setSidebarOpen(false)}
-                  className="lg:hidden hover:opacity-80"
-                  style={{ color: 'var(--star-gold)' }}
+                  className="lg:hidden text-gray-400 hover:text-white"
                 >
                   <X className="w-6 h-6" />
                 </button>
               </div>
 
               {/* 用户信息 */}
-              <div className="glass rounded-lg p-3 mb-4">
+              <div className="bg-gray-700 rounded-lg p-3 mb-4">
                 <div className="flex items-center mb-2">
-                  <UserIcon className="w-5 h-5 mr-2" style={{ color: 'var(--star-gold)' }} />
+                  <UserIcon className="w-5 h-5 mr-2 text-blue-400" />
                   <span className="text-sm truncate text-white">{user.email}</span>
                 </div>
                 {hasHumanDesign !== null && (
-                  <div className="flex items-center justify-between pt-2" style={{ borderTop: '1px solid rgba(255, 215, 0, 0.1)' }}>
+                  <div className="flex items-center justify-between pt-2 border-t border-gray-600">
                     <div className="flex items-center text-xs">
                       <div
                         className={`w-2 h-2 rounded-full mr-2 ${
                           hasHumanDesign ? 'animate-pulse' : ''
                         }`}
-                        style={{ background: hasHumanDesign ? 'var(--star-gold)' : '#6b7280' }}
+                        style={{ background: hasHumanDesign ? '#10b981' : '#6b7280' }}
                       />
                       <span className="text-gray-300">
                         {hasHumanDesign ? '已录入人类图' : '未录入人类图'}
@@ -276,8 +273,7 @@ export default function ChatPage() {
                     {!hasHumanDesign && (
                       <button
                         onClick={() => router.push('/calculate')}
-                        className="text-xs px-2 py-1 rounded transition-colors hover:opacity-80"
-                        style={{ color: 'var(--star-gold)', background: 'rgba(255, 215, 0, 0.1)' }}
+                        className="text-xs px-2 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
                       >
                         录入
                       </button>
@@ -289,7 +285,7 @@ export default function ChatPage() {
               {/* 新对话按钮 */}
               <button
                 onClick={createNewConversation}
-                className="btn-gold w-full flex items-center justify-center"
+                className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center justify-center"
               >
                 <Plus className="w-5 h-5 mr-2" />
                 新对话
@@ -298,20 +294,16 @@ export default function ChatPage() {
 
             {/* 对话历史 */}
             <div className="flex-1 overflow-y-auto p-4">
-              <h3 className="text-sm font-medium mb-3" style={{ color: 'var(--gold-glow)' }}>对话历史</h3>
+              <h3 className="text-sm font-medium text-gray-400 mb-3">对话历史</h3>
               <div className="space-y-2">
                 {conversations.map((conversation) => (
                   <div
                     key={conversation.id}
-                    className={`relative group rounded-lg transition-colors ${
+                    className={`relative group rounded-lg border-2 transition-colors ${
                       currentConversation?.id === conversation.id
-                        ? 'glass border-2'
-                        : 'border-2 border-transparent hover:border-opacity-30'
+                        ? 'border-blue-500 bg-gray-700'
+                        : 'border-transparent bg-gray-700 hover:bg-gray-600'
                     }`}
-                    style={currentConversation?.id === conversation.id
-                      ? { borderColor: 'var(--star-gold)' }
-                      : { background: 'rgba(255, 255, 255, 0.05)' }
-                    }
                   >
                     {editingConversationId === conversation.id ? (
                       <div className="p-3">
@@ -319,11 +311,7 @@ export default function ChatPage() {
                           type="text"
                           value={editingTitle}
                           onChange={(e) => setEditingTitle(e.target.value)}
-                          className="w-full px-2 py-1 rounded border focus:outline-none text-white"
-                          style={{
-                            background: 'rgba(255, 255, 255, 0.1)',
-                            borderColor: 'var(--star-gold)'
-                          }}
+                          className="w-full px-2 py-1 rounded border border-blue-500 bg-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                           autoFocus
                           onKeyDown={(e) => {
                             if (e.key === 'Enter') {
@@ -336,16 +324,14 @@ export default function ChatPage() {
                         <div className="flex items-center justify-end space-x-2 mt-2">
                           <button
                             onClick={() => saveConversationTitle(conversation.id)}
-                            className="p-1 rounded transition-colors hover:opacity-80"
-                            style={{ color: 'var(--star-gold)' }}
+                            className="p-1 rounded text-green-400 hover:text-green-300"
                             title="保存"
                           >
                             <Check size={16} />
                           </button>
                           <button
                             onClick={cancelEditing}
-                            className="p-1 rounded transition-colors hover:opacity-80"
-                            style={{ color: '#ff6b6b' }}
+                            className="p-1 rounded text-red-400 hover:text-red-300"
                             title="取消"
                           >
                             <XCircle size={16} />
@@ -361,7 +347,7 @@ export default function ChatPage() {
                           <div className="truncate font-medium pr-16 text-white">
                             {conversation.title}
                           </div>
-                          <div className="text-xs mt-1" style={{ color: 'var(--gold-glow)', opacity: 0.7 }}>
+                          <div className="text-xs mt-1 text-gray-400">
                             {conversation.updatedAt.toLocaleDateString()}
                           </div>
                         </button>
@@ -371,8 +357,7 @@ export default function ChatPage() {
                               e.stopPropagation()
                               startEditingConversation(conversation)
                             }}
-                            className="p-1.5 rounded transition-colors hover:opacity-80"
-                            style={{ color: 'var(--star-gold)' }}
+                            className="p-1.5 rounded text-blue-400 hover:text-blue-300"
                             title="编辑标题"
                           >
                             <Edit2 size={14} />
@@ -382,8 +367,7 @@ export default function ChatPage() {
                               e.stopPropagation()
                               deleteConversation(conversation.id)
                             }}
-                            className="p-1.5 rounded transition-colors hover:opacity-80"
-                            style={{ color: '#ff6b6b' }}
+                            className="p-1.5 rounded text-red-400 hover:text-red-300"
                             title="删除对话"
                           >
                             <Trash2 size={14} />
@@ -397,11 +381,10 @@ export default function ChatPage() {
             </div>
 
             {/* 侧边栏底部 */}
-            <div className="p-4" style={{ borderTop: '1px solid rgba(255, 215, 0, 0.2)' }}>
+            <div className="p-4 border-t border-gray-700">
               <button
                 onClick={handleSignOut}
-                className="w-full py-2.5 px-4 rounded-lg transition-colors flex items-center justify-center text-white hover:opacity-80"
-                style={{ background: 'rgba(255, 255, 255, 0.1)' }}
+                className="w-full py-2.5 px-4 bg-gray-700 text-white rounded-lg hover:bg-gray-600 flex items-center justify-center"
               >
                 <LogOut className="w-5 h-5 mr-2" />
                 退出登录
@@ -414,27 +397,25 @@ export default function ChatPage() {
       {/* 主聊天区域 */}
       <div className="flex-1 flex flex-col">
         {/* 顶部导航 */}
-        <div className="glass p-4" style={{ borderBottom: '1px solid rgba(255, 215, 0, 0.2)' }}>
+        <div className="bg-gray-800 p-4 border-b border-gray-700">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <button
                 onClick={() => setSidebarOpen(!sidebarOpen)}
-                className="mr-3 transition-colors hover:opacity-80"
-                style={{ color: 'var(--star-gold)' }}
+                className="mr-3 text-gray-400 hover:text-white"
                 title={sidebarOpen ? "隐藏对话列表" : "显示对话列表"}
               >
                 <Menu className="w-6 h-6" />
               </button>
-              <Sparkles className="w-6 h-6 mr-2" style={{ color: 'var(--star-gold)' }} />
-              <h1 className="text-xl font-bold text-white">
+              <Sparkles className="w-6 h-6 mr-2 text-blue-400" />
+              <h1 className="text-xl font-semibold text-white">
                 {currentConversation?.title || '与高我对话'}
               </h1>
             </div>
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => router.push('/charts')}
-                className="px-4 py-2 text-sm font-medium transition-colors hover:opacity-80"
-                style={{ color: 'var(--star-gold)' }}
+                className="px-4 py-2 text-sm font-medium text-blue-400 hover:text-blue-300"
               >
                 人类图
               </button>
@@ -442,56 +423,13 @@ export default function ChatPage() {
           </div>
         </div>
 
-        {/* 引导提示横幅 */}
-        {hasHumanDesign === false && showGuidanceBanner && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="mx-4 mt-4"
-          >
-            <div className="glass rounded-lg p-4 relative" style={{ borderLeft: '4px solid var(--star-gold)' }}>
-              <button
-                onClick={() => setShowGuidanceBanner(false)}
-                className="absolute top-2 right-2 text-gray-400 hover:text-white transition-colors"
-                title="关闭提示"
-              >
-                <X className="w-4 h-4" />
-              </button>
-              <div className="flex items-start">
-                <Sparkles className="w-6 h-6 mr-3 flex-shrink-0 mt-1" style={{ color: 'var(--star-gold)' }} />
-                <div className="flex-1">
-                  <h3 className="text-white font-semibold mb-1">
-                    录入你的人类图，让AI高我更懂你
-                  </h3>
-                  <p className="text-gray-300 text-sm mb-3">
-                    输入你的出生信息，生成专属人类图，获得更精准的个性化指引和对话体验
-                  </p>
-                  <button
-                    onClick={() => router.push('/calculate')}
-                    className="btn-gold text-sm px-4 py-2"
-                  >
-                    立即录入
-                  </button>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-
         {/* 聊天消息区域 */}
         <div className="flex-1 overflow-y-auto p-4">
           {messages.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center">
-              <motion.div
-                className="text-6xl mb-4"
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                ✨
-              </motion.div>
+              <div className="text-6xl mb-4">✨</div>
               <h2 className="text-2xl font-bold text-white mb-2">开始与你的高我对话</h2>
-              <p className="text-gray-300">
+              <p className="text-gray-400">
                 探索内在智慧，获得人生指引
               </p>
             </div>
@@ -514,33 +452,25 @@ export default function ChatPage() {
                     <div
                       className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
                         message.role === 'user'
-                          ? 'text-white'
-                          : 'text-white'
+                          ? 'bg-blue-600 text-white'
+                          : 'bg-gray-700 text-blue-400'
                       }`}
-                      style={message.role === 'user'
-                        ? { background: 'linear-gradient(135deg, var(--star-gold), var(--light-gold))' }
-                        : { background: 'rgba(255, 215, 0, 0.2)' }
-                      }
                     >
                       {message.role === 'user' ? (
                         <UserIcon className="w-5 h-5" />
                       ) : (
-                        <Bot className="w-5 h-5" style={{ color: 'var(--star-gold)' }} />
+                        <Bot className="w-5 h-5" />
                       )}
                     </div>
                     <div>
                       <div
-                        className={`px-4 py-3 rounded-2xl ${
+                        className={`px-4 py-3 rounded-lg ${
                           message.role === 'user'
-                            ? 'rounded-br-sm'
-                            : 'glass rounded-bl-sm'
+                            ? 'bg-blue-600 text-white rounded-br-sm'
+                            : 'bg-gray-700 text-white rounded-bl-sm'
                         }`}
-                        style={message.role === 'user'
-                          ? { background: 'linear-gradient(135deg, var(--star-gold), var(--light-gold))', color: 'var(--cosmic-blue)' }
-                          : {}
-                        }
                       >
-                        <p className="whitespace-pre-wrap text-white">{message.content}</p>
+                        <p className="whitespace-pre-wrap">{message.content}</p>
                       </div>
                     </div>
                   </div>
@@ -549,14 +479,14 @@ export default function ChatPage() {
               {isSending && (
                 <div className="flex justify-start">
                   <div className="flex items-start space-x-3">
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ background: 'rgba(255, 215, 0, 0.2)' }}>
-                      <Bot className="w-5 h-5" style={{ color: 'var(--star-gold)' }} />
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center bg-gray-700">
+                      <Bot className="w-5 h-5 text-blue-400" />
                     </div>
-                    <div className="glass px-4 py-3 rounded-2xl rounded-bl-sm">
+                    <div className="px-4 py-3 bg-gray-700 rounded-lg rounded-bl-sm">
                       <div className="flex space-x-1">
-                        <div className="w-2 h-2 rounded-full animate-bounce" style={{ background: 'var(--star-gold)' }}></div>
-                        <div className="w-2 h-2 rounded-full animate-bounce" style={{ background: 'var(--star-gold)', animationDelay: '0.1s' }}></div>
-                        <div className="w-2 h-2 rounded-full animate-bounce" style={{ background: 'var(--star-gold)', animationDelay: '0.2s' }}></div>
+                        <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                        <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                       </div>
                     </div>
                   </div>
@@ -568,7 +498,7 @@ export default function ChatPage() {
         </div>
 
         {/* 输入区域 */}
-        <div className="glass p-4" style={{ borderTop: '1px solid rgba(255, 215, 0, 0.2)' }}>
+        <div className="bg-gray-800 p-4 border-t border-gray-700">
           <div className="max-w-4xl mx-auto">
             <form onSubmit={handleSendMessage} className="flex space-x-4">
               <input
@@ -576,17 +506,13 @@ export default function ChatPage() {
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 placeholder="输入你想说的话..."
-                className="flex-1 px-4 py-3 rounded-lg focus:outline-none text-white placeholder:text-gray-400"
-                style={{
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  border: '1px solid rgba(255, 215, 0, 0.3)'
-                }}
+                className="flex-1 px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 disabled={isSending}
               />
               <button
                 type="submit"
                 disabled={isSending || !inputMessage.trim()}
-                className="btn-gold flex items-center disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
               >
                 <Send className="w-5 h-5" />
               </button>
