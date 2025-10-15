@@ -134,51 +134,19 @@ export default function HomePage() {
             {/* 左侧 - 品牌展示 */}
             <div className="text-center lg:text-left animate-fadeInLeft">
               {/* Logo 和标题 */}
-              <div className="mb-8">
+              <div className="mb-16">
                 <h1 className="text-5xl lg:text-6xl font-bold mb-6">
-                  <span className="text-gradient block mb-3">人类图 AI</span>
+                  <span className="text-gradient block mb-4">人类图 AI</span>
                   <span className="text-3xl lg:text-4xl text-secondary">高我陪伴平台</span>
                 </h1>
-                <p className="text-xl text-secondary leading-relaxed">
+                <p className="text-xl text-secondary leading-relaxed max-w-lg">
                   探索内在宇宙的奥秘<br />
                   与你的高我进行深度对话<br />
                   <span className="text-accent font-semibold">发现真实的自己</span>
                 </p>
               </div>
 
-              {/* 特性展示 */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
-                <div className="cosmos-glass p-4 text-center animate-stagger-1">
-                  <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-to-r from-violet-500 to-blue-500 flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                    </svg>
-                  </div>
-                  <h4 className="font-semibold text-primary mb-1">精确计算</h4>
-                  <p className="text-sm text-secondary">基于瑞士星历表的专业人类图计算</p>
-                </div>
-
-                <div className="cosmos-glass p-4 text-center animate-stagger-2">
-                  <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-to-r from-stardust-gold to-orange-500 flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                    </svg>
-                  </div>
-                  <h4 className="font-semibold text-primary mb-1">AI 对话</h4>
-                  <p className="text-sm text-secondary">与基于人类图的AI高我进行深度交流</p>
-                </div>
-
-                <div className="cosmos-glass p-4 text-center animate-stagger-3">
-                  <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-to-r from-green-500 to-teal-500 flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                    </svg>
-                  </div>
-                  <h4 className="font-semibold text-primary mb-1">知识库</h4>
-                  <p className="text-sm text-secondary">完整的人类图理论体系和实践指导</p>
-                </div>
-              </div>
-
+  
               {/* 装饰性元素 */}
               <div className="hidden lg:block">
                 <div className="flex items-center space-x-4">
@@ -193,20 +161,20 @@ export default function HomePage() {
 
             {/* 右侧 - 登录表单 */}
             <div className="animate-fadeInRight">
-              <div className="cosmos-glass p-8 lg:p-12">
+              <div className="cosmos-glass p-10 lg:p-14 rounded-2xl">
                 {/* Logo 移动端显示 */}
-                <div className="lg:hidden text-center mb-8">
-                  <h2 className="text-3xl font-bold text-gradient mb-2">人类图 AI</h2>
-                  <p className="text-secondary">与高我对话，探索真实自我</p>
+                <div className="lg:hidden text-center mb-10">
+                  <h2 className="text-3xl font-bold text-gradient mb-3">人类图 AI</h2>
+                  <p className="text-secondary text-lg">与高我对话，探索真实自我</p>
                 </div>
 
                 {/* Tab 切换 */}
-                <div className="flex mb-8 bg-glass-light rounded-lg p-1">
+                <div className="flex mb-10 bg-glass-light rounded-xl p-1">
                   <button
                     onClick={() => setIsLogin(true)}
-                    className={`flex-1 py-3 px-6 rounded-md font-semibold transition-all duration-300 ${
+                    className={`flex-1 py-3 px-8 rounded-lg font-medium transition-all duration-300 text-base ${
                       isLogin
-                        ? 'bg-gradient-to-r from-violet-500 to-blue-500 text-white shadow-lg'
+                        ? 'bg-gradient-to-r from-violet-500 to-blue-500 text-white shadow-xl'
                         : 'text-secondary hover:text-primary'
                     }`}
                   >
@@ -214,9 +182,9 @@ export default function HomePage() {
                   </button>
                   <button
                     onClick={() => setIsLogin(false)}
-                    className={`flex-1 py-3 px-6 rounded-md font-semibold transition-all duration-300 ${
+                    className={`flex-1 py-3 px-8 rounded-lg font-medium transition-all duration-300 text-base ${
                       !isLogin
-                        ? 'bg-gradient-to-r from-violet-500 to-blue-500 text-white shadow-lg'
+                        ? 'bg-gradient-to-r from-violet-500 to-blue-500 text-white shadow-xl'
                         : 'text-secondary hover:text-primary'
                     }`}
                   >
@@ -228,36 +196,36 @@ export default function HomePage() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {!isLogin && (
                     <div className="animate-fadeInUp">
-                      <label className="block text-sm font-medium text-primary mb-2">
+                      <label className="block text-sm font-medium text-secondary mb-3">
                         昵称
                       </label>
                       <input
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="cosmos-input w-full"
-                        placeholder="请输入您的昵称"
+                        className="cosmos-input w-full text-lg py-4 px-6"
+                        placeholder="您的昵称"
                         required={!isLogin}
                       />
                     </div>
                   )}
 
                   <div className="animate-fadeInUp" style={{ animationDelay: '0.1s' }}>
-                    <label className="block text-sm font-medium text-primary mb-2">
+                    <label className="block text-sm font-medium text-secondary mb-3">
                       邮箱
                     </label>
                     <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="cosmos-input w-full"
-                      placeholder="请输入邮箱"
+                      className="cosmos-input w-full text-lg py-4 px-6"
+                      placeholder="您的邮箱"
                       required
                     />
                   </div>
 
                   <div className="animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
-                    <label className="block text-sm font-medium text-primary mb-2">
+                    <label className="block text-sm font-medium text-secondary mb-3">
                       密码
                     </label>
                     <div className="relative">
@@ -265,23 +233,23 @@ export default function HomePage() {
                         type={showPassword ? "text" : "password"}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="cosmos-input w-full pr-12"
-                        placeholder="请输入密码"
+                        className="cosmos-input w-full text-lg py-4 px-6 pr-14"
+                        placeholder="您的密码"
                         required
                         minLength={6}
                       />
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-tertiary hover:text-primary transition-colors"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 text-tertiary hover:text-primary transition-colors"
                       >
                         {showPassword ? (
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                           </svg>
                         ) : (
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
                           </svg>
                         )}
@@ -302,29 +270,45 @@ export default function HomePage() {
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="btn-aurora w-full py-4 text-base font-semibold animate-fadeInUp"
+                    className="btn-aurora w-full py-5 text-lg font-semibold animate-fadeInUp rounded-xl"
                     style={{ animationDelay: '0.3s' }}
                   >
                     {submitting ? (
                       <span className="flex items-center justify-center">
-                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
+                        <svg className="animate-spin -ml-1 mr-3 h-6 w-6 text-white" fill="none" viewBox="0 0 24 24">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
                         {isLogin ? '正在登录...' : '正在注册...'}
                       </span>
                     ) : (
-                      isLogin ? '进入宇宙' : '开始探索'
+                      <span className="flex items-center justify-center gap-2">
+                        {isLogin ? (
+                          <>
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4 4m-4-4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                            </svg>
+                            登录
+                          </>
+                        ) : (
+                          <>
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0 3h.01M6 9h12m-6 6h.01M9 12h.01m-6 6h.01" />
+                            </svg>
+                            注册
+                          </>
+                        )}
+                      </span>
                     )}
                   </button>
                 </form>
 
                 {/* 忘记密码 */}
                 {isLogin && (
-                  <div className="mt-6 text-center">
+                  <div className="mt-8 text-center">
                     <Link
                       href="/reset-password"
-                      className="text-sm text-secondary hover:text-primary transition-colors"
+                      className="text-sm text-secondary hover:text-primary transition-colors underline"
                     >
                       忘记密码？
                     </Link>
