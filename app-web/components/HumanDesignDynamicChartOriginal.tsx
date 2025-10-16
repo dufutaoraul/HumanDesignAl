@@ -39,7 +39,7 @@ export default function HumanDesignDynamicChartOriginal({
   height = 1240,
   className = ""
 }: HumanDesignDynamicChartOriginalProps) {
-  const svgRef = useRef<SVGSVGElement>(null)
+  const svgRef = useRef<HTMLDivElement>(null)
   const [svgContent, setSvgContent] = useState<string>('')
 
   useEffect(() => {
@@ -57,7 +57,9 @@ export default function HumanDesignDynamicChartOriginal({
   useEffect(() => {
     if (!svgRef.current || !data || !svgContent) return
 
-    const svg = svgRef.current
+    const container = svgRef.current
+    const svg = container.querySelector('svg')
+    if (!svg) return
     const doc = svg.ownerDocument!
 
     // 获取闸门对应的行星类型
@@ -242,11 +244,9 @@ export default function HumanDesignDynamicChartOriginal({
     <div className={`human-design-dynamic-chart-original ${className}`}>
       <div
         ref={svgRef}
-        width={width}
-        height={height}
         className="w-full h-auto"
         dangerouslySetInnerHTML={{ __html: svgContent }}
-        style={{ maxWidth: width }}
+        style={{ maxWidth: width, maxHeight: height }}
       />
     </div>
   )
