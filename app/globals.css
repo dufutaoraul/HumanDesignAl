@@ -1,0 +1,510 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* 全局重置和基础样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 设计系统 - 宇宙星云主题 */
+:root {
+  /* === 主色板 === */
+  --cosmos-void: #020208;              /* 深邃宇宙黑 - 更黑 */
+  --cosmos-deep: #1a0a2e;              /* 星云紫 */
+  --cosmos-mid: #16213e;              /* 极光蓝 */
+  --cosmos-core: #050510;              /* 银河核心 - 更黑 */
+
+  /* === 强调色 === */
+  --nebula-violet: #8b5cf6;            /* 星云紫 - 主色 */
+  --aurora-blue: #4f46e5;              /* 极光蓝 - 次色 */
+  --stardust-gold: #fbbf24;            /* 星尘金 - 点缀 */
+  --cosmos-silver: #cbd5e1;            /* 星云银 */
+
+  /* === 渐变色 === */
+  --gradient-cosmos: linear-gradient(135deg,
+    var(--cosmos-deep) 0%,
+    var(--cosmos-mid) 25%,
+    var(--cosmos-core) 50%,
+    #1e1b4b 75%,
+    #2e1065 100%);
+
+  --gradient-aurora: linear-gradient(135deg,
+    var(--nebula-violet) 0%,
+    var(--aurora-blue) 50%,
+    #3b82f6 100%);
+
+  --gradient-stardust: linear-gradient(135deg,
+    var(--stardust-gold) 0%,
+    #f59e0b 50%,
+    #d97706 100%);
+
+  /* === 玻璃态 === */
+  --glass-light: rgba(255, 255, 255, 0.08);
+  --glass-medium: rgba(255, 255, 255, 0.12);
+  --glass-dark: rgba(255, 255, 255, 0.16);
+  --glass-border: rgba(255, 255, 255, 0.1);
+
+  /* === 光晕效果 === */
+  --glow-primary: rgba(139, 92, 246, 0.5);
+  --glow-secondary: rgba(79, 70, 229, 0.5);
+  --glow-accent: rgba(251, 191, 36, 0.5);
+
+  /* === 文字色彩 === */
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --text-inverse: #0a0a0f;
+}
+
+@theme inline {
+  --color-background: var(--cosmos-void);
+  --color-foreground: var(--text-primary);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* === Tailwind 颜色映射 === */
+  --color-primary: var(--nebula-violet);
+  --color-secondary: var(--aurora-blue);
+  --color-accent: var(--stardust-gold);
+  --color-cosmos-void: var(--cosmos-void);
+  --color-cosmos-deep: var(--cosmos-deep);
+  --color-cosmos-mid: var(--cosmos-mid);
+  --color-cosmos-core: var(--cosmos-core);
+}
+
+/* === 基础样式 === */
+body {
+  font-family: 'Inter', var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--gradient-cosmos);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  font-feature-settings: 'rlig' 1, 'calt' 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === 动态星尘背景 === */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.6;
+  z-index: 0;
+
+  /* 多层星尘粒子 - 更亮的星星 */
+  background-image:
+    /* 大星点 - 更亮 */
+    radial-gradient(3px 3px at 20% 30%, rgba(255, 255, 255, 1), transparent),
+    radial-gradient(3px 3px at 60% 70%, rgba(251, 191, 36, 1), transparent),
+    radial-gradient(2px 2px at 90% 10%, rgba(139, 92, 246, 1), transparent),
+    /* 中等星点 */
+    radial-gradient(2px 2px at 30% 60%, rgba(79, 70, 229, 1), transparent),
+    radial-gradient(2px 2px at 70% 20%, rgba(251, 191, 36, 0.9), transparent),
+    radial-gradient(3px 3px at 85% 80%, rgba(139, 92, 246, 1), transparent),
+    /* 小星点 - 更多更亮 */
+    radial-gradient(1px 1px at 15% 80%, rgba(255, 255, 255, 1), transparent),
+    radial-gradient(1px 1px at 25% 40%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1px 1px at 35% 20%, rgba(139, 92, 246, 0.9), transparent),
+    radial-gradient(1px 1px at 45% 45%, rgba(251, 191, 36, 0.8), transparent),
+    radial-gradient(1px 1px at 55% 60%, rgba(79, 70, 229, 0.8), transparent),
+    radial-gradient(1px 1px at 65% 15%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1px 1px at 75% 25%, rgba(251, 191, 36, 0.9), transparent),
+    radial-gradient(1px 1px at 85% 50%, rgba(139, 92, 246, 0.8), transparent),
+    radial-gradient(1px 1px at 95% 35%, rgba(255, 255, 255, 1), transparent);
+
+  background-repeat: repeat;
+  background-size: 400px 200px, 350px 180px, 420px 220px,
+                    300px 150px, 380px 190px, 410px 210px,
+                    280px 140px, 320px 160px, 290px 145px,
+                    350px 175px, 380px 190px, 410px 205px,
+                    370px 185px, 430px 215px, 450px 225px;
+
+  animation: cosmosFloat 120s linear infinite;
+}
+
+/* === 星云光晕层 === */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.3;
+  z-index: 1;
+
+  background:
+    radial-gradient(circle at 20% 40%, var(--glow-primary) 0%, transparent 40%),
+    radial-gradient(circle at 80% 60%, var(--glow-secondary) 0%, transparent 40%),
+    radial-gradient(circle at 50% 20%, var(--glow-accent) 0%, transparent 30%);
+
+  animation: nebulaFlow 30s ease-in-out infinite;
+}
+
+/* === 核心动画关键帧 === */
+@keyframes cosmosFloat {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-10%, 5%) rotate(90deg);
+  }
+  50% {
+    transform: translate(5%, -10%) rotate(180deg);
+  }
+  75% {
+    transform: translate(-5%, -5%) rotate(270deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg);
+  }
+}
+
+@keyframes nebulaFlow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1) rotate(0deg);
+  }
+  33% {
+    opacity: 0.4;
+    transform: scale(1.1) rotate(120deg);
+  }
+  66% {
+    opacity: 0.35;
+    transform: scale(0.95) rotate(240deg);
+  }
+}
+
+@keyframes stardustPulse {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes auroraShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes sparkleGlow {
+  0%, 100% {
+    opacity: 0.6;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 1;
+    filter: brightness(1.3);
+  }
+}
+
+/* === 通用组件类 === */
+
+/* 玻璃态卡片 */
+.cosmos-glass {
+  background: var(--glass-medium);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  box-shadow:
+    0 20px 60px rgba(139, 92, 246, 0.3),
+    0 10px 20px rgba(79, 70, 229, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.cosmos-glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(139, 92, 246, 0.5),
+    transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.cosmos-glass:hover {
+  background: var(--glass-dark);
+  border-color: rgba(139, 92, 246, 0.3);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow:
+    0 30px 80px rgba(139, 92, 246, 0.4),
+    0 15px 30px rgba(79, 70, 229, 0.3),
+    0 0 30px rgba(139, 92, 246, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.cosmos-glass:hover::before {
+  opacity: 1;
+}
+
+/* 极光按钮 */
+.btn-aurora {
+  position: relative;
+  padding: 0.875rem 2rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  color: var(--text-inverse);
+  background: var(--gradient-aurora);
+  box-shadow:
+    0 10px 25px rgba(139, 92, 246, 0.4),
+    0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.btn-aurora::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent);
+  transition: left 0.6s ease;
+}
+
+.btn-aurora:hover::before {
+  left: 100%;
+}
+
+.btn-aurora:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow:
+    0 15px 35px rgba(139, 92, 246, 0.6),
+    0 8px 20px rgba(79, 70, 229, 0.4),
+    0 0 40px rgba(139, 92, 246, 0.3);
+}
+
+.btn-aurora:active {
+  transform: translateY(0) scale(1.02);
+}
+
+/* 星尘按钮 */
+.btn-stardust {
+  background: var(--gradient-stardust);
+  color: var(--text-inverse);
+  box-shadow:
+    0 10px 25px rgba(251, 191, 36, 0.4),
+    0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.btn-stardust:hover {
+  box-shadow:
+    0 15px 35px rgba(251, 191, 36, 0.6),
+    0 8px 20px rgba(245, 158, 11, 0.4),
+    0 0 40px rgba(251, 191, 36, 0.3);
+}
+
+/* 文字效果 */
+.text-gradient {
+  background: var(--gradient-aurora);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  background-size: 200% 100%;
+  animation: auroraShift 3s ease-in-out infinite;
+}
+
+.text-glow {
+  filter: drop-shadow(0 0 20px var(--glow-primary));
+}
+
+/* 输入框样式 */
+.cosmos-input {
+  background: var(--glass-light);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 0.75rem;
+  padding: 0.875rem 1.25rem;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.cosmos-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.cosmos-input:focus {
+  background: var(--glass-medium);
+  border-color: var(--nebula-violet);
+  box-shadow:
+    0 0 0 3px rgba(139, 92, 246, 0.1),
+    0 8px 25px rgba(139, 92, 246, 0.2);
+}
+
+/* 页面容器 */
+.cosmos-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* === 响应式设计 === */
+@media (max-width: 768px) {
+  .cosmos-container {
+    padding: 0 0.75rem;
+  }
+
+  body::before {
+    background-size: 300px 150px, 280px 140px, 320px 160px,
+                      250px 125px, 300px 150px, 310px 155px,
+                      220px 110px, 290px 145px, 270px 135px;
+  }
+}
+
+/* === 动画辅助类 === */
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-fadeInDown {
+  animation: fadeInDown 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-fadeInLeft {
+  animation: fadeInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-fadeInRight {
+  animation: fadeInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-stagger-1 { animation-delay: 0.1s; }
+.animate-stagger-2 { animation-delay: 0.2s; }
+.animate-stagger-3 { animation-delay: 0.3s; }
+.animate-stagger-4 { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* === 滚动条样式 === */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cosmos-void);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-aurora);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gradient-stardust);
+}
+
+/* === 选择文本样式 === */
+::selection {
+  background: var(--glow-primary);
+  color: var(--text-primary);
+}
+
+::-moz-selection {
+  background: var(--glow-primary);
+  color: var(--text-primary);
+}
+
+/* === 工具类 === */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-tertiary { color: var(--text-tertiary); }
+
+.bg-cosmos-void { background: var(--cosmos-void); }
+.bg-glass-light { background: var(--glass-light); }
+.bg-glass-medium { background: var(--glass-medium); }
+.bg-glass-dark { background: var(--glass-dark); }
+
+.border-glass { border-color: var(--glass-border); }
+.shadow-cosmos { box-shadow: var(--shadow-cosmos); }
+.shadow-glow-primary { box-shadow: var(--shadow-glow-primary); }
+
+/* 确保内容在星尘之上 */
+.main-content {
+  position: relative;
+  z-index: 10;
+}

@@ -1,0 +1,450 @@
+[
+  {
+    "gate": 1,
+    "gate_name": "乾",
+    "opposite_gate": 2,
+    "opposite_name": "坤",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 2,
+    "gate_name": "坤",
+    "opposite_gate": 1,
+    "opposite_name": "乾",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 3,
+    "gate_name": "屯",
+    "opposite_gate": 50,
+    "opposite_name": "鼎",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 4,
+    "gate_name": "蒙",
+    "opposite_gate": 49,
+    "opposite_name": "革",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 5,
+    "gate_name": "需",
+    "opposite_gate": 35,
+    "opposite_name": "晋",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 6,
+    "gate_name": "讼",
+    "opposite_gate": 36,
+    "opposite_name": "明夷",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 7,
+    "gate_name": "师",
+    "opposite_gate": 13,
+    "opposite_name": "同人",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 8,
+    "gate_name": "比",
+    "opposite_gate": 14,
+    "opposite_name": "大有",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 9,
+    "gate_name": "小畜",
+    "opposite_gate": 16,
+    "opposite_name": "豫",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 10,
+    "gate_name": "履",
+    "opposite_gate": 15,
+    "opposite_name": "谦",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 11,
+    "gate_name": "泰",
+    "opposite_gate": 12,
+    "opposite_name": "否",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 12,
+    "gate_name": "否",
+    "opposite_gate": 11,
+    "opposite_name": "泰",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 13,
+    "gate_name": "同人",
+    "opposite_gate": 7,
+    "opposite_name": "师",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 14,
+    "gate_name": "大有",
+    "opposite_gate": 8,
+    "opposite_name": "比",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 15,
+    "gate_name": "谦",
+    "opposite_gate": 10,
+    "opposite_name": "履",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 16,
+    "gate_name": "豫",
+    "opposite_gate": 9,
+    "opposite_name": "小畜",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 17,
+    "gate_name": "随",
+    "opposite_gate": 18,
+    "opposite_name": "蛊",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 18,
+    "gate_name": "蛊",
+    "opposite_gate": 17,
+    "opposite_name": "随",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 19,
+    "gate_name": "临",
+    "opposite_gate": 33,
+    "opposite_name": "遁",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 20,
+    "gate_name": "观",
+    "opposite_gate": 34,
+    "opposite_name": "大壮",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 21,
+    "gate_name": "噬嗑",
+    "opposite_gate": 48,
+    "opposite_name": "井",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 22,
+    "gate_name": "贲",
+    "opposite_gate": 47,
+    "opposite_name": "困",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 23,
+    "gate_name": "剥",
+    "opposite_gate": 43,
+    "opposite_name": "夬",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 24,
+    "gate_name": "复",
+    "opposite_gate": 44,
+    "opposite_name": "姤",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 25,
+    "gate_name": "无妄",
+    "opposite_gate": 46,
+    "opposite_name": "升",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 26,
+    "gate_name": "大畜",
+    "opposite_gate": 45,
+    "opposite_name": "萃",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 27,
+    "gate_name": "颐",
+    "opposite_gate": 28,
+    "opposite_name": "大过",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 28,
+    "gate_name": "大过",
+    "opposite_gate": 27,
+    "opposite_name": "颐",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 29,
+    "gate_name": "坎",
+    "opposite_gate": 30,
+    "opposite_name": "离",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 30,
+    "gate_name": "离",
+    "opposite_gate": 29,
+    "opposite_name": "坎",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 31,
+    "gate_name": "咸",
+    "opposite_gate": 41,
+    "opposite_name": "损",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 32,
+    "gate_name": "恒",
+    "opposite_gate": 42,
+    "opposite_name": "益",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 33,
+    "gate_name": "遁",
+    "opposite_gate": 19,
+    "opposite_name": "临",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 34,
+    "gate_name": "大壮",
+    "opposite_gate": 20,
+    "opposite_name": "观",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 35,
+    "gate_name": "晋",
+    "opposite_gate": 5,
+    "opposite_name": "需",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 36,
+    "gate_name": "明夷",
+    "opposite_gate": 6,
+    "opposite_name": "讼",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 37,
+    "gate_name": "家人",
+    "opposite_gate": 40,
+    "opposite_name": "解",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 38,
+    "gate_name": "睽",
+    "opposite_gate": 39,
+    "opposite_name": "蹇",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 39,
+    "gate_name": "蹇",
+    "opposite_gate": 38,
+    "opposite_name": "睽",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 40,
+    "gate_name": "解",
+    "opposite_gate": 37,
+    "opposite_name": "家人",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 41,
+    "gate_name": "损",
+    "opposite_gate": 31,
+    "opposite_name": "咸",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 42,
+    "gate_name": "益",
+    "opposite_gate": 32,
+    "opposite_name": "恒",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 43,
+    "gate_name": "夬",
+    "opposite_gate": 23,
+    "opposite_name": "剥",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 44,
+    "gate_name": "姤",
+    "opposite_gate": 24,
+    "opposite_name": "复",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 45,
+    "gate_name": "萃",
+    "opposite_gate": 26,
+    "opposite_name": "大畜",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 46,
+    "gate_name": "升",
+    "opposite_gate": 25,
+    "opposite_name": "无妄",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 47,
+    "gate_name": "困",
+    "opposite_gate": 22,
+    "opposite_name": "贲",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 48,
+    "gate_name": "井",
+    "opposite_gate": 21,
+    "opposite_name": "噬嗑",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 49,
+    "gate_name": "革",
+    "opposite_gate": 4,
+    "opposite_name": "蒙",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 50,
+    "gate_name": "鼎",
+    "opposite_gate": 3,
+    "opposite_name": "屯",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 51,
+    "gate_name": "震",
+    "opposite_gate": 57,
+    "opposite_name": "巽",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 52,
+    "gate_name": "艮",
+    "opposite_gate": 58,
+    "opposite_name": "兑",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 53,
+    "gate_name": "渐",
+    "opposite_gate": 54,
+    "opposite_name": "归妹",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 54,
+    "gate_name": "归妹",
+    "opposite_gate": 53,
+    "opposite_name": "渐",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 55,
+    "gate_name": "丰",
+    "opposite_gate": 59,
+    "opposite_name": "涣",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 56,
+    "gate_name": "旅",
+    "opposite_gate": 60,
+    "opposite_name": "节",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 57,
+    "gate_name": "巽",
+    "opposite_gate": 51,
+    "opposite_name": "震",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 58,
+    "gate_name": "兑",
+    "opposite_gate": 52,
+    "opposite_name": "艮",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 59,
+    "gate_name": "涣",
+    "opposite_gate": 55,
+    "opposite_name": "丰",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 60,
+    "gate_name": "节",
+    "opposite_gate": 56,
+    "opposite_name": "旅",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 61,
+    "gate_name": "中孚",
+    "opposite_gate": 62,
+    "opposite_name": "小过",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 62,
+    "gate_name": "小过",
+    "opposite_gate": 61,
+    "opposite_name": "中孚",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 63,
+    "gate_name": "既济",
+    "opposite_gate": 64,
+    "opposite_name": "未济",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  },
+  {
+    "gate": 64,
+    "gate_name": "未济",
+    "opposite_gate": 63,
+    "opposite_name": "既济",
+    "note": "南北交点（Nodes）的闸门对宫关系，爻线必须一致"
+  }
+]
