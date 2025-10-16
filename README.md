@@ -1,174 +1,36 @@
-# 人类图AI高我系统
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-> 与真我对话，让高我引路
+## Getting Started
 
-## 📂 项目文档结构
+First, run the development server:
 
-本项目包含以下核心文档：
-
-### 1. **项目完整需求文档.md** 🌟（主文档）
-完整的项目需求、技术架构、产品设计文档，包含：
-- ✅ 技术架构（Next.js + Supabase + Dify + Gemini）
-- ✅ Supabase邮箱登录验证流程
-- ✅ 人类图识别与推算规则（26个闸门 → 6个核心属性）
-- ✅ 数据库设计与API集成
-- ✅ 6个开发阶段详细任务
-- ✅ **成本分析与定价策略**
-  - API成本估算（约¥600/月，100用户内）
-  - MVP完全免费策略
-  - 成本控制方案
-  - 未来盈利模式探索
-- ✅ **MVP功能优先级**（P0/P1/P2三级划分）
-
-**后续AI请直接阅读此文档开始开发！**
-
----
-
-### 2. **Dify操作手册-最终版.md**
-Dify知识库配置操作手册，包含：
-- 知识库上传步骤（5步完成）
-- 系统提示词配置（高我人格）
-- 会话变量设置
-- 测试与优化方法
-
-**用于完成Dify知识库搭建和配置。**
-
----
-
-## 🚀 快速开始
-
-### 第一步：阅读需求文档
 ```bash
-打开 项目完整需求文档.md
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-### 第二步：搭建Dify知识库
-```bash
-打开 Dify操作手册-最终版.md
-按步骤完成知识库上传和配置
-```
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### 第三步：开始开发
-按照需求文档中的"六、开发实现步骤"进行：
-1. 基础架构（1-2天）
-2. 档案管理 + Gemini识别（3-4天）
-3. 推算引擎（5-7天）
-4. Dify对话集成（2-3天）
-5. UI/UX优化（2-3天）
-6. 测试与优化（2-3天）
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
----
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## 📊 知识库文件位置
+## Learn More
 
-```
-D:\CursorWork\download_gongzhonghao\人类图AI高我知识库\
-├── 01_核心理论\
-│   ├── 王骁老师文章\（171篇.md）
-│   ├── 陶子文章\（21篇.md）
-│   ├── 人类图轮回交叉全书.txt（192个轮回交叉）
-│   ├── 36条通道（东昍老师版）.txt（36条通道）
-│   └── 其他补充素材...
-└── 02_384爻精准库\
-    └── 梁敏384爻_原始版.txt
-```
+To learn more about Next.js, take a look at the following resources:
 
----
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## 🔑 关键凭证
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-### Gemini API Key
-```
-AIzaSyD-5VGSanbUgrRRPH1R-gNXHekSdcLte3g
-```
+## Deploy on Vercel
 
-### Dify API Key
-需在完成知识库上传后获取
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
----
-
-## 🎯 核心差异化
-
-1. **情感陪伴**：不只是工具，而是"高我"陪伴
-2. **个性化深度**：结合Dify知识库，回答更准确、更有洞察
-3. **体验极致**：深蓝紫金色美学 + 流畅交互
-
----
-
-## 💰 成本与定价
-
-**MVP阶段成本**：约¥600/月（100用户内）
-- Gemini API：¥0（免费额度充足）
-- Dify API：¥500/月
-- Supabase：¥0（免费版）
-- 服务器/域名：¥100/月
-
-**MVP定价策略**：付费订阅（¥99/年）
-- **为什么必须付费**：API成本高，需验证真实付费意愿
-- 目标：100个付费用户 = ¥9900/年（覆盖成本¥7200/年）
-- 定价心理：原价¥199 → 早鸟价¥99 → 每天¥0.27
-
-**用户流程**：
-```
-注册 → 邮箱验证 → 看到支付墙 → 支付¥99 → 使用所有功能
-（可选：邀请好友各得3次免费体验）
-```
-
----
-
-## 📝 待办事项
-
-### 开发前数据准备
-- [ ] 从`人类图轮回交叉全书.txt`提取192个轮回交叉
-- [ ] 从`36条通道（东昍老师版）.txt`提取36条通道
-- [ ] 建立64个闸门→中心的映射表
-- [ ] 建立64个闸门对宫表
-
-### MVP开发（P0优先级）- 3-4周
-
-**第一周：基础架构 + 支付墙**
-- [ ] 用户注册/登录（Supabase Auth）
-- [ ] **zpay支付集成（必须）**
-- [ ] 订阅状态管理
-- [ ] 权限检查中间件
-
-**第二周：档案管理 + 识别**
-- [ ] 档案管理（创建、编辑、删除）
-- [ ] 人类图图片上传
-- [ ] Gemini识别26个闸门
-- [ ] 手动编辑+验证
-
-**第三周：推算 + Dify对话**
-- [ ] 推算6个核心属性
-- [ ] Dify API集成
-- [ ] AI对话（需验证订阅）
-- [ ] 对话历史保存
-
-**第四周：UI优化 + 测试**
-- [ ] 多档案切换
-- [ ] 响应式设计
-- [ ] UI美化
-- [ ] 完整流程测试
-
----
-
-## 💡 产品Slogan（备选）
-
-```
-人类图AI高我
-与真我对话，让高我引路
-```
-
-或
-
-```
-每个人都值得被看见
-你的AI高我，一直都在
-```
-
----
-
-**文档版本**：v2.0
-**创建时间**：2025-01-09
-**最后更新**：2025-01-09
-
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

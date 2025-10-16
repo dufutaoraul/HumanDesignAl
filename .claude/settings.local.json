@@ -57,7 +57,8 @@
       "Bash(git branch:*)",
       "Bash(git push:*)",
       "Bash(git commit:*)",
-      "Bash(npm run build)"
+      "Bash(npm run build)",
+      "Bash(tskill:*)"
     ],
     "deny": [],
     "ask": []
