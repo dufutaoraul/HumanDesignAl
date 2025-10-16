@@ -201,15 +201,145 @@ export default function HumanDesignUserSvgChart({
   />
   <text id="gate-16-text" x="329.8" y="438.4" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="10">16</text>
 
-  <!-- 更多闸门... -->
+  <!-- 头部中心闸门 -->
+  <circle id="gate-64" cx="320" cy="80" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-64-text" x="320" y="80" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">64</text>
+  <circle id="gate-61" cx="375" cy="60" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-61-text" x="375" y="60" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">61</text>
+  <circle id="gate-63" cx="430" cy="80" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-63-text" x="430" y="80" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">63</text>
+
+  <!-- 脑中心闸门 -->
+  <circle id="gate-47" cx="320" cy="150" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-47-text" x="320" y="150" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">47</text>
+  <circle id="gate-24" cx="375" cy="140" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-24-text" x="375" y="140" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">24</text>
+  <circle id="gate-4" cx="430" cy="150" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-4-text" x="430" y="150" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">4</text>
+
+  <!-- 喉咙中心闸门 -->
+  <circle id="gate-62" cx="320" cy="280" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-62-text" x="320" y="280" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">62</text>
+  <circle id="gate-17" cx="375" cy="270" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-17-text" x="375" y="270" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">17</text>
+  <circle id="gate-31" cx="430" cy="280" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-31-text" x="430" y="280" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">31</text>
+
+  <!-- G中心闸门 -->
+  <circle id="gate-7" cx="340" cy="480" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-7-text" x="340" y="480" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">7</text>
+  <circle id="gate-13" cx="410" cy="480" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-13-text" x="410" y="480" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">13</text>
+
+  <!-- 心脏中心闸门 -->
+  <circle id="gate-21" cx="480" cy="600" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-21-text" x="480" y="600" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">21</text>
+  <circle id="gate-51" cx="520" cy="630" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-51-text" x="520" y="630" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">51</text>
+
+  <!-- 脾中心闸门 -->
+  <circle id="gate-44" cx="250" cy="650" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-44-text" x="250" y="650" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">44</text>
+  <circle id="gate-48" cx="220" cy="680" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-48-text" x="220" y="680" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">48</text>
+
+  <!-- 太阳神经丛中心闸门 -->
+  <circle id="gate-55" cx="500" cy="650" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-55-text" x="500" y="650" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">55</text>
+  <circle id="gate-39" cx="530" cy="680" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-39-text" x="530" y="680" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">39</text>
+  <circle id="gate-36" cx="480" cy="700" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-36-text" x="480" y="700" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">36</text>
+
+  <!-- 荐骨中心闸门 -->
+  <circle id="gate-3" cx="320" cy="750" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-3-text" x="320" y="750" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">3</text>
+  <circle id="gate-42" cx="360" cy="760" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-42-text" x="360" y="760" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">42</text>
+  <circle id="gate-9" cx="390" cy="750" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-9-text" x="390" y="750" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">9</text>
+  <circle id="gate-5" cx="430" cy="760" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-5-text" x="430" y="760" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">5</text>
+
+  <!-- 根中心闸门 -->
+  <circle id="gate-58" cx="320" cy="880" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-58-text" x="320" y="880" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">58</text>
+  <circle id="gate-60" cx="375" cy="870" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-60-text" x="375" y="870" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">60</text>
+  <circle id="gate-52" cx="430" cy="880" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-52-text" x="430" y="880" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">52</text>
+  <circle id="gate-53" cx="400" cy="900" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-53-text" x="400" y="900" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">53</text>
+  <circle id="gate-19" cx="350" cy="900" r="10" fill="none" stroke="#666" stroke-width="1"/>
+  <text id="gate-19-text" x="350" y="900" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="9">19</text>
   <circle id="gate-6" cx="280" cy="750" r="12" fill="none" stroke="#666" stroke-width="1"/>
   <text id="gate-6-text" x="280" y="750" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="10">6</text>
-
   <circle id="gate-59" cx="470" cy="750" r="12" fill="none" stroke="#666" stroke-width="1"/>
   <text id="gate-59-text" x="470" y="750" text-anchor="middle" dominant-baseline="central" fill="#333" font-size="10">59</text>
 
-  <!-- 通道示例 -->
-  <path id="channel-6-59" d="M 280 750 Q 375 730 470 750" fill="none" stroke="#999" stroke-width="2" opacity="0.5"/>
+  <!-- 主要通道连接 -->
+  <!-- 6-59 通道 (荐骨到根中心) -->
+  <path id="channel-6-59" d="M 280 750 Q 375 800 470 750" fill="none" stroke="#999" stroke-width="3" opacity="0.6"/>
+
+  <!-- 34-20 通道 (荐骨到喉咙) -->
+  <path id="channel-34-20" d="M 360 740 Q 340 500 328 483" fill="none" stroke="#999" stroke-width="3" opacity="0.6"/>
+
+  <!-- 57-20 通道 (脾到喉咙) -->
+  <path id="channel-57-20" d="M 250 660 Q 290 450 328 483" fill="none" stroke="#999" stroke-width="3" opacity="0.6"/>
+
+  <!-- 10-20 通道 (G中心到喉咙) -->
+  <path id="channel-10-20" d="M 380 440 Q 355 460 328 483" fill="none" stroke="#999" stroke-width="3" opacity="0.6"/>
+
+  <!-- 7-31 通道 (G中心到喉咙) -->
+  <path id="channel-7-31" d="M 340 480 Q 385 380 430 280" fill="none" stroke="#999" stroke-width="3" opacity="0.6"/>
+
+  <!-- 13-33 通道 (G中心到喉咙) -->
+  <path id="channel-13-33" d="M 410 480 Q 385 380 320 280" fill="none" stroke="#999" stroke-width="3" opacity="0.6"/>
+
+  <!-- 63-4 通道 (脑中心到喉咙) -->
+  <path id="channel-63-4" d="M 430 150 Q 430 215 430 280" fill="none" stroke="#999" stroke-width="3" opacity="0.6"/>
+
+  <!-- 64-47 通道 (头部到脑中心) -->
+  <path id="channel-64-47" d="M 320 80 Q 320 115 320 150" fill="none" stroke="#999" stroke-width="3" opacity="0.6"/>
+
+  <!-- 61-24 通道 (头部到脑中心) -->
+  <path id="channel-61-24" d="M 375 60 Q 375 100 375 140" fill="none" stroke="#999" stroke-width="3" opacity="0.6"/>
+
+  <!-- 17-62 通道 (喉咙到逻辑) -->
+  <path id="channel-17-62" d="M 375 270 Q 347 275 320 280" fill="none" stroke="#999" stroke-width="3" opacity="0.6"/>
+
+  <!-- 20-34 通道 (喉咙到荐骨) -->
+  <path id="channel-20-34" d="M 328 483 Q 344 610 360 740" fill="none" stroke="#999" stroke-width="3" opacity="0.6"/>
+
+  <!-- 21-45 通道 (心脏到喉咙) -->
+  <path id="channel-21-45" d="M 480 600 Q 455 440 430 280" fill="none" stroke="#999" stroke-width="3" opacity="0.6"/>
+
+  <!-- 51-25 通道 (心脏到喉咙) -->
+  <path id="channel-51-25" d="M 520 630 Q 445 450 375 270" fill="none" stroke="#999" stroke-width="3" opacity="0.6"/>
+
+  <!-- 58-18 通道 (根中心到脾) -->
+  <path id="channel-58-18" d="M 320 880 Q 285 765 250 660" fill="none" stroke="#999" stroke-width="3" opacity="0.6"/>
+
+  <!-- 60-3 通道 (根中心到荐骨) -->
+  <path id="channel-60-3" d="M 375 870 Q 347 810 320 750" fill="none" stroke="#999" stroke-width="3" opacity="0.6"/>
+
+  <!-- 52-9 通道 (根中心到荐骨) -->
+  <path id="channel-52-9" d="M 430 880 Q 410 815 390 750" fill="none" stroke="#999" stroke-width="3" opacity="0.6"/>
+
+  <!-- 19-49 通道 (根中心到脾) -->
+  <path id="channel-19-49" d="M 350 900 Q 285 790 230 690" fill="none" stroke="#999" stroke-width="3" opacity="0.6"/>
+
+  <!-- 55-39 通道 (情绪中心到脾) -->
+  <path id="channel-55-39" d="M 500 650 Q 365 665 250 660" fill="none" stroke="#999" stroke-width="3" opacity="0.6"/>
+
+  <!-- 36-35 通道 (情绪中心到喉咙) -->
+  <path id="channel-36-35" d="M 480 700 Q 405 490 320 280" fill="none" stroke="#999" stroke-width="3" opacity="0.6"/>
+
+  <!-- 22-12 通道 (喉咙到G中心) -->
+  <path id="channel-22-12" d="M 430 280 Q 426 380 422 460" fill="none" stroke="#999" stroke-width="3" opacity="0.6"/>
+
+  <!-- 45-21 通道 (喉咙到心脏) -->
+  <path id="channel-45-21" d="M 430 280 Q 455 440 480 600" fill="none" stroke="#999" stroke-width="3" opacity="0.6"/>
 </svg>`
 
   useEffect(() => {
