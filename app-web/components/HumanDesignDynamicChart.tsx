@@ -1,0 +1,536 @@
+/**
+ * 动态人类图组件 - 根据实际数据着色
+ */
+
+'use client'
+
+import { useEffect, useRef } from 'react'
+
+interface HumanDesignData {
+  analysis: {
+    type: string
+    profile: string
+    authority: string
+    definition: string
+    channels: string[]
+    definedCenters: string[]
+    incarnationCross: {
+      full: string
+      key: string
+      type: string
+    }
+  }
+  planets: {
+    design: Record<string, unknown>
+    personality: Record<string, unknown>
+  }
+}
+
+interface HumanDesignDynamicChartProps {
+  data: HumanDesignData
+  width?: number
+  height?: number
+  className?: string
+}
+
+export default function HumanDesignDynamicChart({
+  data,
+  width = 750,
+  height = 1240,
+  className = ""
+}: HumanDesignDynamicChartProps) {
+  const svgRef = useRef<SVGSVGElement>(null)
+
+  useEffect(() => {
+    if (!svgRef.current || !data) return
+
+    const svg = svgRef.current
+    const doc = svg.ownerDocument!
+
+    // 获取闸门对应的行星类型
+    const getGatePlanet = (gateNum: number, data: HumanDesignData): 'design' | 'personality' => {
+      // 检查设计层面的行星
+      if (data.planets.design) {
+        for (const [, activation] of Object.entries(data.planets.design)) {
+          if (typeof activation === 'object' && activation && 'gate' in activation) {
+            const activationObj = activation as { gate: number }
+            if (activationObj.gate === gateNum) {
+              return 'design'
+            }
+          }
+        }
+      }
+
+      // 检查个性层面的行星
+      if (data.planets.personality) {
+        for (const [, activation] of Object.entries(data.planets.personality)) {
+          if (typeof activation === 'object' && activation && 'gate' in activation) {
+            const activationObj = activation as { gate: number }
+            if (activationObj.gate === gateNum) {
+              return 'personality'
+            }
+          }
+        }
+      }
+
+      // 默认返回设计层面
+      return 'design'
+    }
+
+    // 清除所有现有的动态样式类
+    const clearStyles = () => {
+      // 清除中心的填充状态
+      const centers = [
+        'head-center', 'ajna-center', 'throat-center', 'g-center',
+        'heart-center', 'spleen-center', 'solar-plexus-center',
+        'sacral-center', 'root-center'
+      ]
+      centers.forEach(id => {
+        const element = doc.getElementById(id)
+        if (element) {
+          element.classList.remove('center-filled', 'center-empty')
+          element.classList.add('center-empty')
+        }
+      })
+
+      // 清除所有闸门的填充状态
+      for (let i = 1; i <= 64; i++) {
+        const gate = doc.getElementById(`gate-${i}`)
+        const gateText = doc.getElementById(`gate-${i}-text`)
+        if (gate) {
+          gate.classList.remove('gate-filled', 'gate-empty')
+          gate.classList.add('gate-empty')
+        }
+        if (gateText) {
+          gateText.classList.remove('gate-text-filled')
+          gateText.classList.add('gate-text')
+        }
+      }
+
+      // 清除所有通道的颜色
+      const channels = svg.querySelectorAll('[id^="channel-"]')
+      channels.forEach(channel => {
+        channel.classList.remove('channel-design', 'channel-personality', 'channel-both')
+        channel.classList.add('channel-inactive')
+      })
+    }
+
+    // 应用数据驱动的样式
+    const applyDataStyles = () => {
+      // 获取激活的闸门
+      const activeGates = new Set<number>()
+
+      // 从通道中提取激活的闸门
+      data.analysis.channels.forEach(channel => {
+        const match = channel.match(/(\d+)-(\d+)/)
+        if (match) {
+          activeGates.add(parseInt(match[1]))
+          activeGates.add(parseInt(match[2]))
+        }
+      })
+
+      // 激活定义的中心
+      const centerMap: Record<string, string> = {
+        'Head': 'head-center',
+        'Ajna': 'ajna-center',
+        'Throat': 'throat-center',
+        'G': 'g-center',
+        'Heart/Ego': 'heart-center',
+        'Spleen': 'spleen-center',
+        'Solar Plexus': 'solar-plexus-center',
+        'Sacral': 'sacral-center',
+        'Root': 'root-center'
+      }
+
+      data.analysis.definedCenters.forEach(center => {
+        const centerId = centerMap[center]
+        if (centerId) {
+          const element = doc.getElementById(centerId)
+          if (element) {
+            element.classList.remove('center-empty')
+            element.classList.add('center-filled')
+          }
+        }
+      })
+
+      // 激活闸门
+      activeGates.forEach(gateNum => {
+        const gate = doc.getElementById(`gate-${gateNum}`)
+        const gateText = doc.getElementById(`gate-${gateNum}-text`)
+        if (gate) {
+          gate.classList.remove('gate-empty')
+          gate.classList.add('gate-filled')
+        }
+        if (gateText) {
+          gateText.classList.remove('gate-text')
+          gateText.classList.add('gate-text-filled')
+        }
+      })
+
+      // 激活通道并设置颜色
+      data.analysis.channels.forEach(channel => {
+        const match = channel.match(/(\d+)-(\d+)/)
+        if (match) {
+          const gate1 = parseInt(match[1])
+          const gate2 = parseInt(match[2])
+          const channelId = `channel-${gate1}-${gate2}`
+          const element = doc.getElementById(channelId)
+
+          if (element) {
+            element.classList.remove('channel-inactive')
+
+            // 根据行星数据确定通道类型
+            const gate1Planet = getGatePlanet(gate1, data)
+            const gate2Planet = getGatePlanet(gate2, data)
+
+            if (gate1Planet === 'design' && gate2Planet === 'design') {
+              element.classList.add('channel-design')
+            } else if (gate1Planet === 'personality' && gate2Planet === 'personality') {
+              element.classList.add('channel-personality')
+            } else {
+              element.classList.add('channel-both')
+            }
+          }
+        }
+      })
+    }
+
+    // 执行样式更新
+    clearStyles()
+    applyDataStyles()
+
+  }, [data])
+
+  return (
+    <div className={`human-design-dynamic-chart ${className}`}>
+      <svg
+        ref={svgRef}
+        width={width}
+        height={height}
+        viewBox="0 0 750 1240"
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-full h-auto"
+      >
+        {/* 定义样式 */}
+        <defs>
+          <style>
+            {`
+              .center-filled { fill: #ffffff; stroke: #ffffff; stroke-width: 2; }
+              .center-empty { fill: none; stroke: #ffffff; stroke-width: 2; }
+              .gate-filled { fill: #ff4444; stroke: #ffffff; stroke-width: 2; }
+              .gate-empty { fill: none; stroke: #ffffff; stroke-width: 2; }
+              .gate-text { fill: #000000; font-size: 12px; font-weight: bold; text-anchor: middle; dominant-baseline: central; }
+              .gate-text-filled { fill: #ffffff; font-size: 12px; font-weight: bold; text-anchor: middle; dominant-baseline: central; }
+              .channel-design { stroke: #ff4444; stroke-width: 4; fill: none; }
+              .channel-personality { stroke: #000000; stroke-width: 4; fill: none; }
+              .channel-both { stroke: url(#redBlackStripes); stroke-width: 4; fill: none; }
+              .channel-inactive { stroke: #666666; stroke-width: 2; fill: none; stroke-dasharray: 2,2; }
+            `}
+          </style>
+
+          {/* 红黑相间条纹图案 */}
+          <pattern id="redBlackStripes" patternUnits="userSpaceOnUse" width="8" height="2" patternTransform="rotate(45)">
+            <rect width="4" height="2" fill="#ff4444"/>
+            <rect x="4" width="4" height="2" fill="#000000"/>
+          </pattern>
+        </defs>
+
+        {/* 头部中心 (Head Center) - 三角形 */}
+        <path id="head-center" className="center-empty" d="M 375,80 L 420,140 L 330,140 Z"/>
+
+        {/* 头部中心的闸门 */}
+        <circle id="gate-3" className="gate-empty" cx="345" cy="120" r="12"/>
+        <text id="gate-3-text" className="gate-text" x="345" y="120">3</text>
+
+        <circle id="gate-60" className="gate-empty" cx="375" cy="105" r="12"/>
+        <text id="gate-60-text" className="gate-text" x="375" y="105">60</text>
+
+        <circle id="gate-61" className="gate-empty" cx="405" cy="120" r="12"/>
+        <text id="gate-61-text" className="gate-text" x="405" y="120">61</text>
+
+        <circle id="gate-64" className="gate-empty" cx="390" cy="135" r="12"/>
+        <text id="gate-64-text" className="gate-text" x="390" y="135">64</text>
+
+        <circle id="gate-57" className="gate-empty" cx="360" cy="135" r="12"/>
+        <text id="gate-57-text" className="gate-text" x="360" y="135">57</text>
+
+        {/* 脑中心 (Ajna Center) - 菱形 */}
+        <path id="ajna-center" className="center-empty" d="M 375,180 L 410,220 L 375,260 L 340,220 Z"/>
+
+        {/* 脑中心的闸门 */}
+        <circle id="gate-47" className="gate-empty" cx="345" cy="205" r="12"/>
+        <text id="gate-47-text" className="gate-text" x="345" y="205">47</text>
+
+        <circle id="gate-11" className="gate-empty" cx="405" cy="205" r="12"/>
+        <text id="gate-11-text" className="gate-text" x="405" y="205">11</text>
+
+        <circle id="gate-24" className="gate-empty" cx="345" cy="235" r="12"/>
+        <text id="gate-24-text" className="gate-text" x="345" y="235">24</text>
+
+        <circle id="gate-4" className="gate-empty" cx="405" cy="235" r="12"/>
+        <text id="gate-4-text" className="gate-text" x="405" y="235">4</text>
+
+        <circle id="gate-63" className="gate-empty" cx="360" cy="220" r="12"/>
+        <text id="gate-63-text" className="gate-text" x="360" y="220">63</text>
+
+        <circle id="gate-17" className="gate-empty" cx="390" cy="220" r="12"/>
+        <text id="gate-17-text" className="gate-text" x="390" y="220">17</text>
+
+        <circle id="gate-7" className="gate-empty" cx="375" cy="195" r="12"/>
+        <text id="gate-7-text" className="gate-text" x="375" y="195">7</text>
+
+        <circle id="gate-62" className="gate-empty" cx="375" cy="245" r="12"/>
+        <text id="gate-62-text" className="gate-text" x="375" y="245">62</text>
+
+        {/* 喉咙中心 (Throat Center) - 正方形 */}
+        <rect id="throat-center" className="center-empty" x="340" y="300" width="70" height="70" rx="5"/>
+
+        {/* 喉咙中心的闸门 */}
+        <circle id="gate-16" className="gate-empty" cx="355" cy="315" r="12"/>
+        <text id="gate-16-text" className="gate-text" x="355" y="315">16</text>
+
+        <circle id="gate-12" className="gate-empty" cx="395" cy="315" r="12"/>
+        <text id="gate-12-text" className="gate-text" x="395" y="315">12</text>
+
+        <circle id="gate-45" className="gate-empty" cx="355" cy="355" r="12"/>
+        <text id="gate-45-text" className="gate-text" x="355" y="355">45</text>
+
+        <circle id="gate-33" className="gate-empty" cx="395" cy="355" r="12"/>
+        <text id="gate-33-text" className="gate-text" x="395" y="355">33</text>
+
+        <circle id="gate-8" className="gate-empty" cx="375" cy="335" r="12"/>
+        <text id="gate-8-text" className="gate-text" x="375" y="335">8</text>
+
+        <circle id="gate-15" className="gate-empty" cx="340" cy="335" r="12"/>
+        <text id="gate-15-text" className="gate-text" x="340" y="335">15</text>
+
+        <circle id="gate-20" className="gate-empty" cx="410" cy="335" r="12"/>
+        <text id="gate-20-text" className="gate-text" x="410" y="335">20</text>
+
+        <circle id="gate-31" className="gate-empty" cx="375" cy="310" r="12"/>
+        <text id="gate-31-text" className="gate-text" x="375" y="310">31</text>
+
+        {/* G中心 (G Center) - 菱形 */}
+        <path id="g-center" className="center-empty" d="M 375,430 L 420,480 L 375,530 L 330,480 Z"/>
+
+        {/* G中心的闸门 */}
+        <circle id="gate-1" className="gate-empty" cx="340" cy="455" r="12"/>
+        <text id="gate-1-text" className="gate-text" x="340" y="455">1</text>
+
+        <circle id="gate-13" className="gate-empty" cx="410" cy="455" r="12"/>
+        <text id="gate-13-text" className="gate-text" x="410" y="455">13</text>
+
+        <circle id="gate-10" className="gate-empty" cx="360" cy="480" r="12"/>
+        <text id="gate-10-text" className="gate-text" x="360" y="480">10</text>
+
+        <circle id="gate-25" className="gate-empty" cx="390" cy="480" r="12"/>
+        <text id="gate-25-text" className="gate-text" x="390" y="480">25</text>
+
+        {/* 心脏中心 (Heart Center) - 三角形 */}
+        <path id="heart-center" className="center-empty" d="M 250,520 L 290,570 L 210,570 Z"/>
+
+        {/* 心脏中心的闸门 */}
+        <circle id="gate-21" className="gate-empty" cx="225" cy="550" r="12"/>
+        <text id="gate-21-text" className="gate-text" x="225" y="550">21</text>
+
+        <circle id="gate-40" className="gate-empty" cx="250" cy="540" r="12"/>
+        <text id="gate-40-text" className="gate-text" x="250" y="540">40</text>
+
+        <circle id="gate-51" className="gate-empty" cx="275" cy="550" r="12"/>
+        <text id="gate-51-text" className="gate-text" x="275" y="550">51</text>
+
+        <circle id="gate-26" className="gate-empty" cx="235" cy="565" r="12"/>
+        <text id="gate-26-text" className="gate-text" x="235" y="565">26</text>
+
+        {/* 脾中心 (Spleen Center) - 三角形 */}
+        <path id="spleen-center" className="center-empty" d="M 500,520 L 540,570 L 460,570 Z"/>
+
+        {/* 脾中心的闸门 */}
+        <circle id="gate-48" className="gate-empty" cx="475" cy="550" r="12"/>
+        <text id="gate-48-text" className="gate-text" x="475" y="550">48</text>
+
+        <circle id="gate-57" className="gate-empty" cx="500" cy="540" r="12"/>
+        <text id="gate-57-text" className="gate-text" x="500" y="540">57</text>
+
+        <circle id="gate-44" className="gate-empty" cx="525" cy="550" r="12"/>
+        <text id="gate-44-text" className="gate-text" x="525" y="550">44</text>
+
+        <circle id="gate-18" className="gate-empty" cx="485" cy="565" r="12"/>
+        <text id="gate-18-text" className="gate-text" x="485" y="565">18</text>
+
+        <circle id="gate-28" className="gate-empty" cx="515" cy="565" r="12"/>
+        <text id="gate-28-text" className="gate-text" x="515" y="565">28</text>
+
+        <circle id="gate-32" className="gate-empty" cx="510" cy="540" r="12"/>
+        <text id="gate-32-text" className="gate-text" x="510" y="540">32</text>
+
+        <circle id="gate-50" className="gate-empty" cx="490" cy="540" r="12"/>
+        <text id="gate-50-text" className="gate-text" x="490" y="540">50</text>
+
+        {/* 太阳神经丛中心 (Solar Plexus Center) - 三角形 */}
+        <path id="solar-plexus-center" className="center-empty" d="M 375,620 L 440,690 L 310,690 Z"/>
+
+        {/* 太阳神经丛中心的闸门 */}
+        <circle id="gate-22" className="gate-empty" cx="330" cy="660" r="12"/>
+        <text id="gate-22-text" className="gate-text" x="330" y="660">22</text>
+
+        <circle id="gate-36" className="gate-empty" cx="365" cy="670" r="12"/>
+        <text id="gate-36-text" className="gate-text" x="365" y="670">36</text>
+
+        <circle id="gate-37" className="gate-empty" cx="385" cy="670" r="12"/>
+        <text id="gate-37-text" className="gate-text" x="385" y="670">37</text>
+
+        <circle id="gate-41" className="gate-empty" cx="420" cy="660" r="12"/>
+        <text id="gate-41-text" className="gate-text" x="420" y="660">41</text>
+
+        <circle id="gate-6" className="gate-empty" cx="345" cy="645" r="12"/>
+        <text id="gate-6-text" className="gate-text" x="345" y="645">6</text>
+
+        <circle id="gate-49" className="gate-empty" cx="405" cy="645" r="12"/>
+        <text id="gate-49-text" className="gate-text" x="405" y="645">49</text>
+
+        <circle id="gate-55" className="gate-empty" cx="350" cy="680" r="12"/>
+        <text id="gate-55-text" className="gate-text" x="350" y="680">55</text>
+
+        <circle id="gate-30" className="gate-empty" cx="400" cy="680" r="12"/>
+        <text id="gate-30-text" className="gate-text" x="400" y="680">30</text>
+
+        {/* 荐骨中心 (Sacral Center) - 正方形 */}
+        <rect id="sacral-center" className="center-empty" x="300" y="760" width="150" height="100" rx="10"/>
+
+        {/* 荐骨中心的闸门 */}
+        <circle id="gate-3" className="gate-empty" cx="320" cy="780" r="12"/>
+        <text id="gate-3-text" className="gate-text" x="320" y="780">3</text>
+
+        <circle id="gate-9" className="gate-empty" cx="360" cy="770" r="12"/>
+        <text id="gate-9-text" className="gate-text" x="360" y="770">9</text>
+
+        <circle id="gate-5" className="gate-empty" cx="400" cy="770" r="12"/>
+        <text id="gate-5-text" className="gate-text" x="400" y="770">5</text>
+
+        <circle id="gate-14" className="gate-empty" cx="430" cy="780" r="12"/>
+        <text id="gate-14-text" className="gate-text" x="430" y="780">14</text>
+
+        <circle id="gate-42" className="gate-empty" cx="430" cy="820" r="12"/>
+        <text id="gate-42-text" className="gate-text" x="430" y="820">42</text>
+
+        <circle id="gate-59" className="gate-empty" cx="400" cy="830" r="12"/>
+        <text id="gate-59-text" className="gate-text" x="400" y="830">59</text>
+
+        <circle id="gate-27" className="gate-empty" cx="360" cy="830" r="12"/>
+        <text id="gate-27-text" className="gate-text" x="360" y="830">27</text>
+
+        <circle id="gate-58" className="gate-empty" cx="320" cy="820" r="12"/>
+        <text id="gate-58-text" className="gate-text" x="320" y="820">58</text>
+
+        <circle id="gate-6" className="gate-empty" cx="340" cy="770" r="12"/>
+        <text id="gate-6-text" className="gate-text" x="340" y="770">6</text>
+
+        <circle id="gate-34" className="gate-empty" cx="410" cy="770" r="12"/>
+        <text id="gate-34-text" className="gate-text" x="410" y="770">34</text>
+
+        <circle id="gate-29" className="gate-empty" cx="375" cy="760" r="12"/>
+        <text id="gate-29-text" className="gate-text" x="375" y="760">29</text>
+
+        <circle id="gate-46" className="gate-empty" cx="375" cy="840" r="12"/>
+        <text id="gate-46-text" className="gate-text" x="375" y="840">46</text>
+
+        {/* 根中心 (Root Center) - 正方形 */}
+        <rect id="root-center" className="center-empty" x="320" y="920" width="110" height="80" rx="8"/>
+
+        {/* 根中心的闸门 */}
+        <circle id="gate-52" className="gate-empty" cx="340" cy="940" r="12"/>
+        <text id="gate-52-text" className="gate-text" x="340" y="940">52</text>
+
+        <circle id="gate-58" className="gate-empty" cx="380" cy="935" r="12"/>
+        <text id="gate-58-text" className="gate-text" x="380" y="935">58</text>
+
+        <circle id="gate-60" className="gate-empty" cx="340" cy="970" r="12"/>
+        <text id="gate-60-text" className="gate-text" x="340" y="970">60</text>
+
+        <circle id="gate-53" className="gate-empty" cx="380" cy="975" r="12"/>
+        <text id="gate-53-text" className="gate-text" x="380" y="975">53</text>
+
+        <circle id="gate-19" className="gate-empty" cx="410" cy="970" r="12"/>
+        <text id="gate-19-text" className="gate-text" x="410" y="970">19</text>
+
+        <circle id="gate-39" className="gate-empty" cx="360" cy="950" r="12"/>
+        <text id="gate-39-text" className="gate-text" x="360" y="950">39</text>
+
+        <circle id="gate-38" className="gate-empty" cx="400" cy="950" r="12"/>
+        <text id="gate-38-text" className="gate-text" x="400" y="950">38</text>
+
+        {/* 通道定义 (主要通道) */}
+        <line id="channel-3-60" className="channel-inactive" x1="345" y1="120" x2="375" y2="195"/>
+        <line id="channel-61-24" className="channel-inactive" x1="405" y1="120" x2="345" y2="235"/>
+        <line id="channel-64-47" className="channel-inactive" x1="390" y1="135" x2="345" y2="205"/>
+        <line id="channel-57-11" className="channel-inactive" x1="360" y1="135" x2="405" y2="205"/>
+        <line id="channel-63-4" className="channel-inactive" x1="360" y1="220" x2="405" y2="235"/>
+        <line id="channel-17-62" className="channel-inactive" x1="390" y1="220" x2="375" y2="245"/>
+
+        <line id="channel-11-56" className="channel-inactive" x1="405" y1="205" x2="355" y2="315"/>
+        <line id="channel-4-63" className="channel-inactive" x1="405" y1="235" x2="395" y2="315"/>
+        <line id="channel-7-31" className="channel-inactive" x1="375" y1="195" x2="375" y2="310"/>
+        <line id="channel-24-61" className="channel-inactive" x1="345" y1="235" x2="355" y2="315"/>
+        <line id="channel-47-64" className="channel-inactive" x1="345" y1="205" x2="355" y2="315"/>
+        <line id="channel-62-17" className="channel-inactive" x1="375" y1="245" x2="395" y2="315"/>
+
+        <line id="channel-16-48" className="channel-inactive" x1="355" y1="335" x2="475" y2="550"/>
+        <line id="channel-12-22" className="channel-inactive" x1="395" y1="335" x2="330" y2="660"/>
+        <line id="channel-45-21" className="channel-inactive" x1="355" y1="355" x2="225" y2="550"/>
+        <line id="channel-33-13" className="channel-inactive" x1="395" y1="355" x2="410" y2="455"/>
+        <line id="channel-8-1" className="channel-inactive" x1="375" y1="335" x2="340" y2="455"/>
+        <line id="channel-15-5" className="channel-inactive" x1="340" y1="335" x2="400" y2="770"/>
+        <line id="channel-20-34" className="channel-inactive" x1="410" y1="335" x2="410" y2="770"/>
+        <line id="channel-31-7" className="channel-inactive" x1="375" y1="310" x2="360" y2="480"/>
+
+        <line id="channel-1-44" className="channel-inactive" x1="340" y1="455" x2="525" y2="550"/>
+        <line id="channel-13-30" className="channel-inactive" x1="410" y1="455" x2="400" y2="680"/>
+        <line id="channel-10-57" className="channel-inactive" x1="360" y1="480" x2="500" y2="540"/>
+        <line id="channel-25-51" className="channel-inactive" x1="390" y1="480" x2="275" y2="550"/>
+
+        <line id="channel-21-45" className="channel-inactive" x1="225" y1="550" x2="355" y2="355"/>
+        <line id="channel-40-37" className="channel-inactive" x1="250" y1="540" x2="385" y2="670"/>
+        <line id="channel-51-25" className="channel-inactive" x1="275" y1="550" x2="390" y2="480"/>
+        <line id="channel-26-44" className="channel-inactive" x1="235" y1="565" x2="405" y2="505"/>
+
+        <line id="channel-48-16" className="channel-inactive" x1="475" y1="550" x2="355" y2="315"/>
+        <line id="channel-57-20" className="channel-inactive" x1="500" y1="540" x2="410" y2="335"/>
+        <line id="channel-44-26" className="channel-inactive" x1="525" y1="550" x2="235" y2="565"/>
+        <line id="channel-18-58" className="channel-inactive" x1="485" y1="565" x2="320" y2="820"/>
+        <line id="channel-28-38" className="channel-inactive" x1="515" y1="565" x2="400" y2="950"/>
+        <line id="channel-32-54" className="channel-inactive" x1="510" y1="540" x2="380" y2="975"/>
+        <line id="channel-50-27" className="channel-inactive" x1="490" y1="540" x2="360" y2="830"/>
+
+        <line id="channel-22-12" className="channel-inactive" x1="330" y1="660" x2="395" y2="335"/>
+        <line id="channel-36-35" className="channel-inactive" x1="365" y1="670" x2="360" y2="770"/>
+        <line id="channel-37-40" className="channel-inactive" x1="385" y1="670" x2="250" y2="540"/>
+        <line id="channel-41-35" className="channel-inactive" x1="420" y1="660" x2="360" y2="770"/>
+        <line id="channel-6-59" className="channel-inactive" x1="345" y1="645" x2="400" y2="830"/>
+        <line id="channel-49-19" className="channel-inactive" x1="405" y1="645" x2="410" y2="970"/>
+        <line id="channel-55-39" className="channel-inactive" x1="350" y1="680" x2="360" y2="950"/>
+        <line id="channel-30-41" className="channel-inactive" x1="400" y1="680" x2="420" y2="660"/>
+
+        <line id="channel-3-60" className="channel-inactive" x1="320" y1="780" x2="340" y2="970"/>
+        <line id="channel-9-52" className="channel-inactive" x1="360" y1="770" x2="340" y2="940"/>
+        <line id="channel-5-15" className="channel-inactive" x1="400" y1="770" x2="340" y2="335"/>
+        <line id="channel-14-2" className="channel-inactive" x1="430" y1="780" x2="380" y2="935"/>
+        <line id="channel-42-53" className="channel-inactive" x1="430" y1="820" x2="380" y2="975"/>
+        <line id="channel-59-6" className="channel-inactive" x1="400" y1="830" x2="345" y2="645"/>
+        <line id="channel-27-50" className="channel-inactive" x1="360" y1="830" x2="490" y2="540"/>
+        <line id="channel-58-18" className="channel-inactive" x1="320" y1="820" x2="485" y2="565"/>
+        <line id="channel-6-46" className="channel-inactive" x1="340" y1="770" x2="375" y2="840"/>
+        <line id="channel-34-10" className="channel-inactive" x1="410" y1="770" x2="360" y2="480"/>
+        <line id="channel-29-46" className="channel-inactive" x1="375" y1="760" x2="375" y2="840"/>
+
+        {/* 根中心内部通道 */}
+        <line id="channel-52-58" className="channel-inactive" x1="340" y1="940" x2="380" y2="935"/>
+        <line id="channel-58-3" className="channel-inactive" x1="380" y1="935" x2="410" y2="940"/>
+        <line id="channel-60-3" className="channel-inactive" x1="340" y1="970" x2="410" y2="940"/>
+        <line id="channel-53-19" className="channel-inactive" x1="380" y1="975" x2="410" y2="970"/>
+        <line id="channel-39-38" className="channel-inactive" x1="360" y1="950" x2="400" y2="950"/>
+
+      </svg>
+    </div>
+  )
+}

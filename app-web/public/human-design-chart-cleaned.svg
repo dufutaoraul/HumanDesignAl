@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg1"
+   width="750"
+   height="1240"
+   viewBox="0 0 750 1240"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+     <!-- 定义渐变效果 -->
+     <linearGradient id="centerGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+       <stop offset="0%" style="stop-color:#4a90e2;stop-opacity:1" />
+       <stop offset="100%" style="stop-color:#7b68ee;stop-opacity:1" />
+     </linearGradient>
+     <linearGradient id="channelGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+       <stop offset="0%" style="stop-color:#dc2626;stop-opacity:0.8" />
+       <stop offset="50%" style="stop-color:#dc2626;stop-opacity:1" />
+       <stop offset="100%" style="stop-color:#dc2626;stop-opacity:0.8" />
+     </linearGradient>
+   </defs>
+
+  <g id="centers">
+    <!-- 头中心 - 倒三角形 -->
+    <path
+       id="head-center"
+       d="M 375 100 L 430 200 L 320 200 Z"
+       fill="rgba(255,255,255,0.1)"
+       stroke="rgba(255,255,255,0.5)"
+       stroke-width="2"
+       class="center-shape"
+       data-center="head"
+    />
+
+    <!-- 脑中心 - 菱形 -->
+    <path
+       id="ajna-center"
+       d="M 375 200 L 420 250 L 375 300 L 330 250 Z"
+       fill="rgba(255,255,255,0.1)"
+       stroke="rgba(255,255,255,0.5)"
+       stroke-width="2"
+       class="center-shape"
+       data-center="ajna"
+    />
+
+    <!-- 喉咙中心 - 正方形 -->
+    <rect
+       id="throat-center"
+       x="320"
+       y="350"
+       width="110"
+       height="110"
+       fill="rgba(255,255,255,0.1)"
+       stroke="rgba(255,255,255,0.5)"
+       stroke-width="2"
+       class="center-shape"
+       data-center="throat"
+    />
+
+    <!-- G中心 - 菱形（大） -->
+    <path
+       id="g-center"
+       d="M 375 420 L 430 480 L 375 540 L 320 480 Z"
+       fill="rgba(255,255,255,0.1)"
+       stroke="rgba(255,255,255,0.5)"
+       stroke-width="2"
+       class="center-shape"
+       data-center="g"
+    />
+
+    <!-- 意志力中心 - 三角形 -->
+    <path
+       id="ego-center"
+       d="M 280 380 L 320 450 L 240 450 Z"
+       fill="rgba(255,255,255,0.1)"
+       stroke="rgba(255,255,255,0.5)"
+       stroke-width="2"
+       class="center-shape"
+       data-center="ego"
+    />
+
+    <!-- 脾中心 - 三角形 -->
+    <path
+       id="spleen-center"
+       d="M 280 480 L 320 550 L 240 550 Z"
+       fill="rgba(255,255,255,0.1)"
+       stroke="rgba(255,255,255,0.5)"
+       stroke-width="2"
+       class="center-shape"
+       data-center="spleen"
+    />
+
+    <!-- 太阳神经丛 - 三角形 -->
+    <path
+       id="solar-plexus-center"
+       d="M 520 480 L 560 550 L 480 550 Z"
+       fill="rgba(255,255,255,0.1)"
+       stroke="rgba(255,255,255,0.5)"
+       stroke-width="2"
+       class="center-shape"
+       data-center="solarPlexus"
+    />
+
+    <!-- 荐骨中心 - 正方形 -->
+    <rect
+       id="sacral-center"
+       x="470"
+       y="380"
+      width="100"
+      height="100"
+       fill="rgba(255,255,255,0.1)"
+       stroke="rgba(255,255,255,0.5)"
+       stroke-width="2"
+       class="center-shape"
+       data-center="sacral"
+    />
+
+    <!-- 根中心 - 倒三角形 -->
+    <path
+       id="root-center"
+       d="M 375 600 L 430 550 L 320 550 Z"
+       fill="rgba(255,255,255,0.1)"
+       stroke="rgba(255,255,255,0.5)"
+       stroke-width="2"
+       class="center-shape"
+       data-center="root"
+    />
+  </g>
+
+  <!-- 闸门圆圈 -->
+  <g id="gates">
+    <!-- 头中心闸门 -->
+    <circle id="gate-64" cx="365" cy="90" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-64-text" x="365" y="95" text-anchor="middle" fill="white" font-size="10" font-weight="bold">64</text>
+
+    <circle id="gate-47" cx="385" cy="90" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-47-text" x="385" y="95" text-anchor="middle" fill="white" font-size="10" font-weight="bold">47</text>
+
+    <circle id="gate-24" cx="405" cy="90" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-24-text" x="405" y="95" text-anchor="middle" fill="white" font-size="10" font-weight="bold">24</text>
+
+    <circle id="gate-4" cx="345" cy="90" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-4-text" x="345" y="95" text-anchor="middle" fill="white" font-size="10" font-weight="bold">4</text>
+
+    <circle id="gate-61" cx="345" cy="115" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-61-text" x="345" y="120" text-anchor="middle" fill="white" font-size="10" font-weight="bold">61</text>
+
+    <circle id="gate-63" cx="405" cy="115" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-63-text" x="405" y="120" text-anchor="middle" fill="white" font-size="10" font-weight="bold">63</text>
+
+    <!-- 脑中心闸门 -->
+    <circle id="gate-11" cx="355" cy="190" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-11-text" x="355" y="195" text-anchor="middle" fill="white" font-size="10" font-weight="bold">11</text>
+
+    <circle id="gate-62" cx="395" cy="190" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-62-text" x="395" y="195" text-anchor="middle" fill="white" font-size="10" font-weight="bold">62</text>
+
+    <circle id="gate-17" cx="415" cy="210" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-17-text" x="415" y="215" text-anchor="middle" fill="white" font-size="10" font-weight="bold">17</text>
+
+    <circle id="gate-43" cx="335" cy="210" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-43-text" x="335" y="215" text-anchor="middle" fill="white" font-size="10" font-weight="bold">43</text>
+
+    <!-- 喉咙中心闸门 - 只画您已画的部分 -->
+    <circle id="gate-62" cx="370" cy="340" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-62-text" x="370" y="345" text-anchor="middle" fill="white" font-size="10" font-weight="bold">62</text>
+
+    <circle id="gate-23" cx="380" cy="340" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-23-text" x="380" y="345" text-anchor="middle" fill="white" font-size="10" font-weight="bold">23</text>
+
+    <circle id="gate-56" cx="390" cy="340" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-56-text" x="390" y="345" text-anchor="middle" fill="white" font-size="10" font-weight="bold">56</text>
+
+    <circle id="gate-31" cx="400" cy="340" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-31-text" x="400" y="345" text-anchor="middle" fill="white" font-size="10" font-weight="bold">31</text>
+
+    <circle id="gate-8" cx="410" cy="340" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-8-text" x="410" y="345" text-anchor="middle" fill="white" font-size="10" font-weight="bold">8</text>
+
+    <circle id="gate-33" cx="420" cy="340" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-33-text" x="420" y="345" text-anchor="middle" fill="white" font-size="10" font-weight="bold">33</text>
+
+    <!-- G中心闸门 -->
+    <circle id="gate-1" cx="340" cy="440" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-1-text" x="340" y="445" text-anchor="middle" fill="white" font-size="10" font-weight="bold">1</text>
+
+    <circle id="gate-13" cx="375" cy="440" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-13-text" x="375" y="445" text-anchor="middle" fill="white" font-size="10" font-weight="bold">13</text>
+
+    <circle id="gate-7" cx="410" cy="440" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-7-text" x="410" y="445" text-anchor="middle" fill="white" font-size="10" font-weight="bold">7</text>
+
+    <circle id="gate-2" cx="400" cy="460" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-2-text" x="400" y="465" text-anchor="middle" fill="white" font-size="10" font-weight="bold">2</text>
+
+    <!-- 意志力中心闸门 -->
+    <circle id="gate-21" cx="250" cy="380" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-21-text" x="250" y="385" text-anchor="middle" fill="white" font-size="10" font-weight="bold">21</text>
+
+    <circle id="gate-26" cx="270" cy="380" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-26-text" x="270" y="385" text-anchor="middle" fill="white" font-size="10" font-weight="bold">26</text>
+
+    <circle id="gate-40" cx="290" cy="380" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-40-text" x="290" y="385" text-anchor="middle" fill="white" font-size="10" font-weight="bold">40</text>
+
+    <circle id="gate-51" cx="250" cy="440" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-51-text" x="250" y="445" text-anchor="middle" fill="white" font-size="10" font-weight="bold">51</text>
+
+    <!-- 脾中心闸门 -->
+    <circle id="gate-48" cx="250" cy="480" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-48-text" x="250" y="485" text-anchor="middle" fill="white" font-size="10" font-weight="bold">48</text>
+
+    <circle id="gate-57" cx="270" cy="480" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-57-text" x="270" y="485" text-anchor="middle" fill="white" font-size="10" font-weight="bold">57</text>
+
+    <circle id="gate-44" cx="290" cy="480" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-44-text" x="290" y="485" text-anchor="middle" fill="white" font-size="10" font-weight="bold">44</text>
+
+    <circle id="gate-50" cx="310" cy="480" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-50-text" x="310" y="485" text-anchor="middle" fill="white" font-size="10" font-weight="bold">50</text>
+
+    <circle id="gate-28" cx="250" cy="520" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-28-text" x="250" y="525" text-anchor="middle" fill="white" font-size="10" font-weight="bold">28</text>
+
+    <circle id="gate="18" cx="270" cy="520" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-18-text" x="270" y="525" text-anchor="middle" fill="white" font-size="10" font-weight="bold">18</text>
+
+    <circle id="gate-58" cx="290" cy="520" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-58-text" x="290" y="525" text-anchor="middle" fill="white" font-size="10" font-weight="bold">58</text>
+
+    <circle id="gate-52" cx="310" cy="520" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-52-text" x="310" y="525" text-anchor="middle" fill="white" font-size="10" font-weight="bold">52</text>
+
+    <circle id="gate-53" cx="330" cy="520" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-53-text" x="330" y="525" text-anchor="middle" fill="white" font-size="10" font-weight="bold">53</text>
+
+    <circle id="gate-27" cx="250" cy="560" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-27-text" x="250" y="565" text-anchor="middle" fill="white" font-size="10" font-weight="bold">27</text>
+
+    <!-- 太阳神经丛中心闸门 -->
+    <circle id="gate-55" cx="520" cy="440" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-55-text" x="520" y="445" text-anchor="middle" fill="white" font-size="10" font-weight="bold">55</text>
+
+    <circle id="gate-49" cx="540" cy="440" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-49-text" x="540" y="445" text-anchor="middle" fill="white" font-size="10" font-weight="bold">49</text>
+
+    <circle id="gate-39" cx="560" cy="440" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-39-text" x="560" y="445" text-anchor="middle" fill="white" font-size="10" font-weight="bold">39</text>
+
+    <circle id="gate-36" cx="580" cy="440" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-36-text" x="580" y="445" text-anchor="middle" fill="white" font-size="10" font-weight="bold">36</text>
+
+    <circle id="gate-37" cx="560" cy="470" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-37-text" x="560" y="475" text-anchor="middle" fill="white" font-size="10" font-weight="bold">37</text>
+
+    <circle id="gate-41" cx="540" cy="470" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-41-text" x="540" y="475" text-anchor="middle" fill="white" font-size="10" font-weight="bold">41</text>
+
+    <circle id="gate-30" cx="520" cy="470" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-30-text" x="520" y="475" text-anchor="middle" fill="white" font-size="10" font-weight="bold">30</text>
+
+    <circle id="gate-35" cx="500" cy="470" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-35-text" x="500" y="475" text-anchor="middle" fill="white" font-size="10" font-weight="bold">35</text>
+
+    <circle id="gate-19" cx="480" cy="470" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-19-text" x="480" y="475" text-anchor="middle" fill="white" font-size="10" font-weight="bold">19</text>
+
+    <circle id="gate-59" cx="500" cy="460" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-59-text" x="500" y="465" text-anchor="middle" fill="white" font-size="10" font-weight="bold">59</text>
+
+    <circle id="gate-6" cx="480" cy="460" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-6-text" x="480" y="465" text-anchor="middle" fill="white" font-size="10" font-weight="bold">6</text>
+
+    <!-- 荐骨中心闸门 -->
+    <circle id="gate-34" cx="520" cy="340" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-34-text" x="520" y="345" text-anchor="middle" fill="white" font-size="10" font-weight="bold">34</text>
+
+    <circle id="gate-14" cx="520" cy="360" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-14-text" x="520" y="365" text-anchor="middle" fill="white" font-size="10" font-weight="bold">14</text>
+
+    <circle id="gate-29" cx="540" cy="360" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-29-text" x="540" y="365" text-anchor="middle" fill="white" font-size="10" font-weight="bold">29</text>
+
+    <circle id="gate-5" cx="560" cy="360" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-5-text" x="560" y="365" text-anchor="middle" fill="white" font-size="10" font-weight="bold">5</text>
+
+    <circle id="gate-9" cx="580" cy="360" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-9-text" x="580" y="365" text-anchor="middle" fill="white" font-size="10" font-weight="bold">9</text>
+
+    <circle id="gate-46" cx="600" cy="360" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-46-text" x="600" y="365" text-anchor="middle" fill="white" font-size="10" font-weight="bold">46</text>
+
+    <circle id="gate-2" cx="620" cy="360" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-2-text" x="620" y="365" text-anchor="middle" fill="white" font-size="10" font-weight="bold">2</text>
+
+    <circle id="gate-3" cx="640" cy="360" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-3-text" x="640" y="365" text-anchor="middle" fill="white" font-size="10" font-weight="bold">3</text>
+
+    <circle id="gate-58" cx="660" cy="360" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-58-text" x="660" y="365" text-anchor="middle" fill="white" font-size="10" font-weight="bold">58</text>
+
+    <circle id="gate-42" cx="680" cy="360" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-42-text" x="680" y="365" text-anchor="middle" fill="white" font-size="10" font-weight="bold">42</text>
+
+    <circle id="gate-53" cx="700" cy="360" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-53-text" x="700" y="365" text-anchor="middle" fill="white" font-size="10" font-weight="bold">53</text>
+
+    <circle id="gate-60" cx="720" cy="360" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-60-text" x="720" y="365" text-anchor="middle" fill="white" font-size="10" font-weight="bold">60</text>
+
+    <!-- 根中心闸门 -->
+    <circle id="gate-52" cx="370" cy="640" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-52-text" x="370" y="645" text-anchor="middle" fill="white" font-size="10" font-weight="bold">52</text>
+
+    <circle id="gate="3" cx="390" cy="640" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-3-text" x="390" y="645" text-anchor="middle" fill="white" font-size="10" font-weight="bold">3</text>
+
+    <circle id="gate="58" cx="410" cy="640" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-58-text" x="410" y="645" text-anchor="middle" fill="white" font-size="10" font-weight="bold">58</text>
+
+    <circle id="gate-42" cx="430" cy="640" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-42-text" x="430" y="645" text-anchor="middle" fill="white" font-size="10" font-weight="bold">42</text>
+
+    <circle id="gate-53" cx="450" cy="640" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-53-text" x="450" y="645" text-anchor="middle" fill="white" font-size="10" font-weight="bold">53</text>
+
+    <circle id="gate="19" cx="470" cy="640" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-19-text" x="470" y="645" text-anchor="middle" fill="white" font-size="10" font-weight="bold">19</text>
+
+    <circle id="gate="39" cx="490" cy="640" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-39-text" x="490" y="645" text-anchor="middle" fill="white" font-size="10" font-weight="bold">39</text>
+
+    <circle id="gate-41" cx="510" cy="640" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-41-text" x="510" y="645" text-anchor="middle" fill="white" font-size="10" font-weight="bold">41</text>
+
+    <circle id="gate-30" cx="530" cy="640" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-30-text" x="530" y="645" text-anchor="middle" fill="white" font-size="10" font-weight="bold">30</text>
+
+    <circle id="gate="38" cx="550" cy="640" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-38-text" x="550" y="645" text-anchor="middle" fill="white" font-size="10" font-weight="bold">38</text>
+
+    <circle id="gate-54" cx="570" cy="640" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-54-text" x="570" y="645" text-anchor="middle" fill="white" font-size="10" font-weight="bold">54</text>
+
+    <circle id="gate-32" cx="590" cy="640" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-32-text" x="590" y="645" text-anchor="middle" fill="white" font-size="10" font-weight="bold">32</text>
+
+    <circle id="gate="28" cx="610" cy="640" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke="stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-28-text" x="610" y="645" text-anchor="middle" fill="white" font-size="10" font-weight="bold">28</text>
+
+    <circle id="gate-18" cx="630" cy="640" r="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" class="gate-circle"/>
+    <text id="gate-18-text" x="630" y="645" text-anchor="middle" fill="white" font-size="10" font-weight="bold">18</text>
+  </g>
+
+  <!-- 通道 - 使用您命名的纯数字ID -->
+  <g id="channels">
+    <!-- 您已画的半根通道示例 -->
+    <path id="1" d="M 340 440 L 370 340" stroke="#dc2626" stroke-width="3" fill="none" class="channel" data-activation="design"/>
+    <path id="2" d="M 400 460 L 400 420" stroke="#000000" stroke-width="3" fill="none" class="channel" data-activation="personality"/>
+    <path id="3" d="M 640 360 L 390 640" stroke="#dc2626" stroke-width="3" fill="none" class="channel" data-activation="both"/>
+    <path id="4" d="M 345 90 L 320 250" stroke="#dc2626" stroke-width="3" fill="none" class="channel" data-activation="design"/>
+    <path id="5" d="M 560 360 L 280 520" stroke="#000000" stroke-width="3" fill="none" class="channel" data-activation="personality"/>
+    <path id="6" d="M 480 460 L 480 600" stroke="#dc2626" stroke-width="3" fill="none" class="channel" data-activation="design"/>
+    <path id="7" d="M 410 440 L 410 440" stroke="#000000" stroke-width="3" fill="none" class="channel" data-activation="personality"/>
+    <path id="8" d="M 410 340 L 370 340" stroke="#dc2626" stroke-width="3" fill="none" class="channel" data-activation="design"/>
+    <path id="9" d="M 580 360 L 280 520" stroke="#000000" stroke-width="3" fill="none" class="channel" data-activation="personality"/>
+    <path id="10" d="M 340 440 L 410 340" stroke="#dc2626" stroke-width="3" fill="none" class="channel" data-activation="design"/>
+    <path id="11" cx="355" cy="195" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="12" d="M 380 340 L 380 190" stroke="#000000" stroke-width="3" fill="none" class="channel" data-activation="personality"/>
+    <path id="13" d="M 375 440 L 375 440" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="14" d="M 520 360 L 520 360" r="0" stroke="#000000" stroke-width="0" fill="none" class="channel" data-activation="personality"/>
+    <path id="15" d="M 375 440 L 375 440" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="16" d="M 420 340 L 420 340" r="0" stroke="#000000" stroke-width="0" fill="none" class="channel" data-activation="personality"/>
+    <path id="17" cx="415" cy="210" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="18" d="M 270 520 L 630 640" stroke="#dc2626" stroke-width="3" fill="none" class="channel" data-activation="design"/>
+    <path id="19" d="M 480 470 L 470 640" stroke="#000000" stroke-width="3" fill="none" class="channel" data-activation="personality"/>
+    <path id="20" d="M 370 340 L 390 190" stroke="#dc2626" stroke-width="3" fill="none" class="channel" data-activation="design"/>
+    <path id="21" d="M 250 380 L 290 380" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="22" d="M 580 440 L 380 190" stroke="#dc2626" stroke-width="3" fill="none" class="channel" data-activation="design"/>
+    <path id="23" d="M 380 340 L 380 190" r="0" stroke="#000000" stroke-width="0" fill="none" class="channel" data-activation="personality"/>
+    <path id="24" d="M 405 90 L 330 250" stroke="#dc2626" stroke-width="3" fill="none" class="channel" data-activation="design"/>
+    <path id="25" d="M 375 420 L 250 440" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="26" d="M 270 380 L 250 520" r="0" stroke="#000000" stroke-width="0" fill="none" class="channel" data-activation="personality"/>
+    <path id="27" d="M 250 560 L 250 560" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="28" d="M 250 520 L 610 640" stroke="#000000" stroke-width="3" fill="none" class="channel" data-activation="personality"/>
+    <path id="29" d="M 540 360 L 540 360" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="personality"/>
+    <path id="30" d="M 520 470 L 530 640" stroke="#dc2626" stroke-width="3" fill="none" class="channel" data-activation="design"/>
+    <path id="31" d="M 400 340 L 400 250" r="0" stroke="#000000" stroke-width="0" fill="none" class="channel" data-activation="personality"/>
+    <path id="32" d="590 360 L 590 640" stroke="#000000" stroke-width="3" fill="none" class="channel" data-activation="personality"/>
+    <path id="33" d="M 420 340 L 375 440" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="34" d="M 520 340 L 270 480" stroke="#dc2626" stroke-width="3" fill="none" class="channel" data-activation="design"/>
+    <path id="35" d="M 500 470 L 500 470" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="36" d="M 580 440 L 560 470" r="0" stroke="#000000" stroke-width="0" fill="none" class="channel" data-activation="personality"/>
+    <path id="37" d="M 560 470 L 560 470" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="38" d="M 550 645 L 550 645" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="39" d="M 490 640 L 490 640" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="40" d="M 290 380 L 250 440" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="41" d="M 540 470 L 530 640" stroke="#000000" stroke-width="0" fill="none" class="channel" data-activation="personality"/>
+    <path id="42" d="M 680 360 L 430 640" stroke="#000000" stroke-width="3" fill="none" class="channel" data-activation="personality"/>
+    <path id="43" d="M 335 210 L 395 190" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="44" d="M 290 480 L 270 380" r="0" stroke="#000000" stroke-width="0" fill="none" class="channel" data-activation="personality"/>
+    <path id="45" d="M 290 380 L 290 380" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="46" d="M 600 360 L 400 420" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="47" d="M 385 90 L 355 190" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="48" d="M 250 480 L 220 550" r="0" stroke="#000000" stroke-width="0" fill="none" class="channel" data-activation="personality"/>
+    <path id="49" d="M 540 440 L 540 440" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="50" d="M 310 480 L 310 480" r="0" stroke="#000000" stroke-width="0" fill="none" class="channel" data-activation="personality"/>
+    <path id="51" d="M 250 440 L 250 440" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="52" d="M 310 520 L 370 640" stroke="#000000" stroke-width="3" fill="none" class="channel" data-activation="personality"/>
+    <path id="53" d="M 330 520 L 450 640" stroke="#000000" stroke-width="3" fill="none" class="channel" data-activation="personality"/>
+    <path id="54" d="M 570 640 L 570 640" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="55" d="M 520 440 L 520 440" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="56" d="M 390 340 L 390 340" r="0" stroke="#000000" stroke-width="0" fill="none" class="channel" data-activation="personality"/>
+    <path id="57" d="M 270 480 L 420 340" stroke="#dc2626" stroke-width="3" fill="none" class="channel" data-activation="design"/>
+    <path id="58" d="M 290 520 L 410 640" stroke="#000000" stroke-width="3" fill="none" class="channel" data-activation="personality"/>
+    <path id="59" d="M 500 460 L 500 460" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="60" d="M 720 360 L 390 640" stroke="#dc2626" stroke-width="3" fill="none" class="channel" data-activation="both"/>
+    <path id="61" d="M 345 115 L 395 190" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="62" d="M 370 340 L 395 190" r="0" stroke="#000000" stroke-width="0" fill="none" class="channel" data-activation="personality"/>
+    <path id="63" d="M 405 115 L 335 210" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+    <path id="64" d="M 365 90 L 355 190" r="0" stroke="#dc2626" stroke-width="0" fill="none" class="channel" data-activation="design"/>
+  </g>
+
+  <!-- 中心标签 -->
+  <g id="center-labels" font-size="10" fill="rgba(255,255,255,0.4)" text-anchor="middle">
+    <text x="375" y="150">头中心</text>
+    <text x="375" y="250">脑中心</text>
+    <text x="375" y="400">喉咙</text>
+    <text x="375" y="480">G中心</text>
+    <text x="280" y="415">意志力</text>
+    <text x="280" y="515">脾</text>
+    <text x="520" y="515">太阳神经丛</text>
+    <text x="520" y="415">荐骨</text>
+    <text x="375" y="550">根</text>
+  </g>
+</svg>
