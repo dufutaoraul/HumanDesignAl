@@ -343,7 +343,12 @@ export default function HumanDesignUserSvgChart({
 </svg>`
 
   useEffect(() => {
-    if (!containerRef.current || !data) {
+    if (!containerRef.current) {
+      return
+    }
+
+    if (!data) {
+      console.log('⚠️ 人类图数据为空，显示默认图表')
       return
     }
 
@@ -356,8 +361,23 @@ export default function HumanDesignUserSvgChart({
     }
 
     console.log('=== 应用用户SVG人类图逻辑 ===')
-    console.log('通道:', data.analysis.channels)
-    console.log('定义的中心:', data.analysis.definedCenters)
+
+    // 安全检查数据结构
+    if (!data.analysis) {
+      console.log('⚠️ 缺少analysis数据，使用默认值')
+      data.analysis = {
+        type: '未知',
+        profile: '未知',
+        authority: '未知',
+        definition: '未知',
+        channels: [],
+        definedCenters: [],
+        incarnationCross: { full: '', key: '', type: '' }
+      }
+    }
+
+    console.log('通道:', data.analysis.channels || [])
+    console.log('定义的中心:', data.analysis.definedCenters || [])
 
     // 定义每个中心对应的颜色
     const centerColors: Record<string, string> = {
@@ -374,14 +394,20 @@ export default function HumanDesignUserSvgChart({
 
     // 激活的闸门集合
     const activeGates = new Set<number>()
-    data.analysis.channels.forEach(channel => {
-      const match = channel.match(/(\d+)-(\d+)/)
-      if (match) {
-        const gate1 = parseInt(match[1])
-        const gate2 = parseInt(match[2])
-        activeGates.add(gate1)
-        activeGates.add(gate2)
-        console.log(`通道 ${channel}: 激活闸门 ${gate1} 和 ${gate2}`)
+    const channels = data.analysis.channels || []
+
+    channels.forEach(channel => {
+      try {
+        const match = channel.match(/(\d+)-(\d+)/)
+        if (match) {
+          const gate1 = parseInt(match[1])
+          const gate2 = parseInt(match[2])
+          activeGates.add(gate1)
+          activeGates.add(gate2)
+          console.log(`通道 ${channel}: 激活闸门 ${gate1} 和 ${gate2}`)
+        }
+      } catch (error) {
+        console.log(`⚠️ 处理通道 ${channel} 时出错:`, error)
       }
     })
 
@@ -400,20 +426,26 @@ export default function HumanDesignUserSvgChart({
       'Root': 'root-center'
     }
 
-    data.analysis.definedCenters.forEach(center => {
-      const centerId = centerMap[center]
-      if (centerId) {
-        const element = svg.querySelector(`#${centerId}`) as SVGElement
-        if (element) {
-          const color = centerColors[centerId] || '#ffffff'
-          console.log(`✓ 激活中心: ${center} (${centerId}) - 颜色: ${color}`)
-          element.style.fill = color
-          element.style.stroke = '#ffffff'
-          element.style.strokeWidth = '3'
-          element.style.opacity = '1'
-        } else {
-          console.log(`✗ 中心未找到: ${centerId}`)
+    const definedCenters = data.analysis.definedCenters || []
+
+    definedCenters.forEach(center => {
+      try {
+        const centerId = centerMap[center]
+        if (centerId) {
+          const element = svg.querySelector(`#${centerId}`) as SVGElement
+          if (element) {
+            const color = centerColors[centerId] || '#ffffff'
+            console.log(`✓ 激活中心: ${center} (${centerId}) - 颜色: ${color}`)
+            element.style.fill = color
+            element.style.stroke = '#ffffff'
+            element.style.strokeWidth = '3'
+            element.style.opacity = '1'
+          } else {
+            console.log(`✗ 中心未找到: ${centerId}`)
+          }
         }
+      } catch (error) {
+        console.log(`⚠️ 处理中心 ${center} 时出错:`, error)
       }
     })
 
@@ -457,39 +489,47 @@ export default function HumanDesignUserSvgChart({
     })
 
     // 3. 激活通道
-    data.analysis.channels.forEach(channel => {
-      const match = channel.match(/(\d+)-(\d+)/)
-      if (match) {
-        const gate1 = parseInt(match[1])
-        const gate2 = parseInt(match[2])
+    channels.forEach(channel => {
+      try {
+        const match = channel.match(/(\d+)-(\d+)/)
+        if (match) {
+          const gate1 = parseInt(match[1])
+          const gate2 = parseInt(match[2])
 
-        console.log(`处理通道: ${channel} (${gate1}-${gate2})`)
+          console.log(`处理通道: ${channel} (${gate1}-${gate2})`)
 
-        const allPaths = svg.querySelectorAll('path, line')
-        let channelFound = false
+          const allPaths = svg.querySelectorAll('path, line')
+          let channelFound = false
 
-        allPaths.forEach(path => {
-          const pathId = path.getAttribute('id')
-          if (pathId) {
-            if (
-              (pathId.includes(`${gate1}`) && pathId.includes(`${gate2}`)) ||
-              (pathId.includes(`${gate1}-${gate2}`)) ||
-              (pathId.includes(`${gate2}-${gate1}`)) ||
-              (pathId.includes(`gate-${gate1}`) && pathId.includes(`gate-${gate2}`))
-            ) {
-              console.log(`✓ 激活通道: ${pathId}`)
-              ;(path as SVGElement).style.stroke = '#FF4444'
-              ;(path as SVGElement).style.strokeWidth = '4'
-              ;(path as SVGElement).style.fill = 'none'
-              ;(path as SVGElement).style.opacity = '1'
-              channelFound = true
+          allPaths.forEach(path => {
+            try {
+              const pathId = path.getAttribute('id')
+              if (pathId) {
+                if (
+                  (pathId.includes(`${gate1}`) && pathId.includes(`${gate2}`)) ||
+                  (pathId.includes(`${gate1}-${gate2}`)) ||
+                  (pathId.includes(`${gate2}-${gate1}`)) ||
+                  (pathId.includes(`gate-${gate1}`) && pathId.includes(`gate-${gate2}`))
+                ) {
+                  console.log(`✓ 激活通道: ${pathId}`)
+                  ;(path as SVGElement).style.stroke = '#FF4444'
+                  ;(path as SVGElement).style.strokeWidth = '4'
+                  ;(path as SVGElement).style.fill = 'none'
+                  ;(path as SVGElement).style.opacity = '1'
+                  channelFound = true
+                }
+              }
+            } catch (error) {
+              console.log(`⚠️ 处理路径时出错:`, error)
             }
-          }
-        })
+          })
 
-        if (!channelFound) {
-          console.log(`✗ 通道未找到: ${channel}`)
+          if (!channelFound) {
+            console.log(`✗ 通道未找到: ${channel}`)
+          }
         }
+      } catch (error) {
+        console.log(`⚠️ 处理通道 ${channel} 时出错:`, error)
       }
     })
 
