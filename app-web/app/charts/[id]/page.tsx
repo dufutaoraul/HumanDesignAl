@@ -8,7 +8,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { useAuth } from '@/lib/auth-context'
 import Link from 'next/link'
-import HumanDesignFinalChart from '@/components/HumanDesignFinalChart'
+import HumanDesignEmbeddedChart from '@/components/HumanDesignEmbeddedChart'
 
 interface ChartData {
   id: string
@@ -194,7 +194,7 @@ export default function ChartDetailPage() {
                 人类图图形
               </h2>
               <div className="flex justify-center">
-                <HumanDesignFinalChart
+                <HumanDesignEmbeddedChart
                   data={chart.chart_data}
                   width={600}
                   height={1000}
