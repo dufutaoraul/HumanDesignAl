@@ -4,9 +4,6 @@ import path from "path";
 const nextConfig: NextConfig = {
   // 完全禁用静态生成，强制所有页面动态渲染
   output: 'standalone',
-  experimental: {
-    missingSuspenseWithCSRBug: false,
-  },
   trailingSlash: true,
   webpack: (config, { isServer }) => {
     // 只在服务器端处理 swisseph-wasm
