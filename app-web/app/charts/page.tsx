@@ -4,6 +4,9 @@
 
 'use client'
 
+// 强制动态渲染，避免静态生成问题
+export const dynamic = 'force-dynamic'
+
 import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/lib/auth-context'
