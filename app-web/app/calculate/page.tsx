@@ -57,8 +57,7 @@ export default function CalculatePage() {
   ]);
   const [newTag, setNewTag] = useState('');
   const [showNewTagInput, setShowNewTagInput] = useState(false);
-  const [sortBy, setSortBy] = useState<'date' | 'name' | 'relationship' | 'type'>('date');
-  const [hasSelfChart, setHasSelfChart] = useState(false);
+    const [hasSelfChart, setHasSelfChart] = useState(false);
 
   // 认证保护
   useEffect(() => {
@@ -134,32 +133,7 @@ export default function CalculatePage() {
     }
   }, [user, loadSavedCharts, loadCustomTags]);
 
-  const getSortedCharts = () => {
-    const sorted = [...savedCharts];
-
-    switch (sortBy) {
-      case 'name':
-        return sorted.sort((a, b) => a.name.localeCompare(b.name, 'zh-CN'));
-      case 'relationship':
-        const relationshipOrder = ['本人', '家人', '朋友', '同事', '名人', '其他'];
-        return sorted.sort((a, b) => {
-          const aIndex = relationshipOrder.indexOf(a.relationship || '其他');
-          const bIndex = relationshipOrder.indexOf(b.relationship || '其他');
-          if (aIndex !== bIndex) return aIndex - bIndex;
-          return a.name.localeCompare(b.name, 'zh-CN');
-        });
-      case 'type':
-        return sorted.sort((a, b) => {
-          const typeA = a.analysis?.type || '';
-          const typeB = b.analysis?.type || '';
-          if (typeA !== typeB) return typeA.localeCompare(typeB, 'zh-CN');
-          return a.name.localeCompare(b.name, 'zh-CN');
-        });
-      default:
-        return sorted;
-    }
-  };
-
+  
   const handleAddNewTag = async () => {
     if (!newTag.trim() || !user) return;
 

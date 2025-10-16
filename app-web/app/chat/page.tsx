@@ -12,14 +12,9 @@ import {
   Send,
   Plus,
   Menu,
-  X,
   User as UserIcon,
   Bot,
-  LogOut,
-  Edit2,
   Trash2,
-  Check,
-  XCircle,
   Sparkles,
 } from 'lucide-react'
 
@@ -46,8 +41,6 @@ export default function ChatPage() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [conversations, setConversations] = useState<Conversation[]>([])
   const [currentConversation, setCurrentConversation] = useState<Conversation | null>(null)
-  const [editingConversationId, setEditingConversationId] = useState<string | null>(null)
-  const [editingTitle, setEditingTitle] = useState('')
   const [hasHumanDesign, setHasHumanDesign] = useState<boolean | null>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
@@ -95,30 +88,7 @@ export default function ChatPage() {
     setSidebarOpen(false)
   }
 
-  const startEditingConversation = (conversation: Conversation) => {
-    setEditingConversationId(conversation.id)
-    setEditingTitle(conversation.title)
-  }
-
-  const saveConversationTitle = (conversationId: string) => {
-    if (!editingTitle.trim()) return
-
-    setConversations(conversations.map(c =>
-      c.id === conversationId ? { ...c, title: editingTitle.trim() } : c
-    ))
-
-    if (currentConversation?.id === conversationId) {
-      setCurrentConversation({ ...currentConversation, title: editingTitle.trim() })
-    }
-
-    setEditingConversationId(null)
-  }
-
-  const cancelEditing = () => {
-    setEditingConversationId(null)
-    setEditingTitle('')
-  }
-
+  
   const deleteConversation = (conversationId: string) => {
     if (!confirm('确定要删除这个对话吗？删除后无法恢复。')) {
       return

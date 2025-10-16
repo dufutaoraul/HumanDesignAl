@@ -8,7 +8,6 @@ import { useState, useEffect, useCallback } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { useAuth } from '@/lib/auth-context'
 import Link from 'next/link'
-import HumanDesignChart from '@/components/HumanDesignChart'
 import HumanDesignManualChart from '@/components/HumanDesignManualChart'
 
 interface ChartData {
