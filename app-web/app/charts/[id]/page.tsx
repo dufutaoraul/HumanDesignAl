@@ -48,23 +48,31 @@ export default function ChartDetailPage() {
   const [loadingChart, setLoadingChart] = useState(true)
 
   useEffect(() => {
+    console.log('用户状态检查 - loading:', loading, 'user:', !!user)
     if (!loading && !user) {
+      console.log('用户未登录，跳转到首页')
       router.push('/')
     }
   }, [user, loading, router])
 
   const loadChart = useCallback(async (id: string) => {
+    console.log('开始加载图表, ID:', id)
     try {
       const response = await fetch(`/api/charts/${id}`)
+      console.log('API响应状态:', response.status)
+
       if (response.ok) {
         const data = await response.json()
+        console.log('成功加载图表数据:', data)
         setChart(data.chart)
       } else {
-        console.error('加载失败')
+        console.error('加载失败，状态码:', response.status)
+        console.log('跳转到图表列表页')
         router.push('/charts')
       }
     } catch (error) {
       console.error('加载人类图详情失败:', error)
+      console.log('跳转到图表列表页')
       router.push('/charts')
     } finally {
       setLoadingChart(false)
@@ -72,8 +80,12 @@ export default function ChartDetailPage() {
   }, [router])
 
   useEffect(() => {
+    console.log('图表加载检查 - user:', !!user, 'params.id:', params.id)
     if (user && params.id) {
+      console.log('开始加载图表:', params.id)
       loadChart(params.id as string)
+    } else {
+      console.log('等待用户登录或图表ID')
     }
   }, [user, params.id, loadChart])
 
