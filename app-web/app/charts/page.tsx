@@ -321,7 +321,7 @@ export default function ChartsListPage() {
                       </div>
                     </Link>
                     <Link
-                      href={`/calculate?chartId=${chart.id}`}
+                      href={`/charts/${chart.id}`}
                       className="relative group flex-1"
                     >
                       <div className="absolute -inset-1 bg-gradient-to-r from-violet-600 to-blue-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition-all duration-300"></div>

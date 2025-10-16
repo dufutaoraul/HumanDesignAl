@@ -573,26 +573,13 @@ export default function CalculatePage() {
           </div>
         )}
 
-        {/* 底部：已保存的星图列表 */}
+        {/* 底部：已保存的星图列表 - 简化显示 */}
         {savedCharts.length > 0 && (
           <div className="border-t border-white/10 bg-white/5 backdrop-blur-sm">
             <div className="p-6">
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-semibold text-white">已保存的星图</h3>
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value as 'date' | 'name' | 'relationship' | 'type')}
-                  className="px-3 py-1 bg-white/10 border border-white/20 rounded text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                >
-                  <option value="date">时间排序</option>
-                  <option value="name">姓名排序</option>
-                  <option value="relationship">标签排序</option>
-                  <option value="type">类型排序</option>
-                </select>
-              </div>
-
+              <h3 className="text-lg font-semibold text-white mb-4">已保存的星图</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 max-h-40 overflow-y-auto">
-                {getSortedCharts().map((chart, index) => (
+                {savedCharts.slice(0, 12).map((chart, index) => (
                   <div
                     key={chart.id || index}
                     className="bg-white/10 rounded-lg p-3 cursor-pointer hover:bg-white/20 transition-all duration-200 border border-white/20 hover:border-white/40"
