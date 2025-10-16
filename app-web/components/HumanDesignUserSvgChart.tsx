@@ -432,7 +432,8 @@ export default function HumanDesignUserSvgChart({
       try {
         const centerId = centerMap[center]
         if (centerId) {
-          const element = svg.querySelector(`#${centerId}`) as SVGElement
+          const escapedCenterId = CSS.escape(centerId)
+          const element = svg.querySelector(`#${escapedCenterId}`) as SVGElement
           if (element) {
             const color = centerColors[centerId] || '#ffffff'
             console.log(`✓ 激活中心: ${center} (${centerId}) - 颜色: ${color}`)
@@ -455,13 +456,14 @@ export default function HumanDesignUserSvgChart({
         `gate-${gateNum}`,
         `gate-${gateNum}-text`,
         `gate_${gateNum}`,
-        `gate${gateNum}`,
-        `${gateNum}`
+        `gate${gateNum}`
       ]
 
       let gateFound = false
       for (const id of possibleIds) {
-        const gate = svg.querySelector(`#${id}`) as SVGElement
+        // 使用CSS.escape来处理特殊字符和数字开头的问题
+        const escapedId = CSS.escape(id)
+        const gate = svg.querySelector(`#${escapedId}`) as SVGElement
         if (gate) {
           console.log(`✓ 激活闸门: ${gateNum} (ID: ${id})`)
           gate.style.fill = '#FF4444'
@@ -476,7 +478,8 @@ export default function HumanDesignUserSvgChart({
       // 查找闸门文字
       for (const id of possibleIds) {
         const textId = id.includes('-text') ? id : `${id}-text`
-        const gateText = svg.querySelector(`#${textId}`) as SVGElement
+        const escapedTextId = CSS.escape(textId)
+        const gateText = svg.querySelector(`#${escapedTextId}`) as SVGElement
         if (gateText) {
           gateText.style.fill = '#ffffff'
           break
