@@ -43,15 +43,35 @@ export default function HumanDesignFinalChart({
   const [svgContent, setSvgContent] = useState<string>('')
 
   useEffect(() => {
-    // 加载完整的SVG
-    fetch('/human-design-full-complete.svg')
-      .then(response => response.text())
+    // 加载完整的SVG - 使用正确的路径
+    const svgPath = '/human-design-full-complete.svg'
+    console.log('Loading SVG from:', svgPath)
+
+    fetch(svgPath)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        return response.text()
+      })
       .then(svgText => {
         console.log('Full SVG loaded, length:', svgText.length)
         setSvgContent(svgText)
       })
       .catch(error => {
         console.error('Error loading SVG:', error)
+        console.error('Failed path:', svgPath)
+        // 如果完整SVG加载失败，尝试使用原始SVG
+        console.log('Trying fallback to original SVG...')
+        fetch('/human-design-chart.svg')
+          .then(response => response.text())
+          .then(svgText => {
+            console.log('Fallback SVG loaded, length:', svgText.length)
+            setSvgContent(svgText)
+          })
+          .catch(fallbackError => {
+            console.error('Fallback SVG also failed:', fallbackError)
+          })
       })
   }, [])
 
