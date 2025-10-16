@@ -8,7 +8,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { useAuth } from '@/lib/auth-context'
 import Link from 'next/link'
-import HumanDesignDynamicChart from '@/components/HumanDesignDynamicChart'
+import HumanDesignDynamicChartOriginal from '@/components/HumanDesignDynamicChartOriginal'
 
 interface ChartData {
   id: string
@@ -194,7 +194,7 @@ export default function ChartDetailPage() {
                 人类图图形
               </h2>
               <div className="flex justify-center">
-                <HumanDesignDynamicChart
+                <HumanDesignDynamicChartOriginal
                   data={chart.chart_data}
                   width={600}
                   height={1000}
