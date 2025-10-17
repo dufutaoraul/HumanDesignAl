@@ -23,10 +23,11 @@ export default function HomePage() {
 
   useEffect(() => {
     // 如果已登录，重定向到对话页面
-    if (!loading && user) {
+    if (user) {
+      console.log('用户已登录，重定向到聊天页面')
       router.push('/chat')
     }
-  }, [user, loading, router])
+  }, [user, router])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -80,24 +81,7 @@ export default function HomePage() {
     )
   }
 
-  // 已登录状态
-  if (user) {
-    return (
-      <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-violet-900/20 via-blue-900/20 to-indigo-900/20"></div>
-
-        <div className="relative z-10 text-center">
-          <div className="w-20 h-20 mx-auto mb-8 relative">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-stardust-gold to-violet-500 opacity-30 animate-pulse"></div>
-            <div className="absolute inset-2 rounded-full border-2 border-transparent border-t-stardust-gold animate-spin"></div>
-          </div>
-          <h3 className="text-2xl font-semibold text-gradient mb-2">欢迎回来</h3>
-          <p className="text-secondary">正在进入您的宇宙...</p>
-        </div>
-      </div>
-    )
-  }
-
+  
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* 星尘背景层 */}

@@ -386,7 +386,11 @@ export default function HumanDesignUserSvgChart({
 </svg>`
 
   useEffect(() => {
+    console.log('🔍 HumanDesignUserSvgChart useEffect 开始')
+    console.log('📊 数据:', data ? '存在' : '不存在')
+
     if (!containerRef.current) {
+      console.log('❌ containerRef.current 不存在')
       return
     }
 
@@ -396,14 +400,18 @@ export default function HumanDesignUserSvgChart({
     }
 
     const container = containerRef.current
+    console.log('📦 容器:', container)
+
     const svg = container.querySelector('svg') as SVGSVGElement
+    console.log('🎨 SVG元素:', svg)
 
     if (!svg) {
-      console.error('SVG element not found')
+      console.error('❌ SVG element not found - 这是问题所在！')
+      console.log('📋 容器内容:', container.innerHTML)
       return
     }
 
-    console.log('=== 应用用户SVG人类图逻辑 ===')
+    console.log('✅ 找到SVG元素，开始应用人类图逻辑 ===')
 
     // 安全检查数据结构
     if (!data.analysis) {
