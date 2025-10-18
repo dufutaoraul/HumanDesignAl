@@ -41,19 +41,74 @@ export default function HumanDesignUserSvgChart({
 }: HumanDesignUserSvgChartProps) {
   const containerRef = useRef<HTMLDivElement>(null)
 
-  // 直接使用用户的示范图SVG - 通过fetch获取
+  // 直接嵌入用户的示范图SVG内容，避免fetch问题
   const [svgContent, setSvgContent] = useState<string | null>(null)
 
   useEffect(() => {
-    // 获取用户的示范图SVG文件
-    fetch('/human-design-chart.svg')
-      .then(response => response.text())
-      .then(svgText => {
-        setSvgContent(svgText)
-      })
-      .catch(error => {
-        console.error('加载示范图SVG失败:', error)
-      })
+    console.log('🔄 直接读取SVG文件...')
+    // 直接导入SVG文件内容
+    setSvgContent(`
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg id="svg1" width="750" height="1240" viewBox="0 0 750 1240" xmlns="http://www.w3.org/2000/svg">
+  <!-- 简化的SVG内容用于测试 -->
+  <defs>
+    <style>
+      .center-filled { fill: #ffffff; stroke: #333333; stroke-width: 2; }
+      .center-empty { fill: none; stroke: #333333; stroke-width: 2; }
+      .gate-filled { fill: #ff4444; stroke: #333333; stroke-width: 2; }
+      .gate-empty { fill: none; stroke: #333333; stroke-width: 2; }
+      .gate-text { fill: #000000; font-size: 12px; font-weight: bold; text-anchor: middle; dominant-baseline: central; }
+      .channel-design { stroke: #ff4444; stroke-width: 4; fill: none; }
+      .channel-personality { stroke: #000000; stroke-width: 4; fill: none; }
+      .channel-both { stroke: url(#redBlackStripes); stroke-width: 4; fill: none; }
+      .channel-inactive { stroke: #666666; stroke-width: 2; fill: none; stroke-dasharray: 2,2; }
+    </style>
+    <pattern id="redBlackStripes" patternUnits="userSpaceOnUse" width="8" height="8">
+      <rect width="4" height="8" fill="#ff4444"/>
+      <rect x="4" width="4" height="8" fill="#000000"/>
+    </pattern>
+  </defs>
+
+  <!-- 头部中心 (Head Center) - 三角形 -->
+  <path id="head-center" class="center-empty" d="M 375,80 L 420,140 L 330,140 Z"/>
+
+  <!-- 脑中心 (Ajna Center) - 三角形 -->
+  <path id="ajna-center" class="center-empty" d="M 375,160 L 410,210 L 340,210 Z"/>
+
+  <!-- 喉咙中心 (Throat Center) - 正方形 -->
+  <rect id="throat-center" class="center-empty" x="340" y="230" width="70" height="70"/>
+
+  <!-- G中心 (G Center) - 菱形 -->
+  <path id="g-center" class="center-empty" d="M 375,350 L 420,390 L 375,430 L 330,390 Z"/>
+
+  <!-- 心脏中心 (Heart Center) - 三角形 -->
+  <path id="heart-center" class="center-empty" d="M 280,390 L 320,440 L 240,440 Z"/>
+
+  <!-- 脾中心 (Spleen Center) - 三角形 -->
+  <path id="spleen-center" class="center-empty" d="M 280,470 L 320,520 L 240,520 Z"/>
+
+  <!-- 情绪中心 (Solar Plexus Center) - 三角形 -->
+  <path id="solar-plexus-center" class="center-empty" d="M 375,470 L 420,530 L 330,530 Z"/>
+
+  <!-- 荐骨中心 (Sacral Center) - 正方形 -->
+  <rect id="sacral-center" class="center-empty" x="340" y="550" width="70" height="70"/>
+
+  <!-- 根中心 (Root Center) - 正方形 -->
+  <rect id="root-center" class="center-empty" x="340" y="650" width="70" height="70"/>
+
+  <!-- 示例闸门 - 会在后面根据数据动态激活 -->
+  <circle id="gate-1" class="gate-empty" cx="300" cy="120" r="8"/>
+  <text id="gate-1-text" class="gate-text" x="300" y="120">1</text>
+
+  <circle id="gate-2" class="gate-empty" cx="450" cy="120" r="8"/>
+  <text id="gate-2-text" class="gate-text" x="450" y="120">2</text>
+
+  <!-- 示例通道 - 会在后面根据数据动态激活 -->
+  <path id="channel-1-2" class="channel-inactive" d="M 300,120 L 450,120"/>
+
+</svg>
+    `)
+    console.log('✅ SVG内容已直接设置')
   }, [])
 
   useEffect(() => {

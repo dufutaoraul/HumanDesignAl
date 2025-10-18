@@ -4,6 +4,8 @@ import path from "path";
 const nextConfig: NextConfig = {
   // 确保兼容Vercel部署
   trailingSlash: true,
+  // 解决多工作目录问题
+  outputFileTracingRoot: path.resolve(__dirname, './'),
   webpack: (config, { isServer }) => {
     // 只在服务器端处理 swisseph-wasm
     if (!isServer) {
