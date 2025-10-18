@@ -41,7 +41,7 @@ export default function HumanDesignUserSvgChart({
 }: HumanDesignUserSvgChartProps) {
   const containerRef = useRef<HTMLDivElement>(null)
 
-  // 修正重复ID问题的SVG内容
+  // 直接使用用户的原始SVG文件内容
   const svgContent = `<svg width="750" height="1240" viewBox="0 0 750 1240" xmlns="http://www.w3.org/2000/svg">
   <!-- 定义样式 -->
   <defs>
@@ -139,8 +139,8 @@ export default function HumanDesignUserSvgChart({
   <circle id="gate-31" class="gate-empty" cx="375" cy="310" r="12"/>
   <text id="gate-31-text" class="gate-text" x="375" y="310">31</text>
 
-  <circle id="gate-62-throat" class="gate-empty" cx="375" cy="360" r="12"/>
-  <text id="gate-62-throat-text" class="gate-text" x="375" y="360">62</text>
+  <circle id="gate-62" class="gate-empty" cx="375" cy="360" r="12"/>
+  <text id="gate-62-text" class="gate-text" x="375" y="360">62</text>
 
   <!-- G中心 (G Center) - 菱形 -->
   <path id="g-center" class="center-empty" d="M 375,430 L 420,480 L 375,530 L 330,480 Z"/>
@@ -152,11 +152,11 @@ export default function HumanDesignUserSvgChart({
   <circle id="gate-13" class="gate-empty" cx="410" cy="455" r="12"/>
   <text id="gate-13-text" class="gate-text" x="410" y="455">13</text>
 
-  <circle id="gate-7-g" class="gate-empty" cx="345" cy="505" r="12"/>
-  <text id="gate-7-g-text" class="gate-text" x="345" y="505">7</text>
+  <circle id="gate-7" class="gate-empty" cx="345" cy="505" r="12"/>
+  <text id="gate-7-text" class="gate-text" x="345" y="505">7</text>
 
-  <circle id="gate-44-g" class="gate-empty" cx="405" cy="505" r="12"/>
-  <text id="gate-44-g-text" class="gate-text" x="405" y="505">44</text>
+  <circle id="gate-44" class="gate-empty" cx="405" cy="505" r="12"/>
+  <text id="gate-44-text" class="gate-text" x="405" y="505">44</text>
 
   <circle id="gate-10" class="gate-empty" cx="360" cy="480" r="12"/>
   <text id="gate-10-text" class="gate-text" x="360" y="480">10</text>
@@ -187,11 +187,11 @@ export default function HumanDesignUserSvgChart({
   <circle id="gate-48" class="gate-empty" cx="475" cy="550" r="12"/>
   <text id="gate-48-text" class="gate-text" x="475" y="550">48</text>
 
-  <circle id="gate-57-spleen" class="gate-empty" cx="500" cy="540" r="12"/>
-  <text id="gate-57-spleen-text" class="gate-text" x="500" y="540">57</text>
+  <circle id="gate-57" class="gate-empty" cx="500" cy="540" r="12"/>
+  <text id="gate-57-text" class="gate-text" x="500" y="540">57</text>
 
-  <circle id="gate-44-spleen" class="gate-empty" cx="525" cy="550" r="12"/>
-  <text id="gate-44-spleen-text" class="gate-text" x="525" y="550">44</text>
+  <circle id="gate-44" class="gate-empty" cx="525" cy="550" r="12"/>
+  <text id="gate-44-text" class="gate-text" x="525" y="550">44</text>
 
   <circle id="gate-18" class="gate-empty" cx="485" cy="565" r="12"/>
   <text id="gate-18-text" class="gate-text" x="485" y="565">18</text>
@@ -237,8 +237,8 @@ export default function HumanDesignUserSvgChart({
   <rect id="sacral-center" class="center-empty" x="300" y="760" width="150" height="100" rx="10"/>
 
   <!-- 荐骨中心的闸门 -->
-  <circle id="gate-3-sacral" class="gate-empty" cx="320" cy="780" r="12"/>
-  <text id="gate-3-sacral-text" class="gate-text" x="320" y="780">3</text>
+  <circle id="gate-3" class="gate-empty" cx="320" cy="780" r="12"/>
+  <text id="gate-3-text" class="gate-text" x="320" y="780">3</text>
 
   <circle id="gate-9" class="gate-empty" cx="360" cy="770" r="12"/>
   <text id="gate-9-text" class="gate-text" x="360" y="770">9</text>
@@ -258,11 +258,11 @@ export default function HumanDesignUserSvgChart({
   <circle id="gate-27" class="gate-empty" cx="360" cy="830" r="12"/>
   <text id="gate-27-text" class="gate-text" x="360" y="830">27</text>
 
-  <circle id="gate-58-sacral" class="gate-empty" cx="320" cy="820" r="12"/>
-  <text id="gate-58-sacral-text" class="gate-text" x="320" y="820">58</text>
+  <circle id="gate-58" class="gate-empty" cx="320" cy="820" r="12"/>
+  <text id="gate-58-text" class="gate-text" x="320" y="820">58</text>
 
-  <circle id="gate-6-sacral" class="gate-empty" cx="340" cy="770" r="12"/>
-  <text id="gate-6-sacral-text" class="gate-text" x="340" y="770">6</text>
+  <circle id="gate-6" class="gate-empty" cx="340" cy="770" r="12"/>
+  <text id="gate-6-text" class="gate-text" x="340" y="770">6</text>
 
   <circle id="gate-34" class="gate-empty" cx="410" cy="770" r="12"/>
   <text id="gate-34-text" class="gate-text" x="410" y="770">34</text>
@@ -280,14 +280,14 @@ export default function HumanDesignUserSvgChart({
   <circle id="gate-52" class="gate-empty" cx="340" cy="940" r="12"/>
   <text id="gate-52-text" class="gate-text" x="340" y="940">52</text>
 
-  <circle id="gate-58-root" class="gate-empty" cx="380" cy="935" r="12"/>
-  <text id="gate-58-root-text" class="gate-text" x="380" y="935">58</text>
+  <circle id="gate-58" class="gate-empty" cx="380" cy="935" r="12"/>
+  <text id="gate-58-text" class="gate-text" x="380" y="935">58</text>
 
-  <circle id="gate-3-root" class="gate-empty" cx="410" cy="940" r="12"/>
-  <text id="gate-3-root-text" class="gate-text" x="410" y="940">3</text>
+  <circle id="gate-3" class="gate-empty" cx="410" cy="940" r="12"/>
+  <text id="gate-3-text" class="gate-text" x="410" y="940">3</text>
 
-  <circle id="gate-60-root" class="gate-empty" cx="340" cy="970" r="12"/>
-  <text id="gate-60-root-text" class="gate-text" x="340" y="970">60</text>
+  <circle id="gate-60" class="gate-empty" cx="340" cy="970" r="12"/>
+  <text id="gate-60-text" class="gate-text" x="340" y="970">60</text>
 
   <circle id="gate-53" class="gate-empty" cx="380" cy="975" r="12"/>
   <text id="gate-53-text" class="gate-text" x="380" y="975">53</text>
@@ -436,7 +436,7 @@ export default function HumanDesignUserSvgChart({
       'ajna-center': '#F0F8FF',      // 淡紫色 - 脑中心
       'throat-center': '#FFF8DC',    // 淡黄色 - 喉咙中心
       'g-center': '#F5FFFA',         // 淡绿色 - G中心
-      'ego-center': '#FFE4E1',       // 淡粉色 - 心脏中心
+      'heart-center': '#FFE4E1',     // 淡粉色 - 心脏中心
       'spleen-center': '#FFFACD',    // 淡橙色 - 脾中心
       'solar-plexus-center': '#FFCCCB', // 淡红色 - 情绪中心
       'sacral-center': '#F0FFF0',     // 淡绿色 - 荐骨中心
@@ -503,53 +503,24 @@ export default function HumanDesignUserSvgChart({
 
     // 2. 激活闸门
     activeGates.forEach(gateNum => {
-      const possibleIds = [
-        `gate-${gateNum}`,
-        `gate-${gateNum}-text`,
-        `gate-${gateNum}-throat`,
-        `gate-${gateNum}-throat-text`,
-        `gate-${gateNum}-g`,
-        `gate-${gateNum}-g-text`,
-        `gate-${gateNum}-spleen`,
-        `gate-${gateNum}-spleen-text`,
-        `gate-${gateNum}-sacral`,
-        `gate-${gateNum}-sacral-text`,
-        `gate-${gateNum}-root`,
-        `gate-${gateNum}-root-text`,
-        `gate_${gateNum}`,
-        `gate${gateNum}`
-      ]
+      // 注意：由于SVG中有重复ID，我们需要查找所有匹配的闸门
+      const possibleGateElements = svg.querySelectorAll(`[id*="gate-${gateNum}"]`)
+      console.log(`🔍 查找闸门 ${gateNum}, 找到 ${possibleGateElements.length} 个元素`)
 
-      let gateFound = false
-      for (const id of possibleIds) {
-        // 使用CSS.escape来处理特殊字符和数字开头的问题
-        const escapedId = CSS.escape(id)
-        const gate = svg.querySelector(`#${escapedId}`) as SVGElement
-        if (gate) {
-          console.log(`✓ 激活闸门: ${gateNum} (ID: ${id})`)
-          gate.style.fill = '#FF4444'
-          gate.style.stroke = '#ffffff'
-          gate.style.strokeWidth = '2'
-          gate.style.opacity = '1'
-          gateFound = true
-          break
-        }
-      }
+      possibleGateElements.forEach(element => {
+        const id = element.getAttribute('id')
+        console.log(`✓ 激活闸门: ${gateNum} (ID: ${id})`)
+        ;(element as SVGElement).style.fill = '#FF4444'
+        ;(element as SVGElement).style.stroke = '#ffffff'
+        ;(element as SVGElement).style.strokeWidth = '2'
+        ;(element as SVGElement).style.opacity = '1'
+      })
 
       // 查找闸门文字
-      for (const id of possibleIds) {
-        const textId = id.includes('-text') ? id : `${id}-text`
-        const escapedTextId = CSS.escape(textId)
-        const gateText = svg.querySelector(`#${escapedTextId}`) as SVGElement
-        if (gateText) {
-          gateText.style.fill = '#ffffff'
-          break
-        }
-      }
-
-      if (!gateFound) {
-        console.log(`✗ 闸门未找到: ${gateNum}`)
-      }
+      const possibleTextElements = svg.querySelectorAll(`[id*="gate-${gateNum}-text"]`)
+      possibleTextElements.forEach(textElement => {
+        ;(textElement as SVGElement).style.fill = '#ffffff'
+      })
     })
 
     // 3. 激活通道
