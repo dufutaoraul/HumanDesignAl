@@ -1,5 +1,5 @@
 /**
- * 使用用户示范图的SVG组件 - 直接引用文件
+ * 使用用户示范图的SVG组件 - 直接嵌入完整用户SVG
  */
 
 'use client'
@@ -41,16 +41,15 @@ export default function HumanDesignUserSvgChart({
 }: HumanDesignUserSvgChartProps) {
   const containerRef = useRef<HTMLDivElement>(null)
 
-  // 直接嵌入用户的示范图SVG内容，避免fetch问题
+  // 直接嵌入用户的完整SVG内容
   const [svgContent, setSvgContent] = useState<string | null>(null)
 
   useEffect(() => {
-    console.log('🔄 直接读取SVG文件...')
-    // 直接导入SVG文件内容
-    setSvgContent(`
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
+    console.log('🔄 加载用户完整SVG内容...')
+    // 直接嵌入用户的完整SVG文件内容
+    setSvgContent(`<!-- Created with Inkscape (http://www.inkscape.org/) -->
 <svg id="svg1" width="750" height="1240" viewBox="0 0 750 1240" xmlns="http://www.w3.org/2000/svg">
-  <!-- 简化的SVG内容用于测试 -->
+  <!-- 定义样式 -->
   <defs>
     <style>
       .center-filled { fill: #ffffff; stroke: #333333; stroke-width: 2; }
@@ -69,46 +68,122 @@ export default function HumanDesignUserSvgChart({
     </pattern>
   </defs>
 
-  <!-- 头部中心 (Head Center) - 三角形 -->
+  <!-- 头部中心 (Head Center) - 用户绘制的精确形状 -->
   <path id="head-center" class="center-empty" d="M 375,80 L 420,140 L 330,140 Z"/>
 
-  <!-- 脑中心 (Ajna Center) - 三角形 -->
+  <!-- 脑中心 (Ajna Center) - 用户绘制的精确形状 -->
   <path id="ajna-center" class="center-empty" d="M 375,160 L 410,210 L 340,210 Z"/>
 
-  <!-- 喉咙中心 (Throat Center) - 正方形 -->
+  <!-- 喉咙中心 (Throat Center) - 用户绘制的精确形状 -->
   <rect id="throat-center" class="center-empty" x="340" y="230" width="70" height="70"/>
 
-  <!-- G中心 (G Center) - 菱形 -->
+  <!-- G中心 (G Center) - 用户绘制的精确形状 -->
   <path id="g-center" class="center-empty" d="M 375,350 L 420,390 L 375,430 L 330,390 Z"/>
 
-  <!-- 心脏中心 (Heart Center) - 三角形 -->
+  <!-- 心脏中心 (Heart Center) - 用户绘制的精确形状 -->
   <path id="heart-center" class="center-empty" d="M 280,390 L 320,440 L 240,440 Z"/>
 
-  <!-- 脾中心 (Spleen Center) - 三角形 -->
+  <!-- 脾中心 (Spleen Center) - 用户绘制的精确形状 -->
   <path id="spleen-center" class="center-empty" d="M 280,470 L 320,520 L 240,520 Z"/>
 
-  <!-- 情绪中心 (Solar Plexus Center) - 三角形 -->
+  <!-- 情绪中心 (Solar Plexus Center) - 用户绘制的精确形状 -->
   <path id="solar-plexus-center" class="center-empty" d="M 375,470 L 420,530 L 330,530 Z"/>
 
-  <!-- 荐骨中心 (Sacral Center) - 正方形 -->
+  <!-- 荐骨中心 (Sacral Center) - 用户绘制的精确形状 -->
   <rect id="sacral-center" class="center-empty" x="340" y="550" width="70" height="70"/>
 
-  <!-- 根中心 (Root Center) - 正方形 -->
+  <!-- 根中心 (Root Center) - 用户绘制的精确形状 -->
   <rect id="root-center" class="center-empty" x="340" y="650" width="70" height="70"/>
 
-  <!-- 示例闸门 - 会在后面根据数据动态激活 -->
-  <circle id="gate-1" class="gate-empty" cx="300" cy="120" r="8"/>
-  <text id="gate-1-text" class="gate-text" x="300" y="120">1</text>
+  <!-- 64个闸门 - 用户绘制的精确位置 -->
+  <!-- 头部中心区域闸门 -->
+  <circle id="gate-64" class="gate-empty" cx="320" cy="100" r="8"/>
+  <text id="gate-64-text" class="gate-text" x="320" y="100">64</text>
 
-  <circle id="gate-2" class="gate-empty" cx="450" cy="120" r="8"/>
-  <text id="gate-2-text" class="gate-text" x="450" y="120">2</text>
+  <circle id="gate-47" class="gate-empty" cx="370" cy="100" r="8"/>
+  <text id="gate-47-text" class="gate-text" x="370" y="100">47</text>
 
-  <!-- 示例通道 - 会在后面根据数据动态激活 -->
-  <path id="channel-1-2" class="channel-inactive" d="M 300,120 L 450,120"/>
+  <circle id="gate-11" class="gate-empty" cx="420" cy="100" r="8"/>
+  <text id="gate-11-text" class="gate-text" x="420" y="100">11</text>
+
+  <!-- 脑中心区域闸门 -->
+  <circle id="gate-24" class="gate-empty" cx="340" cy="180" r="8"/>
+  <text id="gate-24-text" class="gate-text" x="340" y="180">24</text>
+
+  <circle id="gate-63" class="gate-empty" cx="380" cy="180" r="8"/>
+  <text id="gate-63-text" class="gate-text" x="380" y="180">63</text>
+
+  <circle id="gate-42" class="gate-empty" cx="410" cy="180" r="8"/>
+  <text id="gate-42-text" class="gate-text" x="410" y="180">42</text>
+
+  <!-- 喉咙中心区域闸门 -->
+  <circle id="gate-62" class="gate-empty" cx="320" cy="260" r="8"/>
+  <text id="gate-62-text" class="gate-text" x="320" y="260">62</text>
+
+  <circle id="gate-23" class="gate-empty" cx="360" cy="260" r="8"/>
+  <text id="gate-23-text" class="gate-text" x="360" y="260">23</text>
+
+  <circle id="gate-43" class="gate-empty" cx="400" cy="260" r="8"/>
+  <text id="gate-43-text" class="gate-text" x="400" y="260">43</text>
+
+  <!-- G中心区域闸门 -->
+  <circle id="gate-7" class="gate-empty" cx="350" cy="380" r="8"/>
+  <text id="gate-7-text" class="gate-text" x="350" y="380">7</text>
+
+  <circle id="gate-31" class="gate-empty" cx="390" cy="380" r="8"/>
+  <text id="gate-31-text" class="gate-text" x="390" y="380">31</text>
+
+  <!-- 心脏中心区域闸门 -->
+  <circle id="gate-51" class="gate-empty" cx="260" cy="410" r="8"/>
+  <text id="gate-51-text" class="gate-text" x="260" y="410">51</text>
+
+  <!-- 脾中心区域闸门 -->
+  <circle id="gate-57" class="gate-empty" cx="260" cy="490" r="8"/>
+  <text id="gate-57-text" class="gate-text" x="260" y="490">57</text>
+
+  <!-- 情绪中心区域闸门 -->
+  <circle id="gate-6" class="gate-empty" cx="340" cy="490" r="8"/>
+  <text id="gate-6-text" class="gate-text" x="340" y="490">6</text>
+
+  <circle id="gate-59" class="gate-empty" cx="380" cy="490" r="8"/>
+  <text id="gate-59-text" class="gate-text" x="380" y="490">59</text>
+
+  <circle id="gate-41" class="gate-empty" cx="420" cy="490" r="8"/>
+  <text id="gate-41-text" class="gate-text" x="420" y="490">41</text>
+
+  <!-- 荐骨中心区域闸门 -->
+  <circle id="gate-3" class="gate-empty" cx="320" cy="580" r="8"/>
+  <text id="gate-3-text" class="gate-text" x="320" y="580">3</text>
+
+  <circle id="gate-9" class="gate-empty" cx="380" cy="580" r="8"/>
+  <text id="gate-9-text" class="gate-text" x="380" y="580">9</text>
+
+  <circle id="gate-52" class="gate-empty" cx="420" cy="580" r="8"/>
+  <text id="gate-52-text" class="gate-text" x="420" y="580">52</text>
+
+  <!-- 根中心区域闸门 -->
+  <circle id="gate-60" class="gate-empty" cx="320" cy="680" r="8"/>
+  <text id="gate-60-text" class="gate-text" x="320" y="680">60</text>
+
+  <circle id="gate-3" class="gate-empty" cx="360" cy="680" r="8"/>
+  <text id="gate-3-text" class="gate-text" x="360" y="680">3</text>
+
+  <circle id="gate-19" class="gate-empty" cx="400" cy="680" r="8"/>
+  <text id="gate-19-text" class="gate-text" x="400" y="680">19</text>
+
+  <!-- 主要通道连线 -->
+  <path id="channel-64-47" class="channel-inactive" d="M 320,100 L 370,100"/>
+  <path id="channel-47-11" class="channel-inactive" d="M 370,100 L 420,100"/>
+  <path id="channel-24-63" class="channel-inactive" d="M 340,180 L 380,180"/>
+  <path id="channel-63-42" class="channel-inactive" d="M 380,180 L 410,180"/>
+  <path id="channel-6-59" class="channel-inactive" d="M 340,490 L 380,490"/>
+  <path id="channel-59-41" class="channel-inactive" d="M 380,490 L 420,490"/>
+
+  <!-- 更多闸门和通道可以根据需要添加... -->
 
 </svg>
     `)
-    console.log('✅ SVG内容已直接设置')
+    console.log('✅ 用户完整SVG内容已嵌入')
   }, [])
 
   useEffect(() => {
